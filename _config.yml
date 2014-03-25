@@ -1,8 +1,13 @@
 # General Jekyll Config
-pygments: true
 url: http://localhost:4000
-lsi: true
-exclude: [LICENSE, CNAME, README.md, .gitignore]
+exclude: [LICENSE, CNAME, README.md, .gitignore, Gemfile, Gemfile.lock]
+
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone:    Australia/NSW
+future:      false
+markdown:	  kramdown
+highlighter: rouge
+lsi:         true
 
 # Theme customization - please change from the defaults!
 theme:
@@ -28,7 +33,7 @@ theme:
   tagline: "readwrite, nonatomic, strong"
 
   # Google Analytics key, leave blank to ignore
-  google_analytics_key: UA-xxxx-x
+  google_analytics_key: UA-87298-12
 
   # Toggle "Postings are my own" disclaimer in footer
   show_disclaimer: false
