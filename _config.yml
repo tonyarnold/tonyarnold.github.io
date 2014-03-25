@@ -1,0 +1,34 @@
+# General Jekyll Config
+pygments: true
+url: http://localhost:4000
+lsi: true
+exclude: [LICENSE, CNAME, README.md, .gitignore]
+
+# Theme customization - please change from the defaults!
+theme:
+  # Color for top bar, links, etc
+  highlight_color: '#990000'
+
+  # Profile links on the left sidebar, leave blank to ignore
+  social:
+    github: tonyarnold
+    bitbucket: tonyarnold
+    #hacker_news: swanson
+    #stackexchange: 348619
+    #stackoverflow: 348619
+    twitter: tonyarnold
+    #facebook: zuck
+    #tumblr: animalygifs
+    #linkedin: philipjagielski
+    #gplus: 110552447039675960964
+
+  # "Hi, I'm _______"
+  name: Tony Arnold
+  email: tony@tonyarnold.com
+  tagline: "readwrite, nonatomic, strong"
+
+  # Google Analytics key, leave blank to ignore
+  google_analytics_key: UA-xxxx-x
+
+  # Toggle "Postings are my own" disclaimer in footer
+  show_disclaimer: false
