@@ -1,11 +1,11 @@
 # General Jekyll Config
-url: http://localhost:4000
+url: http://tonyarnold.com
 exclude: [LICENSE, CNAME, README.md, .gitignore, Gemfile, Gemfile.lock]
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone:    Australia/NSW
 future:      false
-markdown:	  kramdown
+markdown:	 kramdown
 highlighter: rouge
 lsi:         true
 
@@ -33,7 +33,7 @@ theme:
   tagline: "readwrite, nonatomic, strong"
 
   # Google Analytics key, leave blank to ignore
-  google_analytics_key: UA-87298-12
+  google_analytics_key: UA-87298-13
 
   # Toggle "Postings are my own" disclaimer in footer
   show_disclaimer: false
