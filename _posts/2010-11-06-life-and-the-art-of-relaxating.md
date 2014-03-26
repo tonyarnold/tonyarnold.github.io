@@ -19,7 +19,7 @@ It's necessary for me to thank my little family now, with the most awesome photo
 
 Excitingly, I recently came into possession of a fairly recent model Mazda 6 which I love to bits. Not because it's a nice car to drive (it is), or because I think it's a handsome devil (yes, again) but because for the last 13 years I have struggled with the inability to put anything of real size into my car. The Lancer has been a noble steed, but it was well past time for me to upgrade to a so-called "grown up" car:
 
-<img src="http://static.tonyarnold.com/mazda-1306151413.jpg" alt="The \"Grown Up Car\" being all shiny" class="widescreen" />
+<img src="http://static.tonyarnold.com/mazda-1306151413.jpg" alt="The 'Grown Up Car' being all shiny" class="widescreen" />
 
 It was dutifully christened with a trip to [Ikea](http://goo.gl/maps/OI1Y) where Leah and I struggled to fill even the remotest part of the space in the back. Despite the loss of sanity from actually entering Ikea on a weekend, I grinned for most of the trip home, and have washed the new car far too much since we bought it.
 
