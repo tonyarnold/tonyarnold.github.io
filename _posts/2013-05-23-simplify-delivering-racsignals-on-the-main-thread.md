@@ -3,7 +3,7 @@ layout: post
 title: Simplify delivering RACSignals on the main thread
 date: 2013-05-23 09:56
 link: http://gist.github.com/tonyarnold/5631849
-tags: [Cocoa, ReactiveCocoa, Objective-C]
+tags:  [Cocoa, ReactiveCocoa, Objective-C]
 ---
 
 One of the common things you'll do when working with [ReactiveCocoa](http://github.com/ReactiveCocoa/ReactiveCocoa/) is ensure that signals are delivered on the main thread. This is important when sending signals to user interface elements which (in general on OS X and always on iOS) must be delivered on the main thread.

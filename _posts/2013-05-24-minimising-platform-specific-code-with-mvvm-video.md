@@ -2,7 +2,7 @@
 layout: post
 date: 2013-05-24 18:35
 title: Minimising Platform-specific code with MVVM
-tags: [MVVM, Programming, Video]
+tags:  [MVVM, Programming, Video]
 link: http://xamarin.com/evolve/2013#session-zm59b5yptf
 ---
 

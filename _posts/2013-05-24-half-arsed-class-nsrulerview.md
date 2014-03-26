@@ -2,7 +2,7 @@
 layout: post
 date: 2013-05-24 17:04
 title: "Half Arsed Class: NSRulerView"
-tags: HalfArsedClass, Objective-C, NSRulerView, AppKit
+tags:  HalfArsedClass, Objective-C, NSRulerView, AppKit
 ---
 
 *This is a little thing I think I'll start doing to relieve frustration after working with awfully designed or just plain buggy classes. Half Arsed Class will pick out classes that have pissed me off from AppKit, Foundation and UIKit. Hopefully I'll also be able to retract these on a semi-regular basis.*

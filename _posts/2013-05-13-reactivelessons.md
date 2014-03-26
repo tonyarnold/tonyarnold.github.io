@@ -2,7 +2,7 @@
 layout: post
 title: ReactiveLessons
 date: 2013-05-13 08:55
-tags: [Cocoa, ReactiveCocoa, Objective-C]
+tags:  [Cocoa, ReactiveCocoa, Objective-C]
 ---
 
 In my experience, there are three simple ways to think about using [ReactiveCocoa][RAC]:

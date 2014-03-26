@@ -3,7 +3,7 @@ layout: default
 title: "The man, the beard, the mystery"
 ---
 
-<img align="right" src="http://static.tonyarnold.com.s3.amazonaws.com/photobooth.png" alt="Photo Booth shenanigans"/>
+<img align="right" src="http://static.tonyarnold.com/photobooth.png" alt="Photo Booth shenanigans"/>
 
 # About Tony
 
