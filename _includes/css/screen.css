@@ -112,9 +112,10 @@ ul.posts span {
 }
 
 nav h1 {
-  margin-left: -3px;
-  font-size: 64px;
-  line-height: 72px;
+  font-weight: 800;
+  margin-left: -6px;
+  font-size: 96px;
+  line-height: 100px;
 }
 
 nav h1, nav h2 {
@@ -216,18 +217,17 @@ pre a:only-of-type::before {
 
 ::selection {
 	color: #fff;
-	background: #660002; /* Safari */
+	background: #990000; /* Safari */
 }
 
 ::-moz-selection {
 	color: #fff;
-	background: #660002; /* Firefox */
+	background: #990000; /* Firefox */
 }
 
 .sidebar {
   padding-top: 25px;
   margin-right: 0px;
-  min-height: 100%;
 }
 
 .sidebar p {
@@ -286,7 +286,6 @@ pre a:only-of-type::before {
 #stalker {
   display: inline-block;
   height: 18px;
-  margin-left: 5px;
 }
 
 #stalker a {
@@ -365,4 +364,56 @@ i.fa-hn {
 
 #post .center img {
 	margin: 0px auto;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  nav h1 {
+    margin-left: -3px;
+    font-size: 64px;
+    line-height: 72px;
+  }
+  nav h2 {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {  
+  nav h1 {
+    margin-left: -3px;
+    font-size: 64px;
+    line-height: 72px;
+  }
+  nav h2 {
+    font-size: 22px;
+  }
+  
+  nav ul {
+    display:none;
+  }
+  
+  .content {
+    border-width: 0;
+    padding-left: 0px;
+  }
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {  
+  nav h1 {
+    margin-left: -3px;
+    font-size: 64px;
+    line-height: 72px;
+  }
+  nav h2 {
+    font-size: 22px;
+  }
+  
+  nav ul {
+    display:none;
+  }
+  
+  .content {
+    border-width: 0;
+    padding-left: 0px;
+  }
 }
