@@ -15,7 +15,7 @@ In my experience, there are three simple ways to think about using [ReactiveCoco
 
 Here's the current state of using Key-Value Observation to observe and respond to changes to a string property on my fictional class:
 
-{% highlight objective-c %}
+{% highlight objc linenos %}
 // In your viewDidLoad/awakeFromNib/init
 [self addObserver:self
        forKeyPath:@"someString"
@@ -43,7 +43,7 @@ Here's the current state of using Key-Value Observation to observe and respond t
 
 Here's the same thing using ReactiveCocoa:
 
-{% highlight objective-c %}
+{% highlight objc linenos %}
 [RACObserve(self, someString) distinctUntilChanged] subscribeNext:^(NSString *string) {
     // Do a bunch of things here, just like you would with KVO
 }];
@@ -57,7 +57,7 @@ The real drive behind the GitHub team building ReactiveCocoa is something called
 
 In the KVO example above, we're dealing with a string property on a fictional class instance, the actual real-world use of this would not be so abstract. It's likely that we're taking a string value from some data source and displaying it in a text field. So here's that:
 
-{% highlight objective-c %}
+{% highlight objc linenos %}
 RACSignal *nameSignal = [RACObserve(self, someManagedObject.name) distinctUntilChanged];
 
 RAC(self, someTextField.text) = [nameSignal deliverOn:[RACScheduler mainThreadScheduler]];
@@ -67,7 +67,7 @@ Still with me? Every time the `self.someManagedObject.name` attribute changes, t
 
 But that's still not the real advantage of ReactiveCocoa. Consider this, you have an `NSDate` property on one of your objects that you'd like to display in a text field. ReactiveCocoa can help you do that, while providing the same binding-style advantages as above:
 
-{% highlight objective-c %}
+{% highlight objc linenos %}
 RACSignal *dateSignal = [RACObserve(self, someManagedObject.startDate) distinctUntilChanged];
 
 RAC(self, someTextFieldForShowingTheDate.text) = [[dateSignal map:^NSString *(NSDate *date) {

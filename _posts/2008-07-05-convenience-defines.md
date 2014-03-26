@@ -11,7 +11,7 @@ When I first started working on VirtueDesktops (all those years ago), I was stil
 
 They’ve had a couple of minor additions and changes since then, but line-for-line, they’ve stood the test of time and I find them an invaluable way to reduce some of the fuss involved in manually managing your object assignments, copies and releases.
 
-{% highlight objc %}
+{% highlight objc linenos %}
 #define ZNCGAutoRelease(x) (__typeof(x))[NSMakeCollectable(x) autorelease]
 
 #define ZNAssign(aTarget, aSource)  \

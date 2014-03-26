@@ -17,7 +17,7 @@ Your application has set one of it’s `NSWindow` instances to the desktop level
 
 Yes - fixing this problem is simple - either stop using windows at or below the desktop icon level, or add the following code to a window category or subclass in your project and execute the “`clearExposeTags`” method upon an active instance of your troublesome `NSWindow`. If you’re using `CGSPrivate.h`, you can just include the method without all the `typedefs` and `extern`s.
 
-{% highlight objc %}
+{% highlight objc linenos %}
 typedef int CGSConnection;
 
 typedef int CGSWindow;
