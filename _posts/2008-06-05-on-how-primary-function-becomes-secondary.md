@@ -46,5 +46,5 @@ Leave your thoughts in the comments.
  [3]: http://neilang.com/
  [4]: http://developer.apple.com/wwdc/
  [5]: http://static.tonyarnold.com/switcher_now.png "Current Hyperspaces switcher"
- [6]: http://static.tonyarnold.com/idea_window.png "QuickSilver-style switcher idea]"
- [7]: http://static.tonyarnold.com/idea_black.png "HUD-style switcher idea]"
+ [6]: http://static.tonyarnold.com/idea_window.png "QuickSilver-style switcher idea"
+ [7]: http://static.tonyarnold.com/idea_black.png "HUD-style switcher idea"
