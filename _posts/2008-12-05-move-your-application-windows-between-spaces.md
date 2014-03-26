@@ -15,7 +15,7 @@ You’ll need a copy of the [CGSPrivate header][1] in your project.
 
 Simply use the following code, where `ibo_window` is an Interface Builder outlet to an NSWindow in your XIB file:
 
-{% highlight objc linenos %}
+{% highlight objc  %}
 CGSWindowID windowId = (CGSWindowID)[ibo_window windowNumber];
 // The following integer represents the space you want to move the window to - the array is not zero-based - Space 1 == 1, Space 2 == 2, etc
 NSInteger spaceToMoveTo = 2;
