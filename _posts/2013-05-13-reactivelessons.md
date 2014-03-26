@@ -97,7 +97,7 @@ In the course of adopting ReactiveCocoa for use in my own projects, I've discove
 
 So ReactiveCocoa is not all peaches and cream, but to date I've also noticed no performance issues and I feel like I'm expressing myself more clearly through RAC-enabled code than I was beforehand.
 
-**After my experiences, I could quite happily just stick to using `subscribeNext:` and `map:` methods in a very simple, KVO-esque manner.**
+**After my experiences, I could happily just stick to using the -subscribeNext: and -map: methods in a very simple, KVO-esque manner.**
 
 
  [RAC]: https://github.com/ReactiveCocoa/ReactiveCocoa/
