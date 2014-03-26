@@ -5,11 +5,11 @@ tags: [Hyperspaces, Mac]
 date: 07 February 2008 01:50:00
 ---
 
-<video width="640" height="520" poster="http://static.tonyarnold.com/hyperspaces_preview_2-1306153946.jpg" controls="yes" preload="none">
+<video width="720" height="585" poster="http://static.tonyarnold.com/hyperspaces_preview_2-1306153946.jpg" controls="yes" preload="none" class="widescreen">
   <source src="http://static.tonyarnold.com/hyperspaces_preview_2-1306153932.m4v" type="video/mp4"></source>
 </video>
 
-**Click the image above to play**. Closer and closer my eager beta beavers, closer and closer…
+Closer and closer my eager beta beavers, closer and closer…
 
 At this stage, I need to clear a couple of things up:
 

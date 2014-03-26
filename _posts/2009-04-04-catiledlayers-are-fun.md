@@ -13,7 +13,7 @@ Apple’s answer to this problem is the `CATiledLayer`. Basically, it allows you
 
 What’s interesting though is what happens when I play lazy programmer:
 
-<object width="640" height="406"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=3987685&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=3987685&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="640" height="406"></embed></object>
+<iframe src="//player.vimeo.com/video/3987685?byline=0&amp;portrait=0" width="720" height="451" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen class="widescreen"></iframe>
 
 Lovely, no? It would be a cool effect with a longer fade, and if I weren’t already getting complaints about how slow [Hyperspaces][1] is to change desktop backgrounds right now. I’m still working on the final code - I’ll post it when it’s done for reference - but the simple answer to this problem is twofold:
 

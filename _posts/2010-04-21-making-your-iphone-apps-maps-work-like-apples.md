@@ -9,17 +9,19 @@ date: 21 April 2010 17:35:00
 
 I've had the opportunity to work on a couple of smaller iPhone apps that include `MKMapView` components to show the location of stores and other items of interest. One of the things I found a little challenging was that the map views didn't work quite the same way as those found within Apple's Maps.app on the iPhone. I mean, sure - you can pan around the map with your fingers and zoom in and out by pinching, so the basics are there - but once you start tracking the user's current location (`showsUserLocation`) all the nice stuff just falls away.
 
-![class:right;; alt:Image of the sample application][1]Try it now - pop open the Maps app on your iPhone and tap the little crosshair button in the lower left corner of the map to show your current location. Straight away you'll notice that the map zooms and scrolls to centre on your current location. Now try moving the map around - the map location follows your fingers, with that pretty blue pulsing dot tailing your every move. Nice, huh? OK, now scroll the map somewhere else using your fingers. What happened? The `showsUserLocation` property just set itself to `NO` and the map stopped following you. Right thing to do, hey? Guess what - that's not standard behaviour if you just drop an `MKMapView` into your app. The good news is that it's not hard to copy this behaviour, and you don't have to use private APIs either (nice!). 
+<img src="http://static.tonyarnold.com/ttm_example-1306152825.png" alt="Screenshot of TapThatMap sample app" class="center"/>
+
+Try it now - pop open the Maps app on your iPhone and tap the little crosshair button in the lower left corner of the map to show your current location. Straight away you'll notice that the map zooms and scrolls to centre on your current location. Now try moving the map around - the map location follows your fingers, with that pretty blue pulsing dot tailing your every move. Nice, huh? OK, now scroll the map somewhere else using your fingers. What happened? The `showsUserLocation` property just set itself to `NO` and the map stopped following you. Right thing to do, hey? Guess what - that's not standard behaviour if you just drop an `MKMapView` into your app. The good news is that it's not hard to copy this behaviour, and you don't have to use private APIs either (nice!). 
 
 Here's how an `MKMapView` is structured at the highest levels (in a very loose sense):
 
-* `MKMapView`
-  * `UIView`
-     * `UIScrollView`
+	- MKMapView
+	  - UIView
+	    - UIScrollView
 
 And that's what makes it nice and easy to replicate this behaviour - the `UIScrollView` has a property named `contentOffset` that we can watch for changes using Key/Value Observation. When the `contentOffset` property changes, we can quickly check if the user is making the changes (in which case we want to turn off our `showsUserLocation` property), or if something else like the application is making the changes in which case we just want to ignore the change (ie. when zooming to a specific pin due to a search).
 
-## Sample Code ##
+## Sample Code
 
 I've uploaded a sample project to Github containing a very simple implementation of this approach - you're welcome to clone it, fork it or just read through it:
 

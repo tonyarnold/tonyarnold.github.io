@@ -10,16 +10,20 @@ One of the common things you'll do when working with [ReactiveCocoa](http://gith
 
 Compare:
 
-    RACSignal *zoomSignal = [RACAbleWithStart(self.zoom) distinctUntilChanged];
-    RAC(self.rulerView.tickFrequency) = [[zoomSignal map:^NSNumber *(NSNumber *zoom) {
-        return @(4.f * zoom.floatValue);
-    }] deliverOn:[RACScheduler mainThreadScheduler]];
+{% highlight obj-c %}
+RACSignal *zoomSignal = [RACAbleWithStart(self.zoom) distinctUntilChanged];
+RAC(self.rulerView.tickFrequency) = [[zoomSignal map:^NSNumber *(NSNumber *zoom) {
+    return @(4.f * zoom.floatValue);
+}] deliverOn:[RACScheduler mainThreadScheduler]];
+{% endhighlight %}
 
- To:
+To:
 
-    RACSignal *zoomSignal = [RACAbleWithStart(self.zoom) distinctUntilChanged];
-    RAC(self.rulerView.tickFrequency) = [[zoomSignal map:^NSNumber *(NSNumber *zoom) {
-        return @(4.f * zoom.floatValue);
-    }] deliverOnMainThread];
+{% highlight obj-c %}
+RACSignal *zoomSignal = [RACAbleWithStart(self.zoom) distinctUntilChanged];
+RAC(self.rulerView.tickFrequency) = [[zoomSignal map:^NSNumber *(NSNumber *zoom) {
+    return @(4.f * zoom.floatValue);
+}] deliverOnMainThread];
+{% endhighlight %}
 
 It's not a huge saving, but when you're dealing with complex compositions, I've found it does make a difference to a signal's readability.

@@ -1,5 +1,5 @@
 ---
-publish: false
+published: false
 layout: post
 title: Hyperspaces 1.0 final candidate 2
 tags: [Hyperspaces, Mac]

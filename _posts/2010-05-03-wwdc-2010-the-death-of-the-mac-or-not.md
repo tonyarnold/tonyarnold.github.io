@@ -7,7 +7,7 @@ date: 03 May 2010 02:11:00
 
 It appears that [Apple's World Wide Developer's Conference][0] (WWDC) is about [iPhoneOS 4.0][6] this year. The focus of the advertising, the sessions and the announcements all appear to be firmly focused on iPhone and iPad development, and there's scarce mention of the Mac in amongst the copy. This in and of itself is fine - the focus of the last 2 years (2008-2009) was pretty clearly on Mac OS X "Snow Leopard", so given the impending release of a major operating system release for the iPhone (and eventually iPad) I can understand why they'd be focusing on their new baby.
 
-![WWDC2008 Moscone][8]
+<img src="http://static.tonyarnold.com/wwdc_moscone_2008-1306152894.jpg" alt="Photo of Moscone West at WWDC in 2008" class="widescreen" />
 
 But it's raised a bit of an irate response from the more Mac-focused developers - "[What about me?][1]". At first, I was incensed too - why would I want to pay close to $6000 AUD for tickets, flights, accommodation and food to go to a conference that's taken the focus off my primary development platform? I get it, though - it makes sense. And yeah, I'd get some benefit from the iPhone OS sessions. However, I'm pretty certain that I wouldn't get $6000 worth of benefit this year, so I'm putting my hard earned money to one side for this year in the hopes that WWDC 2011 is a better fit for my needs. As are a number of other high profile Mac developers (who I was really looking forward to catching up with, you bastards!). But that's OK - there are more iPhoneOS developers than there are Mac developers these days anyway so WWDC will still sell out and the planet will continue to turn.
 
@@ -65,4 +65,3 @@ Now, [go look at my Mac apps][7]. Fin.
  [3]: http://twitterrific.com/
  [6]: http://www.apple.com/iphone/preview-iphone-os/
  [7]: http://thecocoabots.com/
- [8]: http://static.tonyarnold.com/wwdc_moscone_2008-1306152894.jpg "Photo of Moscone West at WWDC in 2008"

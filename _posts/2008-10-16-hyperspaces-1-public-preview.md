@@ -5,7 +5,7 @@ tags: [Hyperspaces, Life, Mac]
 date: 16 October 2008 23:17:00
 ---
 
-![The Hyperspaces Switcher][3]
+<img src="http://static.tonyarnold.com/hyperspaces-switcher-1306152548.png" alt="Screenshot of Hyperspaces switcher from the beta release" class="center"/>
 
 About 12 months ago, I had a conversation with a [friend of mine][1] that convinced me it was time to try my hand at writing a commercial software product. At the time, I had only very recently dropped development of VirtueDesktops and was seriously considering just taking a break from Mac development for a while - thankfully I didn’t, and today I’m releasing the fruits of 12 months of learning and hard work: [Hyperspaces 1.0 Public Preview][2].
 
@@ -42,7 +42,6 @@ I’ll post a post-mortem that goes into some detail about the programming chall
 
  [1]: http://brok3n.org/
  [2]: http://hyperspacesapp.com/
- [3]: http://static.tonyarnold.com/hyperspaces-switcher-1306152548.png "Screenshot of Hyperspaces switcher from the beta release"
  [4]: http://macrabbit.com/
  [5]: http://seanpatrickobrien.com/
  [6]: http://www.cc.gatech.edu/~svoida/

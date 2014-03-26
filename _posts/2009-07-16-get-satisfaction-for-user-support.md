@@ -24,10 +24,10 @@ I am at the point now where I am seriously reviewing other options for user supp
 To complicate matters further, [Get Satisfaction][0] has just released version 2.0 of their site. The company overview is now a fantastic layout - nice, simple and straight-forward. It's categorised and visually sorted. The product pages aren't so lucky - they're still a formless mess, and I have a hard time understanding why there's not **some** structure to them.
 
 ## Company Overview ##
-[![GetSatisfaction: CocoaBots Support Page][10]][12]
+<img src="http://farm3.static.flickr.com/2423/3725821905_ba0967d880_o.jpg" alt="GetSatisfaction: CocoaBots Support Page" class="widescreen"/>
 
 ## Product Support ##
-[![GetSatisfaction: Hyperspaces Support Page][11]][13]
+<img src="http://farm3.static.flickr.com/3458/3725821619_a195a75060_o.jpg" alt="GetSatisfaction: Hyperspaces Support Page" class="widescreen"/>
 
 I'll keep this post updated with what I decide to do, but right now I'm seriously weighing up whether it's worth pouring some of the money I've made from [Hyperspaces][5] into a really good support package from somewhere like [entp][8].
 
@@ -41,7 +41,3 @@ I'll keep this post updated with what I decide to do, but right now I'm seriousl
  [6]: http://getsatisfaction.com/thecocoabots/products/thecocoabots_hyperspaces
  [7]: http://tenderapp.com/
  [8]: http://entp.com/
- [10]: http://static.tonyarnold.com/3725821905_ba0967d880_o-1306152680.jpg "Screenshot of GetSatisfaction.com after their update"
- [11]: http://static.tonyarnold.com/3725821619_a195a75060_o-1306152699.jpg "Screenshot of GetSatisfaction.com before their update"
- [12]: http://farm3.static.flickr.com/2423/3725821905_ba0967d880_o.jpg
- [13]: http://farm4.static.flickr.com/3458/3725821619_a195a75060_o.jpg

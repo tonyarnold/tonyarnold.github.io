@@ -6,11 +6,9 @@ date: 22 April 2011 22:27:00
 ---
 After the gushing "[Thankyou, Backblaze][thanksbb]" post from earlier today, I thought it might be of some interest to others how I backup my Mac (like an elephant — hooo, I tied in a photo of my travels again!).
 
-![Elephants have long memory. Like a backup. And a boss.][elephant]
+<img src="http://static.tonyarnold.com/elephant-1306151150.png" alt="Elephants have long memory. Like a backup. And a boss." class="widescreen"/>
 
 I consider backing up to be common sense these days. If you use your Mac for work or for play, you have information that you'd be upset were it to disappear. Not backing up is the computing equivalent of driving without a seatbelt: you might not have an accident today, but you'll be thankful for it when you do.
-
-
 
 I have four levels of backups setup — that might sound a bit excessive, but I've found some services are better suited to looking after different types of information:
 
@@ -35,5 +33,4 @@ AKA "The Best $5 I Spend Each Month". Backblaze sits in the background just like
 If you want to keep reading about backups, there's plenty of great info on other approaches at the [World Backup Day site](http://www.worldbackupday.net/).
 
 
- [elephant]: http://static.tonyarnold.com/elephant-1306151150.png "Elephants have long memory. Like a backup. And a boss."
  [thanksbb]: /mac/work/2011/04/22/thankyou-backblaze.html

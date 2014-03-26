@@ -5,7 +5,7 @@ tags:  [Cocoa, Programming, Xcode]
 excerpt: "I've been battling a pesky case of missing symbols when debugging on iOS-based devices lately. It only started when I upgraded to Xcode 4. I was beginning to think I'd be symbolicating by hand until Apple sorted things out — fear not, I've found a workaround!"
 ---
 
-![alt:Instruments icon;; class:left;; style:margin-top:5px;background-image:none;border-width:0px;background-color:transparent;-webkit-box-shadow:none;-mozilla-box-shadow:none;box-shadow:none](http://static.tonyarnold.com/instruments-1306143920.png)I've been battling a pesky case of missing symbols when debugging on iOS-based devices lately. It only started when I upgraded to Xcode 4. I was beginning to think I'd be symbolicating by hand until Apple sorted things out — fear not, I've found a workaround!
+I've been battling a pesky case of missing symbols when debugging on iOS-based devices lately. It only started when I upgraded to Xcode 4. I was beginning to think I'd be symbolicating by hand until Apple sorted things out — fear not, I've found a workaround!
 
 1. First up, profile your app using **Instruments.app** — I use the '**Time Profiler**' instrument, because it's pretty easy to see when things aren't symbolicating properly. If you're (un)lucky, your app will profile just fine, but you'll be left with a bunch of addresses rather than nicely named methods and functions;
 2. Stop profiling your app, but don't close the Instruments document;

@@ -21,7 +21,7 @@ Now before [Neil][3] has a go at me for not releasing a public beta before [WWDC
 
 Here’s how it looks in 1.0 alpha build 404 (heh - yes, I see it too):
 
-![Current Hyperspaces switcher][5]
+<img src="http://static.tonyarnold.com/switcher_now.png" alt="Current Hyperspaces switcher" class="center"/>
 
 It functions much as you’d expect - you click on a space to switch to it. The active space shows a live-updating image of your current space, and the others show ghosted representations of your windows. Everything is drawn using CoreAnimation, so transitions of window positions smoothly fade in and out as window positions change on other spaces.
 
@@ -31,13 +31,13 @@ Here are my rough ideas mocked up using Fireworks for where this is could head:
 
 The first is a QuickSilver-style window that would include other functionality and configuration options:
 
-![QuickSilver-style switcher idea][6]
+<img src="http://static.tonyarnold.com/idea_window.png" alt="QuickSilver-style switcher idea" class="center"/>
 
 ## The HUD concept
 
 The second (and my current front-runner with a bit more polish) is this black, hud-like window. It also reflects some of the design elements of Hyperspaces very, very unique icon which I’ll be introducing before the week is out.
 
-![HUD-style switcher idea][7]
+<img src="http://static.tonyarnold.com/idea_black.png" alt="HUD-style switcher idea" class="center"/>
 
 Leave your thoughts in the comments.
 
@@ -45,6 +45,3 @@ Leave your thoughts in the comments.
  [2]: http://virtuedesktops.info/
  [3]: http://neilang.com/
  [4]: http://developer.apple.com/wwdc/
- [5]: http://static.tonyarnold.com/switcher_now.png "Current Hyperspaces switcher"
- [6]: http://static.tonyarnold.com/idea_window.png "QuickSilver-style switcher idea"
- [7]: http://static.tonyarnold.com/idea_black.png "HUD-style switcher idea"

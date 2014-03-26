@@ -7,7 +7,7 @@ date: 13 January 2010 16:09:00
 
 *This is the first of my ‘Giving back’ posts. The idea is that I’ll give something back to this wonderful Cocoa coding community at least once every couple of weeks. I mean, what’s the point of going indie if I can’t do what I want once in a while? :)*
 
-![CBMailingListSignup example][1]
+<img src="http://static.tonyarnold.com/join_our_mailing_list-1306152759.png" alt="Screenshot of dialog asking to join a mailing list from CBMailingListSignup" class="center" />
 
 Of all the marketing avenues I continue to investigate and read about, mailing lists seem to be something that the rest of you recommend time and again. I missed a few boats when I launched [Hyperspaces][2] - were I to do the launch over again, I’d make sure that a mailing list was in place and easy to join from my website and within my app. I’ve always admired the way the [Panic][3] apps ask you to join their mailing list the first time you start them - it’s simple and unobtrusive.
 
@@ -17,7 +17,6 @@ The code is heavily inspired by Uli’s [UKCrashReporter][6] and Wolf’s [JRFee
 
 The GitHub project is at [http://github.com/tonyarnold/CBMailingListSignup][9], and the code is licensed under the [Creative Commons Attribution 2.5 Australia License][8].
 
- [1]: http://static.tonyarnold.com/join_our_mailing_list-1306152759.png "Screenshot of dialog asking to join a mailing list from CBMailingListSignup"
  [2]: http://thecocoabots.com/hyperspaces/
  [3]: http://panic.com/
  [4]: http://campaignmonitor.com/

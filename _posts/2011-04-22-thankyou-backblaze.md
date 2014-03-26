@@ -5,7 +5,7 @@ tags:  [Mac, Work]
 date: 22 April 2011 22:02:00
 ---
 
-![Image of incense at Angkor Wat][0]
+<img src="http://static.tonyarnold.com/incense-1306151252.png" alt="Incense at Angkor Wat" class="widescreen"/>
 
 I had one of those 'cold shivers running down your spine' moments this week, when a simple [Dropbox][db] problem wiped out an entire client Xcode project. I'm not entirely sure why it happened — I assume because of my constant rebooting between Snow Leopard and Lion (and subsequently 'out-of-time' file dates), but by the time I realised what was going on, neither [Dropbox][db] nor Time Machine had a copy of the files. Had I not set up three levels of backups, I might as well have been burning incense to the gods to get my data back (did you like that? I tied the pretty photo I took to the words on your screen!).
 
@@ -13,6 +13,5 @@ Thankfully, [Backblaze][bz] was far more thorough than either of these services 
 
 If you rely on your Mac professionally, and you keep anything remotely important on there please take the time to verify the integrity of your back-ups.
 
- [0]: http://static.tonyarnold.com/incense-1306151252.png "Incense at Angkor Wat"
  [db]: http://dropbox.com/
  [bz]: http://backblaze.com/

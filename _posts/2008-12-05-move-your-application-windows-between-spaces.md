@@ -15,18 +15,32 @@ You’ll need a copy of the [CGSPrivate header][1] in your project.
 
 Simply use the following code, where `ibo_window` is an Interface Builder outlet to an NSWindow in your XIB file:
 
-{% highlight objc  %}
+{% highlight obj-c %}
 CGSWindowID windowId = (CGSWindowID)[ibo_window windowNumber];
-// The following integer represents the space you want to move the window to - the array is not zero-based - Space 1 == 1, Space 2 == 2, etc
+
+// The following integer represents the space you want to move the 
+// window to - the array is not zero-based - Space 1 == 1, Space 2 == 2, 
+// etc
 NSInteger spaceToMoveTo = 2;
-// Window count can be more than one, but for this example we're using a single window
+
+// Window count can be more than one, but for this example we're 
+// using a single window
 NSInteger windowCount = 1;
+
 // Now for the magical call:
-CGSMoveWorkspaceWindowList(_CGSDefaultConnection(), &amp;windowId, windowCount, spaceToMoveTo);
+CGSMoveWorkspaceWindowList(_CGSDefaultConnection(), 
+                           &amp;windowId, 
+                           windowCount, 
+                           spaceToMoveTo);
   
-// If you want to check which space a window is on, simple use the following code:
+// If you want to check which space a window is on, simple use the 
+// following code:
 NSInteger windowId = -1;  
-CGSGetWindowWorkspace(_CGSDefaultConnection(), windowId, &amp;workspaceID);
+
+CGSGetWindowWorkspace(_CGSDefaultConnection(), 
+                      windowId, 
+                      &amp;workspaceID);
+
 NSLog(@"Your window is now on space %i", windowId);
 {% endhighlight %}
 

@@ -11,30 +11,30 @@ When I first started working on VirtueDesktops (all those years ago), I was stil
 
 They’ve had a couple of minor additions and changes since then, but line-for-line, they’ve stood the test of time and I find them an invaluable way to reduce some of the fuss involved in manually managing your object assignments, copies and releases.
 
-{% highlight objc  %}
+{% highlight obj-c %}
 #define ZNCGAutoRelease(x) (__typeof(x))[NSMakeCollectable(x) autorelease]
 
-#define ZNAssign(aTarget, aSource)  \
-if (aTarget != nil) {               \
-    [aTarget autorelease];          \
-}                                   \
+#define ZNAssign(aTarget, aSource) \
+if (aTarget != nil) {              \
+    [aTarget autorelease];         \
+}                                  \
 aTarget = [aSource retain];
 
-#define ZNAssignCopy(aTarget, aSource)  \
-if (aTarget != nil) {                   \
-    [aTarget autorelease];              \
-}                                       \
+#define ZNAssignCopy(aTarget, aSource) \
+if (aTarget != nil) {                  \
+    [aTarget autorelease];             \
+}                                      \
 aTarget = [aSource copy];
 
-#define ZNRelease(aTarget)          \
-if (aTarget != nil) {               \
-    id oldObject = aTarget;     \
-    aTarget = nil;                  \
-    [oldObject release];            \
+#define ZNRelease(aTarget)   \
+if (aTarget != nil) {        \
+    id oldObject = aTarget;  \
+    aTarget = nil;           \
+    [oldObject release];     \
 }
 {% endhighlight %}
 
-I use these **everywhere** in my code, but just the other day I discovered the absolutely incredibly wonderful [CLANG Static Analysis][1] tools (more on this shortly!), and based on some feedback it gave around these calls (nothing bad!) it made me wonder - should I be `#DEFINE`ing convenience methods? Is this best practice? Should I go back to doing this all by hand?
+I use these **everywhere** in my code, but just the other day I discovered the absolutely incredibly wonderful [Clang Static Analysis][1] tools (more on this shortly!), and based on some feedback it gave around these calls (nothing bad!) it made me wonder - should I be using `#define` to create conveniences for my methods? Is this best practice, or should I just go back to doing this all by hand?
 
 I’m hoping some of my CocoaPeers™ will be able to provide me with some advice here, but if you think the code’s good for your needs - go for your life and use it.
 
