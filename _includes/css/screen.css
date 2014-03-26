@@ -8,7 +8,7 @@ html, body {
 }
 
 body {
-  font-size: 16px;
+  font: 400 16px/24px "Fira Sans", sans-serif;
   background-color: white;
   color: #222222;
   line-height: 24px;
@@ -142,18 +142,18 @@ code, pre {
 }
 
 pre {
-    counter-reset: line-numbering;
-    border: solid 1px #d9d9d9;
-    border-radius: 0;
-    background: #fff;
-    padding: 0;
-	font-size: 16px;
-    line-height: 23px;
-    margin-bottom: 30px;
-    white-space: pre;
-    overflow-x: auto;
-    word-break: inherit;
-    word-wrap: inherit;
+  counter-reset: line-numbering;
+  border: solid 1px #d9d9d9;
+  border-radius: 0;
+  background: #fff;
+  padding: 0;
+  font-size: 16px;
+  line-height: 23px;
+  margin-bottom: 30px;
+  white-space: pre;
+  overflow-x: auto;
+  word-break: inherit;
+  word-wrap: inherit;
 }
 
 pre a::before {
@@ -204,26 +204,25 @@ pre a:only-of-type::before {
 }
 
 #post pre {
-    background-color: #fdfdfd;
-	border-left: 40px solid #f8f8f8;
-    padding: 20px 10px 20px 20px;
+  background-color: #fdfdfd;
+  border-left: 40px solid #f8f8f8;
+  padding: 20px 10px 20px 20px;
 }
 
-#post pre:hover
-{
-    background-color: #fffff6;
-	border-left-color: #ffffe0;
+#post pre:hover {
+  background-color: #fffff6;
+  border-left-color: #ffffe0;
 }
 
 ::selection {
 	color: #fff;
 	background: #660002; /* Safari */
 }
+
 ::-moz-selection {
 	color: #fff;
 	background: #660002; /* Firefox */
 }
-
 
 .sidebar {
   padding-top: 25px;
@@ -240,7 +239,6 @@ pre a:only-of-type::before {
 }
 
 .content {
-  font: 400 16px/24px "Fira Sans", sans-serif;
   border-left: 1px solid #DDD;
   padding-left: 40px;
   padding-top: 25px;
