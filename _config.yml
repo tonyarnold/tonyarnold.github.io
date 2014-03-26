@@ -1,13 +1,16 @@
 # General Jekyll Config
 url: http://tonyarnold.com
-exclude: [LICENSE, CNAME, README.md, .gitignore, Gemfile, Gemfile.lock]
+exclude: [LICENSE, CNAME, README.md, .gitignore, Gemfile, Gemfile.lock, .ruby-version, .ruby-gemset, .DS_Store]
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone:    Australia/NSW
-future:      false
-markdown:	 kramdown
+timezone: Australia/NSW
+future: false
+markdown: kramdown
 highlighter: rouge
-lsi:         true
+lsi: true
+
+sass:
+    sass_dir: _scss
 
 # Theme customization - please change from the defaults!
 theme:

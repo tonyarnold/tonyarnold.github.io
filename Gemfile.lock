@@ -1,3 +1,16 @@
+GIT
+  remote: https://github.com/tonyarnold/narray
+  revision: da1013f2705c3786670a1b4704754a795c9ab28c
+  specs:
+    narray (0.6.0.8)
+
+GIT
+  remote: https://github.com/tonyarnold/rb-gsl
+  revision: 659a95fd9b610c02e38035b956feceb5c29e1ecb
+  specs:
+    gsl (1.14.7)
+      narray (>= 0.5.9)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -52,8 +65,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  gsl!
   jekyll
   kramdown
+  narray!
   rake
   rouge
   sass
