@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Microsoft finally gets it: web standards for all"
-tags: [Web Development]
+tags: [Programming, Web]
 date: 04 March 2008 19:17:00
 ---
 

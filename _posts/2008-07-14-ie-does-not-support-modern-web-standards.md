@@ -1,7 +1,7 @@
 ---
 layout: post
 title: MSIE7 does not support modern web standards
-tags: [Web Development]
+tags: [Programming, Web]
 date: 14 July 2008 07:59:00
 ---
 

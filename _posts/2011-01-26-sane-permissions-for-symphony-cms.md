@@ -2,7 +2,7 @@
 publish: false
 layout: post
 title: "Sane permissions for Symphony CMS"
-tags:  [Web Development]
+tags:  [Programming, Web]
 date: 26 January 2011 14:46:00
 ---
 
@@ -30,13 +30,13 @@ So [Symphony's][1] default permissions of `775` for both directories and files m
  * **Group** — can read, write and execute both directories and files created by Symphony;
  * **Everyone** — can read and execute both directories and files created by Symphony;
 
-Depending on your web host, this default might actually stop your site from working entirely — at the least it's a pretty insecure mask to use out of the box. The absolute bottom line is that **on a public web site, you should never grant any permissions unless they are absolutely necessary**. 
+Depending on your web host, this default might actually stop your site from working entirely — at the least it's a pretty insecure mask to use out of the box. The absolute bottom line is that **on a public web site, you should never grant any permissions unless they are absolutely necessary**.
 
 The directory permissions are (in most cases) completely OK. But the file permissions are not OK at all — you do not under nearly any circumstances want files within your `workspace` to be executable — not even by you. Leaving files executable within this directory leaves you open to somebody gaining access to your install and uploading a script or binary executable - if you remove the executable bit from all uploaded files, there's little chance someone can use uploaded files to do anything malicious to your site.
 
 ### Bottom line
 
-I always set my file permissions to be `664`, and my `775` for directories when setting up a new [Symphony][1] install. 
+I always set my file permissions to be `664`, and my `775` for directories when setting up a new [Symphony][1] install.
 
 If you know that your site will be run as a discrete user on your server, you could even consider removing write privileges for group as well - this is as simple as `755` for groups, and `644` for users. This might interfere with local development (depending on how your local install is setup), so I generally don't change this.
 

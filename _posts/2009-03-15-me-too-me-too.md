@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Me too, me too!
-tags: [Entertainment, Web Development]
+tags: [Entertainment, Programming, Web]
 date: 15 March 2009 11:48:00
 ---
 
