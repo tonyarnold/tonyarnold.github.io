@@ -12,7 +12,7 @@ It was a bit of a disaster. GSL itself installs just fine via [Homebrew][brew], 
 So, doing what I always do, I stayed up far too late and fixed the problems. After properly installing GSL on my MacBook Pro, **building my site went from over 5 minutes for a site with about 100 posts, to under 5 seconds**.
 
 
-## Prerequisistes
+## Prerequisites
 
  - You're using or want to use Jekyll's LSI and related posts function
  - [Xcode][xcode] (and most likely the command-line tools)

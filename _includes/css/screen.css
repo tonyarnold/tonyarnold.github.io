@@ -394,7 +394,9 @@ i.fa-hn {
 	margin: 0px auto;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 959px) {
+
+/* Retina iPad and smaller */
+@media only screen and (max-width: 1136px) {
   nav h1 {
     margin-left: -3px;
     margin-right: -3px;
@@ -405,28 +407,22 @@ i.fa-hn {
     font-size: 22px;
   }
 
+  #post pre,
+  #post ul li blockquote,
+  #post ol li blockquote {
+    width:100%;
+  }
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
   #post .widescreen {
     width:565px;
   }
-
-  #post pre,
-  #post ul li blockquote,
-  #post ol li blockquote {
-    width:100%;
-  }
 }
 
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-  nav h1 {
-    margin-left: -3px;
-    margin-right: -3px;
-    font-size: 64px;
-    line-height: 72px;
-  }
-  nav h2 {
-    font-size: 22px;
-  }
-
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
   nav ul {
     display:none;
   }
@@ -437,48 +433,7 @@ i.fa-hn {
   }
 
   #post .widescreen {
-    margin-left:-10px;
-    margin-right:10px;
-    width:460px;
-  }
-
-  #post pre,
-  #post ul li blockquote,
-  #post ol li blockquote {
-    width:100%;
-  }
-}
-
-/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-@media only screen and (max-width: 479px) {
-  nav h1 {
-    margin-left: -3px;
-    margin-right: -3px;
-    font-size: 64px;
-    line-height: 72px;
-  }
-  nav h2 {
-    font-size: 22px;
-  }
-
-  nav ul {
-    display:none;
-  }
-
-  .content {
-    border-width: 0;
-    padding-left: 0px;
-  }
-
-  #post .widescreen {
-    margin-left:-10px;
-    margin-right:10px;
-    width:320px;
-  }
-
-  #post pre,
-  #post ul li blockquote,
-  #post ol li blockquote {
+    margin-left:0px;
     width:100%;
   }
 }
