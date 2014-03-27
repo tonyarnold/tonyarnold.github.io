@@ -8,7 +8,7 @@ date: 17 February 2007 11:30:00
 {% capture years_ago %}{{ site.time | date: %Y | minus:2005 }}{% endcapture %}
 
 > ## Outdated Info
-> Hi there! So it's the future now ({{site.time | date: "%Y"}} to be precise) and things have moved on since I wrote this post {{years_ago}} years ago.
+> Hi there! So it's the future now ({{site.time | date: "%Y"}} to be precise) and the recommendations in this post aren't valid anymore.
 > I'd recommend you have a look at [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack) instead of using the code here in anything you're working on.
 
 Have you ever found yourself needing to have your application record quite a bit of data? Think pushing it to the user’s console is messy? (it is!) Here’s your answer. In the `main.m` of your cocoa application, simply add the following imports:

@@ -8,8 +8,7 @@ date: 06 October 2006 06:30:00
 {% capture years_ago %}{{ site.time | date: %Y | minus:2005 }}{% endcapture %}
 
 > ## Outdated Info
-> Hi there! So it's the future now ({{site.time | date: "%Y"}} to be precise) and things have moved on since I wrote this post {{years_ago}} years ago.
-> Interface Builder Plugins aren't possible anymore, so this post is just a wonderful curiosity.
+> Hi there! So it's the future now ({{site.time | date: "%Y"}} to be precise) and things have moved on: Interface Builder Plugins aren't possible anymore, so this post is just a wonderful curiosity.
 
 So [VirtueDesktops][1] has a small problem in that when it was written, Cocoa Bindings were new and not as well understood as they are now. Lately, I’ve been spending a my time brushing up my understanding of basic cocoa concepts that I may have missed first go around. Below is the result of that brushing, and something that I think is drastically under utilised - custom Interface Builder (IB) palettes.
 

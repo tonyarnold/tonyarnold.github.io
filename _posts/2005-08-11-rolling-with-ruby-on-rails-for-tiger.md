@@ -9,7 +9,7 @@ tags: [Mac, Programming, Ruby, Rails, Web]
 
 > ## Outdated Information
 >
-> This post was written {{years_ago}} years ago. I wouldn't recommend using the instructions below on anything but a Mac running Mac OS X 10.4 "Tiger".
+> The last time this post was updated, it was {{years_ago}} years old. I wouldn't recommend using the instructions below on anything but a Mac running Mac OS X 10.4 "Tiger".
 
 I’ve found myself helping a few people get up and running with [Ruby on Rails][1] over the last month, mainly due to my [Ruby on Rails installer package][2]. I thought it might be a good idea to document installing and setting up rails from end to end on Mac OS X, given the difficulties some people are encountering along the way.
 

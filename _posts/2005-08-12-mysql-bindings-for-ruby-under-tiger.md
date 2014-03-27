@@ -9,7 +9,7 @@ tags: [MySQL, Programming, Rails, Ruby, Web]
 
 > ## Outdated Information
 >
-> This post was written {{years_ago}} years ago. I wouldn't recommend using the instructions below on anything but a Mac running Mac OS X 10.4 "Tiger".
+> The last time this post was updated, it was {{years_ago}} years old. I wouldn't recommend using the instructions below on anything but a Mac running Mac OS X 10.4 "Tiger".
 >
 > Also, these instructions are not for Mac OS X Server - it comes with it’s own version of MySQL installed, and thus the procedure below probably won’t work without some modifications (then again, if you’re running Server, you’re probably skilled enough to figure out what to change yourself). Apologies for anyone on Server who has tried to follow these instructions.
 
