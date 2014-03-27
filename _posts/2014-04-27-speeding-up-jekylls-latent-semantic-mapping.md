@@ -33,14 +33,14 @@ So, doing what I always do, I stayed up far too late and fixed the problems. Aft
         gem 'narray', :git => "https://github.com/tonyarnold/narray"
         gem 'gsl', :git => "https://github.com/tonyarnold/rb-gsl"
 
-    *If you already have a Gemfile, the important lines are `narray` and `gsl`. Be sure to include the git repository links, as these contain my fixes to compile on OS X 10.9 "Mavericks".*
+    > **Note:** If you already have a Gemfile, the important lines are `narray` and `gsl`. Be sure to include the git repository links, as these contain my fixes to compile on OS X 10.9 "Mavericks".
 
 3. Now use Bundler to install the dependencies on your Mac:
 
         $ cd {YOUR SITE'S FOLDER}
         $ bundle install
 
-    *It's probably worth while looking into a tool like [RVM](http://rvm.io/), [rbenv](http://rbenv.org) or similar that will let you create gemsets so that you don't pollute the system rubygems unnecessarily.*
+    > **Note:** It's probably worth while looking into a tool like [RVM](http://rvm.io/), [rbenv](http://rbenv.org) or similar that will let you create gemsets so that you don't pollute the system rubygems unnecessarily.
 
 4. Now start up Jekyll and activate LSI (add `--watch` if you want to rebuild on any change to your content):
 
