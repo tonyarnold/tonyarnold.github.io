@@ -122,6 +122,13 @@ nav h1, nav h2 {
   text-align: left;
 }
 
+nav h1 a,
+nav h1 a:visited,
+nav h1 a:hover {
+  color: #000;
+  text-decoration: none;
+}
+
 nav hr {
   margin-top: 10px;
   margin-bottom: 15px;
@@ -246,7 +253,7 @@ pre a:only-of-type::before {
   min-height: 100%;
 }
 
-.content b, 
+.content b,
 .content strong {
   font-weight: 600;
   font-style: normal;
@@ -377,7 +384,7 @@ i.fa-hn {
   }
 }
 
-@media only screen and (min-width: 480px) and (max-width: 767px) {  
+@media only screen and (min-width: 480px) and (max-width: 767px) {
   nav h1 {
     margin-left: -3px;
     font-size: 64px;
@@ -386,11 +393,11 @@ i.fa-hn {
   nav h2 {
     font-size: 22px;
   }
-  
+
   nav ul {
     display:none;
   }
-  
+
   .content {
     border-width: 0;
     padding-left: 0px;
@@ -398,7 +405,7 @@ i.fa-hn {
 }
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-@media only screen and (max-width: 479px) {  
+@media only screen and (max-width: 479px) {
   nav h1 {
     margin-left: -3px;
     font-size: 64px;
@@ -407,11 +414,11 @@ i.fa-hn {
   nav h2 {
     font-size: 22px;
   }
-  
+
   nav ul {
     display:none;
   }
-  
+
   .content {
     border-width: 0;
     padding-left: 0px;
