@@ -377,7 +377,7 @@ i.fa-hn {
 #post pre {
 	margin-left:-40px;
   margin-right:40px;
-  width:720px;
+  width:741px;
 }
 
 #post li img {
@@ -405,9 +405,14 @@ i.fa-hn {
     font-size: 22px;
   }
 
-  #post .widescreen,
-  #post pre {
-    width:590px;
+  #post .widescreen {
+    width:565px;
+  }
+
+  #post pre,
+  #post ul li blockquote,
+  #post ol li blockquote {
+    width:100%;
   }
 }
 
@@ -431,11 +436,16 @@ i.fa-hn {
     padding-left: 0px;
   }
 
-  #post .widescreen,
-  #post pre {
+  #post .widescreen {
     margin-left:-10px;
     margin-right:10px;
     width:460px;
+  }
+
+  #post pre,
+  #post ul li blockquote,
+  #post ol li blockquote {
+    width:100%;
   }
 }
 
@@ -460,10 +470,15 @@ i.fa-hn {
     padding-left: 0px;
   }
 
-  #post .widescreen,
-  #post pre {
+  #post .widescreen {
     margin-left:-10px;
     margin-right:10px;
     width:320px;
+  }
+
+  #post pre,
+  #post ul li blockquote,
+  #post ol li blockquote {
+    width:100%;
   }
 }
