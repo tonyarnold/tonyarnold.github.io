@@ -14,7 +14,7 @@ So I’ve been puzzling for a few weeks through the dim and darkened alleyways o
 
 Unfortunately, I hit a rather interesting problem while attempting to draw a grid of self-positioning CALayers. See, you can tie CALayers together using constraints, but in a traditional grid of objects you need to tie all the edges of the grid objects to each other (and the outer grid objects to the frame of the constraining frame) - but you can’t constrain CALayers using CALayers that haven’t been created yet (still with me? sounds sane, right?).
 
-<img src="http://static.tonyarnold.com/calayer_grid_example-1306152218.png" alt="CALayer grid example" class="widescreen" />
+<img src="http://static.tonyarnold.com/calayer_grid_example-1306152218.png" alt="CALayer grid example" class="center" />
 
 So the answer turned out to be to cheat. First, constrain the width and height of all CALayer grid objects to be consistently based on the height and width of the constraining CALayer (scaled to fit the number of columns and rows we’re trying to get onscreen). Tie all the “outer” CALayers to the constraining CALayer on the edges where they connect with it. Now, tie the left and top edges of all CALayers to the right and bottom edges of the CALayers around them as shown to the left.
 
