@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 title: How to create a grid of CALayers
 tags: 
   - Cocoa
