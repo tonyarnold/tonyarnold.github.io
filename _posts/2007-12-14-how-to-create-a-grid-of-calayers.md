@@ -29,22 +29,22 @@ CALayer* mainLayer = [pagerView layer];
 CALayer *constraintLayer = [CALayer layer];
 [pagerView setLayer:constraintLayer];
 [pagerView setWantsLayer:YES];
-constraintLayer.bounds            = mainLayer.bounds;
-constraintLayer.name              = @"constraintsLayer";
-constraintLayer.anchorPoint       = CGPointMake( 0.5, 0.5 );
-constraintLayer.autoresizingMask  = (kCALayerWidthSizable|kCALayerHeightSizable);
-constraintLayer.backgroundColor   = [NSColor blackColor].CGColor;
-constraintLayer.position          = CGPointMake( 0, 0 );
-constraintLayer.contentsGravity   = kCAGravityResizeAspect;
-constraintLayer.masksToBounds     = YES;
-constraintLayer.layoutManager     = [CAConstraintLayoutManager layoutManager];
+constraintLayer.bounds = mainLayer.bounds;
+constraintLayer.name = @"constraintsLayer";
+constraintLayer.anchorPoint = CGPointMake( 0.5, 0.5 );
+constraintLayer.autoresizingMask = (kCALayerWidthSizable|kCALayerHeightSizable);
+constraintLayer.backgroundColor = [NSColor blackColor].CGColor;
+constraintLayer.position = CGPointMake( 0, 0 );
+constraintLayer.contentsGravity = kCAGravityResizeAspect;
+constraintLayer.masksToBounds = YES;
+constraintLayer.layoutManager = [CAConstraintLayoutManager layoutManager];
 
 // Initialization code here.
 HSSpaces *spacesInfo = [HSSpaces sharedInstance];
 
-float itemWidth     = (pagerViewFrame.size.width / [spacesInfo.columns floatValue]);
-float itemHeight    = (pagerViewFrame.size.height / [spacesInfo.rows floatValue]);
-float currentRow    = -1;
+float itemWidth = (pagerViewFrame.size.width / [spacesInfo.columns floatValue]);
+float itemHeight = (pagerViewFrame.size.height / [spacesInfo.rows floatValue]);
+float currentRow = -1;
 float currentColumn = 0;
 
 
@@ -62,20 +62,20 @@ for (HSSpace *space in spacesInfo.spaces) {
   //    iii) Top?
   //    iv) Bottom?
 
-  BOOL isRightEdge  = (currentColumn == ([spacesInfo.columns floatValue] - 1));
-  BOOL isLeftEdge   = (currentColumn == 0.0f);
-  BOOL isTopEdge    = (currentRow == 0.0f);
+  BOOL isRightEdge = (currentColumn == ([spacesInfo.columns floatValue] - 1));
+  BOOL isLeftEdge = (currentColumn == 0.0f);
+  BOOL isTopEdge = (currentRow == 0.0f);
   BOOL isBottomEdge = (currentRow == ([spacesInfo.rows floatValue] - 1));
 
   CGFloat x = itemWidth * currentColumn;
   CGFloat y = constraintLayer.bounds.size.height - (itemHeight * currentRow);
   
-  CALayer *spaceLayer     = [CALayer layer];
-  spaceLayer.name         = [NSString stringWithFormat:@"SpaceLayer%@", space.number];
-  spaceLayer.bounds       = CGRectMake( 0, 0, itemWidth, itemHeight );
-  spaceLayer.position     = CGPointMake( x, y );
-  spaceLayer.borderColor  = [NSColor yellowColor].CGColor;
-  spaceLayer.borderWidth  = 2.0;
+  CALayer *spaceLayer = [CALayer layer];
+  spaceLayer.name = [NSString stringWithFormat:@"SpaceLayer%@", space.number];
+  spaceLayer.bounds = CGRectMake( 0, 0, itemWidth, itemHeight );
+  spaceLayer.position = CGPointMake( x, y );
+  spaceLayer.borderColor = [NSColor yellowColor].CGColor;
+  spaceLayer.borderWidth = 2.0;
 
   if (space.color != nil) {
     spaceLayer.backgroundColor = space.color.CGColor;
@@ -89,51 +89,60 @@ for (HSSpace *space in spacesInfo.spaces) {
 
 
   // Set-up constraints
-  [spaceLayer addConstraint:[CAConstraint constraintWithAttribute:kCAConstraintHeight
-                             relativeTo:@"superlayer"
-                              attribute:kCAConstraintHeight
-                                  scale: (1.0 / [spacesInfo.rows floatValue])
-                                 offset: 0.0]];
-  [spaceLayer addConstraint:[CAConstraint constraintWithAttribute:kCAConstraintWidth
-                             relativeTo:@"superlayer"
-                              attribute:kCAConstraintWidth
-                                  scale: (1.0 / [spacesInfo.columns floatValue])
-                                  offset: 0.0]];
+  [spaceLayer addConstraint:
+    [CAConstraint constraintWithAttribute:kCAConstraintHeight
+                               relativeTo:@"superlayer"
+                                attribute:kCAConstraintHeight
+                                    scale:(1.0 / [spacesInfo.rows floatValue])
+                                    offset:0.0]];
+
+  [spaceLayer addConstraint:
+    [CAConstraint constraintWithAttribute:kCAConstraintWidth
+                               relativeTo:@"superlayer"
+                                attribute:kCAConstraintWidth
+                                    scale:(1.0 / [spacesInfo.columns floatValue])
+                                    offset:0.0]];
 
   // Minimum X
   if (isLeftEdge) {
-    [spaceLayer addConstraint:[CAConstraint constraintWithAttribute:kCAConstraintMinX
-                               relativeTo:@"superlayer"
-                                attribute:kCAConstraintMinX]];
+    [spaceLayer addConstraint:
+        [CAConstraint constraintWithAttribute:kCAConstraintMinX
+                                   relativeTo:@"superlayer"
+                                    attribute:kCAConstraintMinX]];
   } else {
-    [spaceLayer addConstraint:[CAConstraint constraintWithAttribute:kCAConstraintMinX
-                               relativeTo:[NSString stringWithFormat:@"SpaceLayer%i",([space.number intValue] - 1)]
-                                attribute:kCAConstraintMaxX]];
+    [spaceLayer addConstraint:
+        [CAConstraint constraintWithAttribute:kCAConstraintMinX
+                                   relativeTo:[NSString stringWithFormat:@"SpaceLayer%i",([space.number intValue] - 1)]
+                                    attribute:kCAConstraintMaxX]];
   }
 
   // Maximum X
   if (isRightEdge) {
-    [spaceLayer addConstraint:[CAConstraint constraintWithAttribute:kCAConstraintMaxX
-                               relativeTo:@"superlayer"
-                                attribute:kCAConstraintMaxX]];
+    [spaceLayer addConstraint:
+        [CAConstraint constraintWithAttribute:kCAConstraintMaxX
+                                   relativeTo:@"superlayer"
+                                    attribute:kCAConstraintMaxX]];
   }
 
   // Minimum Y
   if (isBottomEdge) {
-    [spaceLayer addConstraint:[CAConstraint constraintWithAttribute:kCAConstraintMinY
-                               relativeTo:@"superlayer"
-                                attribute:kCAConstraintMinY]];
+    [spaceLayer addConstraint:
+        [CAConstraint constraintWithAttribute:kCAConstraintMinY
+                                   relativeTo:@"superlayer"
+                                    attribute:kCAConstraintMinY]];
   }
 
   // Maximum Y
   if (isTopEdge) {
-    [spaceLayer addConstraint:[CAConstraint constraintWithAttribute:kCAConstraintMaxY
-                               relativeTo:@"superlayer"
-                                attribute:kCAConstraintMaxY]];
+    [spaceLayer addConstraint:
+        [CAConstraint constraintWithAttribute:kCAConstraintMaxY
+                                   relativeTo:@"superlayer"
+                                    attribute:kCAConstraintMaxY]];
   } else {
-    [spaceLayer addConstraint:[CAConstraint constraintWithAttribute:kCAConstraintMaxY
-                               relativeTo:[NSString stringWithFormat:@"SpaceLayer%i",([space.number intValue] * (currentRow - 1))]
-                                attribute:kCAConstraintMinY]];
+    [spaceLayer addConstraint:
+        [CAConstraint constraintWithAttribute:kCAConstraintMaxY
+                                   relativeTo:[NSString stringWithFormat:@"SpaceLayer%i",([space.number intValue] * (currentRow - 1))]
+                                    attribute:kCAConstraintMinY]];
   }
 
 }
