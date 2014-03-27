@@ -42,3 +42,69 @@ theme:
 
   # Toggle "Postings are my own" disclaimer in footer
   show_disclaimer: false
+
+
+prose:
+  ignore:
+  - /\..*
+  - /_config.yml
+  - /_layouts
+  - /_includes
+  - /atom.xml
+  - /CNAME
+  - /favicon.*
+  - /Gemfile
+  - /Gemfile.lock
+  - /index.*
+  - /LICENSE
+  - /site.json
+  rooturl: ''
+  siteurl: http://tonyarnold.com'
+  relativeLinks: 'http://tonyarnold.com/links.jsonp'
+  media: 'assets/media'
+  metadata:
+    "":
+      - name: "layout"
+        field:
+          element: "hidden"
+          value: "default"
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+    _posts:
+      - name: "layout"
+        field:
+          element: "hidden"
+          value: "post"
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+      - name: "date"
+        field:
+          element: "text"
+          label: "Date"
+          placeholder: "eg. 27 March 2014 10:32:29"
+      - name: "tags"
+        field:
+        element: "multiselect"
+        label: "Add Tags"
+        placeholder: "Choose Tags"
+        options:
+        - name: "Cocoa"
+          value: "Cocoa"
+        - name: "Entertainment"
+          value: "Entertainment"
+        - name: "Life"
+          value: "Life"
+        - name: "Mac"
+          value: "Mac"
+        - name: "Programming"
+          value: "Programming"
+        - name: "Web"
+          value: "Web"
+        - name: "Work"
+          value: "Work"
+        - name: "WWDC"
+          value: "WWDC"
