@@ -114,6 +114,7 @@ ul.posts span {
 nav h1 {
   font-weight: 800;
   margin-left: -6px;
+  margin-right: -6px;
   font-size: 96px;
   line-height: 100px;
 }
@@ -200,6 +201,7 @@ pre a:only-of-type::before {
 #post ul li pre,
 #post ol li pre {
   margin-left: -70px;
+  margin-right: -70px;
 }
 
 #post pre {
@@ -225,6 +227,19 @@ pre a:only-of-type::before {
 #post pre:hover {
   background-color: #fffff6;
   border-left-color: #ffffe0;
+}
+
+blockquote {
+  margin: 0px -40px 20px -40px;
+  padding: 10px 10px 1px 20px;
+  border-left: 20px solid #ddd;
+}
+
+#post ul li blockquote,
+#post ol li blockquote {
+  margin-left:-70px;
+  margin-right:-70px;
+  padding-left:45px;
 }
 
 ::selection {
@@ -360,6 +375,7 @@ i.fa-hn {
 
 #post .widescreen, #post pre {
 	margin-left:-40px;
+  margin-right:-40px;
 	width: 720px;
 }
 
@@ -380,6 +396,7 @@ i.fa-hn {
 @media only screen and (min-width: 768px) and (max-width: 959px) {
   nav h1 {
     margin-left: -3px;
+    margin-right: -3px;
     font-size: 64px;
     line-height: 72px;
   }
@@ -391,6 +408,7 @@ i.fa-hn {
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   nav h1 {
     margin-left: -3px;
+    margin-right: -3px;
     font-size: 64px;
     line-height: 72px;
   }
@@ -412,6 +430,7 @@ i.fa-hn {
 @media only screen and (max-width: 479px) {
   nav h1 {
     margin-left: -3px;
+    margin-right: -3px;
     font-size: 64px;
     line-height: 72px;
   }
