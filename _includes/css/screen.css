@@ -197,6 +197,11 @@ pre a:only-of-type::before {
   padding: 10px;
 }
 
+#post ul li pre,
+#post ol li pre {
+  margin-left: -70px;
+}
+
 #post pre {
   padding: 0 .4em;
   margin-bottom: 20px !important;
@@ -204,7 +209,7 @@ pre a:only-of-type::before {
 
 #post ul,
 #post ol {
-  margin-left: 1.35em;
+  margin-left: 30px;
 }
 
 #post pre, #post pre code {
@@ -264,7 +269,6 @@ pre a:only-of-type::before {
   font-size: 16px;
   line-height: 24px;
 }
-
 
 .footer {
   width: 100%;
