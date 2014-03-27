@@ -14,7 +14,7 @@ How many times have you found yourself coding some *“sick cocoa code… gosh�
 
 Me? All the time. So I did a bit of [hunting about][1] and devised the following logging class based upon comments by Scott Morrison:
 
-#### Source ([Download][2])
+#### Source
 
 {% highlight obj-c %}
 
@@ -55,5 +55,4 @@ Me? All the time. So I did a bit of [hunting about][1] and devised the following
 It’s all licensed under [Creative Commons Attribution 2.5][3] license, so just be sure to include a short attribution back to me in your header/notes/readme.
 
  [1]: http://outerlevel.com/blog/2006/12/01/code-review/
- [2]: /workspace/upload/2007/ZNLog.m "Download ZNLog.m"
  [3]: http://creativecommons.org/licenses/by/2.5/

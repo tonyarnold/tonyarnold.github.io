@@ -37,6 +37,4 @@ int main(int argc, char *argv[])
 }
 {% endhighlight %}
 
-Now, all of your logging messages will be pushed to a log file with the same name as your application under `~/Library/Logs/`. Oh, and because ZNLog uses NSLog to do it’s work, you can use this with my own, [kickass logging implementation][1] as well.
-
- [1]: /projects/znlog/ "ZNLog"
+Now, all of your logging messages will be pushed to a log file with the same name as your application under `~/Library/Logs/`. 
