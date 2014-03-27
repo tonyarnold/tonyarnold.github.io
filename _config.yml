@@ -46,10 +46,13 @@ theme:
 
 prose:
   ignore:
-  - /\..*
+  - /.gitignore
+  - /.ruby-gemset
+  - /.ruby-version
   - /_config.yml
   - /_layouts
   - /_includes
+  - /assets
   - /atom.xml
   - /CNAME
   - /favicon.*
@@ -58,6 +61,7 @@ prose:
   - /index.*
   - /LICENSE
   - /site.json
+  - /links.jsonp
   rooturl: ''
   siteurl: http://tonyarnold.com'
   relativeLinks: 'http://tonyarnold.com/links.jsonp'
