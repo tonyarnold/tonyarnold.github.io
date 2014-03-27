@@ -373,10 +373,11 @@ i.fa-hn {
   padding-bottom: 10px
 }
 
-#post .widescreen, #post pre {
+#post .widescreen,
+#post pre {
 	margin-left:-40px;
-  margin-right:-40px;
-	width: 720px;
+  margin-right:40px;
+  width:720px;
 }
 
 #post li img {
@@ -403,6 +404,11 @@ i.fa-hn {
   nav h2 {
     font-size: 22px;
   }
+
+  #post .widescreen,
+  #post pre {
+    width:590px;
+  }
 }
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
@@ -423,6 +429,13 @@ i.fa-hn {
   .content {
     border-width: 0;
     padding-left: 0px;
+  }
+
+  #post .widescreen,
+  #post pre {
+    margin-left:-10px;
+    margin-right:10px;
+    width:460px;
   }
 }
 
@@ -445,5 +458,12 @@ i.fa-hn {
   .content {
     border-width: 0;
     padding-left: 0px;
+  }
+
+  #post .widescreen,
+  #post pre {
+    margin-left:-10px;
+    margin-right:10px;
+    width:320px;
   }
 }
