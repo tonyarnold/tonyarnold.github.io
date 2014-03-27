@@ -3,11 +3,13 @@ layout: default
 title: "The man, the beard, the mystery"
 ---
 
-<img align="right" src="http://static.tonyarnold.com/photobooth.png" alt="Photo Booth shenanigans"/>
+{% capture my_age %}{{ site.time | date: %Y | minus: 1980.44 }}{% endcapture %}
+
+<img src="http://static.tonyarnold.com/photobooth.png" alt="Photo Booth shenanigans" align="right" />
 
 # About Tony
 
-Hi! I’m Tony Arnold, a 33 year old chap from [Newcastle, Australia][NewcastleMapLink]. Professionally, I run a small business — [The CocoaBots][TCB] — building apps for Apple's Mac, iPhone and iPad devices.
+Hi! I’m Tony Arnold, a {{ my_age | truncate: 2, '' }} year old chap from [Newcastle, Australia][NewcastleMapLink]. Professionally, I run a small business — [The CocoaBots][TCB] — building apps for Apple's Mac, iPhone and iPad devices.
 
 If you’d like to get in contact with me, please feel free to [send me an e-mail][Email].
 
