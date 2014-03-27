@@ -4,6 +4,9 @@ date: 2013-12-13 10:00:00
 title: Refresh, read, refresh, read
 ---
 
+> Since I wrote this post, my views have softened quite a bit and I'm actively using and participating on Twitter again. I'm leaving this up because revising history doesn't change what I actually felt at the time.
+> I ended up having a month long break from Twitter found the "off switch" on the constant reload cycle I was trapped in.
+
 One of the topics that [Saul and I discussed on NSBrief](http://nsbrief.com/111-tony-arnold/) was my posts on Twitter, and how they tended to be a bit cranky. As I mentioned in the podcast, I have used Twitter in the past to vent about the 'unimportant' aspects of my day-to-day life that get to me — so much so that one of my peers has anonymously created the [@TonyArnoldsRage](http://twitter.com/TonyArnoldsRage) account _(Be sure to visit the account just to marvel at the high art of my face pasted onto the Hulk's body!)_.
 
 I realised shortly after the NSBrief episode that while the stream of information going across my timeline in Twitter was at times informative, it was tending more and more toward negativity. And I wasn't getting much back from it in return — in fact, I've pretty much stopped communicating effectively across all of my online channels.
@@ -21,5 +24,3 @@ I've come to the conclusion that **Twitter's activity stream is nothing more tha
 I'm a bit of a Johnny-come-lately to this party, as [Brent Simmons came to a similar conclusion months ago](http://inessential.com/2013/12/12/the_stream), and came out the other side with a reasonable balance of still wanting to interact on Twitter, but recognising it's lack of value. I agree with Brent: **the magic has gone out of Twitter, and I don't think it's coming back**.
 
 Some of you will see this situation as an issue of self control, and you're not entirely wrong. I see it as an opportunity to get my online persona back in sync with who I am in real life and contribute in a way that makes me happy and fulfilled.
-
-__Update__: _I am answering mentions directed at me. I think it would be rude to ignore them because I've decided to take a break from posting to Twitter._
