@@ -9,7 +9,7 @@ Brent Simmons recently posted a piece titled "[Commas for Developers](http://ine
 > You have an array of options: semicolons, colons, dashes, and words such as “and” and “but.” You can turn independent clauses into dependent clauses. But you can’t jam two sentences together with a comma.
 >
 > When you do, my opinion of and trust in your work goes down.
-> 
+>
 > This is not, by the way, some prissy thing about proper manners. Fuck that shit. I’m not trying to squash your voice. This is about quality and trust.
 
 Sorry Brent but this just makes me want to write less (and **that** is shit).
@@ -22,4 +22,4 @@ I am sad to see [Matt "wholeheartedly" agrees with Brent's stance](http://mattge
 
 Here's my take: **Don't be afraid to write, even if your ability to do so is out of sync with your ideas and passion — you'll get better by writing and reading more**. I agree that correct spelling and punctuation is a sign of quality, but it's hardly the only factor.
 
-*nb. Please feel free to let me know where I've incorrectly punctuated — I paid little attention in my advanced English classes, and I could do with the feedback.*
+*nb. Please feel free to let me know where I've incorrectly punctuated — I paid little attention in my English classes, and I could do with the feedback.*
