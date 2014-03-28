@@ -73,7 +73,7 @@ img {
 }
 
 ul.posts {
-  margin-top: 0;
+  margin-top: -15px;
   list-style-type: none;
   margin-bottom: 10px;
 }
@@ -401,6 +401,10 @@ i.fa-hn {
 
 #post .source {
   font-style: italic;
+}
+
+#blog-posts {
+  margin-top:0px;
 }
 
 
