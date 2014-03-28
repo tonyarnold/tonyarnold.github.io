@@ -7,9 +7,9 @@ Date: 2013-08-24 10:59
 Brent Simmons recently posted a piece titled "[Commas for Developers](http://inessential.com/2013/08/14/commas_for_developers)" on his blog:
 
 > You have an array of options: semicolons, colons, dashes, and words such as “and” and “but.” You can turn independent clauses into dependent clauses. But you can’t jam two sentences together with a comma.
-
+>
 > When you do, my opinion of and trust in your work goes down.
-
+> 
 > This is not, by the way, some prissy thing about proper manners. Fuck that shit. I’m not trying to squash your voice. This is about quality and trust.
 
 Sorry Brent but this just makes me want to write less (and **that** is shit).
