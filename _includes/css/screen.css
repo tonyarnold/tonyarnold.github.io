@@ -201,7 +201,7 @@ pre a:only-of-type::before {
 #post ul li pre,
 #post ol li pre {
   margin-left: -70px;
-  margin-right: -70px;
+  margin-right: 0px;
 }
 
 #post pre {
@@ -219,9 +219,10 @@ pre a:only-of-type::before {
 }
 
 #post pre {
-  background-color: #fdfdfd;
-  border-left: 40px solid #f8f8f8;
-  padding: 20px 10px 20px 20px;
+  width:100%;
+  background-color: #fafafa;
+  border-left: 20px solid #f2f2f2;
+  padding: 20px 10px 20px 30px;
 }
 
 #post pre:hover {
@@ -230,15 +231,16 @@ pre a:only-of-type::before {
 }
 
 blockquote {
-  margin: 0px -40px 20px -40px;
+  margin: 0px 0px 20px -40px;
   padding: 10px 10px 1px 20px;
   border-left: 20px solid #ddd;
+  width:100%;
 }
 
 #post ul li blockquote,
 #post ol li blockquote {
   margin-left:-70px;
-  margin-right:-70px;
+  margin-right:0px;
   padding-left:45px;
 }
 
@@ -376,8 +378,11 @@ i.fa-hn {
 #post .widescreen,
 #post pre {
 	margin-left:-40px;
-  margin-right:40px;
-  width:741px;
+  margin-right:0px;
+}
+
+#post .widescreen {
+  width:700px;
 }
 
 #post li img {
@@ -408,6 +413,7 @@ i.fa-hn {
   }
 
   #post pre,
+  #post blockquote,
   #post ul li blockquote,
   #post ol li blockquote {
     width:100%;
