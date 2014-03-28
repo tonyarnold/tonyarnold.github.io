@@ -2,7 +2,7 @@
 layout: post
 title: YapDatabase
 date: 2013-05-13 08:05
-link: http://github.com/yaptv/YapDatabase
+source: http://github.com/yaptv/YapDatabase
 ---
 
 There's been a bit of a buzz on the intertubes today about [YapDatabase](https://github.com/yaptv/YapDatabase) as a potential competitor to Core Data. While I don't think that's necessarily the case (there aren't modelling tools and migrations at this stage), it looks like an interesting project.

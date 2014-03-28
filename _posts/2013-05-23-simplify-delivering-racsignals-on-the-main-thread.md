@@ -2,7 +2,7 @@
 layout: post
 title: Simplify delivering RACSignals on the main thread
 date: 2013-05-23 09:56
-link: http://gist.github.com/tonyarnold/5631849
+source: http://gist.github.com/tonyarnold/5631849
 tags:  [Cocoa, ReactiveCocoa, Objective-C]
 ---
 
