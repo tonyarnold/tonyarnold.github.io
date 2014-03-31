@@ -1,11 +1,14 @@
 ---
 layout: post
-date: 2013-12-13 10:00:00
-title: Refresh, read, refresh, read
+date: 
+  - 2013-12-13T10:00:00.000Z
+  - "Fri Dec 13 2013 21:00:00 GMT+1100 (EST)"
+title: "Refresh, read, refresh, read"
+published: true
 ---
 
 > Since I wrote this post, my views have softened quite a bit and I'm actively using and participating on Twitter again. I'm leaving this up because revising history doesn't change what I actually felt at the time.
-> I ended up having a month long break from Twitter found the "off switch" on the constant reload cycle I was trapped in.
+> I ended up having a month long break from Twitter and found the "off switch" on the constant reload cycle I was trapped in.
 
 One of the topics that [Saul and I discussed on NSBrief](http://nsbrief.com/111-tony-arnold/) was my posts on Twitter, and how they tended to be a bit cranky. As I mentioned in the podcast, I have used Twitter in the past to vent about the 'unimportant' aspects of my day-to-day life that get to me — so much so that one of my peers has anonymously created the [@TonyArnoldsRage](http://twitter.com/TonyArnoldsRage) account _(Be sure to visit the account just to marvel at the high art of my face pasted onto the Hulk's body!)_.
 
