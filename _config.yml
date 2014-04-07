@@ -52,6 +52,7 @@ prose:
   - /_config.yml
   - /_layouts
   - /_includes
+  - /_scss
   - /assets
   - /atom.xml
   - /CNAME
