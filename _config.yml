@@ -97,6 +97,7 @@ prose:
           element: "multiselect"
           label: "Add Tags"
           placeholder: "Choose Tags"
+          alterable: true
           options:
           - name: "Cocoa"
             value: "Cocoa"
@@ -114,3 +115,8 @@ prose:
             value: "Work"
           - name: "WWDC"
             value: "WWDC"
+      - name: "source"
+        field:
+          element: "text"
+          label: "Source URL"
+          value: ""
