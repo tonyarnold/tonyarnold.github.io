@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 title: "Microsoft: Redux"
 source: "http://carpeaqua.com/2014/04/07/build-2014/"
 tags: 
