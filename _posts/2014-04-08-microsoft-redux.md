@@ -1,7 +1,7 @@
 ---
 layout: post
 published: true
-title: "Microsoft: Redux"
+title: "Microsoft: Redux (Build 2014)"
 source: "http://carpeaqua.com/2014/04/07/build-2014/"
 tags: 
   - Programming
@@ -21,7 +21,7 @@ In my years of developing for Apple platforms, I could count on one hand the num
 >
 > <cite>Justin Williams, in "[Build 2014][1]"</cite>
 
-I feel this, too. For a company with as much money, and as many insanely smart people as Apple has, the amount of energy they expend on developer tools, APIs and languages still _seems_ quite low next to Microsoft. That could just be my perception. 
+I feel this, too. For a company with as much money, and as many insanely smart people as Apple has, the amount of energy they expend on developer tools, APIs and languages still _seems_ quite low next to Microsoft. Of course, that could just be my perception. 
 
 All that aside, this is a conversation that's played out many times on Twitter in the past and the simple reasoning that emerges is that at present, Apple doesn't appear to place much value in the experience developers have when  dealing with Apple.
 
