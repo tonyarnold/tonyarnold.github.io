@@ -1,8 +1,12 @@
 ---
 layout: post
 title: Clean up your projects with Xcode 5
-date: 10 April 2014 22:00:00
-tags: [Cocoa, Xcode, Tips]
+date: "10 April 2014 22:00:00"
+tags: 
+  - Cocoa
+  - Xcode
+  - Tips
+published: true
 ---
 
 Xcode 5 introduced a host of new features, fixes and performance enhancements but it also makes it possible to simplify your Xcode project and discard some maintenance tasks.
@@ -31,7 +35,7 @@ To clean them up, go to *Product &#8594; Scheme &#8594; Manage Schemes&hellip;* 
 
 Older projects often show schemes for any unit test bundles you have in your project — you don't actually need to show them at all!
 
-> it was necessary under Xcode 4 to have separate schemes for your test targets so that <abbr title="Continuous Integration">CI</abbr> servers could find and run them (`xcodebuild` didn't support the "test" action until Xcode 5). 
+> It was necessary under Xcode 4 to have separate schemes for your test targets so that <abbr title="Continuous Integration">CI</abbr> servers could find and run them (`xcodebuild` didn't support the "test" action until Xcode 5). 
 
 As long as your test targets specify their *Target Dependencies* properly, you can just go to *Product &#8594; Scheme &#8594; Manage Schemes&hellip;* and delete any test schemes that are listed.
 
@@ -41,7 +45,7 @@ Wow, what an improvement. And no loss of functionality!
 
 ## Sort your classes
 
-This is a simple one, but manually ordering your classes and groups is a one way to waste a lot of time. Why not just right click on a group/project in the Xcode navigator and select *Sort Files By Name*?
+This is a simple one, but manually ordering your classes and groups is one way to waste a lot of time. Why not just right click on a group/project in the Xcode navigator and select *Sort Files By Name*?
 
 <img src="http://static.tonyarnold.com/xcode-context-menu-sort-files-by-name.png" alt="Xcode context menu showing 'Sort Files By Name' highlighted" class="center" width="283" height="411" />
 
