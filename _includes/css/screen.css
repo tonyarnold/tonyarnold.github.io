@@ -311,6 +311,9 @@ i.fa-hn {
 #blog-posts {
   margin-top: 0px; }
 
+#related {
+  margin-top: 3em; }
+
 /* Retina iPad and smaller */
 @media only screen and (max-width: 1136px) {
   nav h1 {
