@@ -9,9 +9,9 @@ Xcode 5 introduced a host of new features, fixes and performance enhancements bu
 
 ## Link Frameworks Automatically
 
-Every Xcode project you've worked with is likely to have a "Frameworks" group at the root of the project. If you're on OS X it might contain things like *Cocoa.framework*, *Foundation.framework* and *CoreData.framework*, on iOS it holds *UIKit.framework* and friends. One of the improvements that came with Xcode 5 was [LLVM Modules](http://clang.llvm.org/docs/Modules.html). One of the improvements that modules brings is the ability to automatically link any system frameworks that you `#import`. This is **awesome**, and it's one less thing you now have to look after.
+Every Xcode project you've worked with is likely to have a *Frameworks* group at the root of the project. If you're on OS X it might contain things like *Cocoa.framework*, *Foundation.framework* and *CoreData.framework*, on iOS it holds *UIKit.framework* and friends. One of the improvements that came with Xcode 5 was [LLVM Modules](http://clang.llvm.org/docs/Modules.html). One of the improvements that modules brings is the ability to automatically link any system frameworks that you `#import`. This is **awesome**, and it's one less thing you now have to look after.
 
-As long as you're only keeping system frameworks in that group, you can delete it. **Yes, delete the entire "Frameworks" group**. Just ensure that you've enabled "Link Frameworks Automatically" in your Xcode project's settings.
+As long as you're only keeping system frameworks in that group, you can delete it. **Yes, delete the entire "Frameworks" group**. Just ensure that you've enabled *Link Frameworks Automatically* in your Xcode project's settings.
 
 <img src="http://static.tonyarnold.com/xcode-project-settings-lfa.png" alt="Xcode project settings showing 'Link Frameworks Automatically' setting" class="widescreen" />
 
