@@ -51,4 +51,4 @@ This is a simple one, but manually ordering your classes and groups is one way t
 
 ## Simple is good
 
-Hopefully these tips have helped you clean up your Xcode project a little. Hopefully you've removed a few things you don't really need to see from your line of sight, freeing up a little bit of brain power for something else!
+Hopefully these tips have helped you clean up your Xcode project a little. Hopefully you've also removed a few things you don't really need to see from your line of sight, freeing up a little bit of brain power for something else!
