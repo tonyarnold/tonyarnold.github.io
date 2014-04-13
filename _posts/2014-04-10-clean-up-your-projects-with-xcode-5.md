@@ -19,8 +19,8 @@ As long as you're only keeping system frameworks in that group, you can delete i
 
 <img src="http://static.tonyarnold.com/xcode-project-settings-lfa.png" alt="Xcode project settings showing 'Link Frameworks Automatically' setting" class="widescreen" />
 
-> If you're on iOS, you will need to ensure that *Enable Modules (C and Objective-C)* is also set *Yes* or this tip won't work. OS X works either way. 
-> <cite>Thanks to <a href="https://twitter.com/_psonice/status/455308002229518336">Chris Wood for pointing this out</a></cite>
+> If you're on iOS, you will need to ensure that *"Enable Modules (C and Objective-C)"* is also set *"Yes"* or this tip won't work. OS X works either way. 
+> <cite><a href="https://twitter.com/_psonice/status/455308002229518336">Thanks to Chris Wood for pointing this out</a></cite>
 
 ## Tidy your schemes
 
