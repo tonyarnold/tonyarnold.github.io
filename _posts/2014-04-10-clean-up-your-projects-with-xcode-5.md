@@ -19,6 +19,9 @@ As long as you're only keeping system frameworks in that group, you can delete i
 
 <img src="http://static.tonyarnold.com/xcode-project-settings-lfa.png" alt="Xcode project settings showing 'Link Frameworks Automatically' setting" class="widescreen" />
 
+> If you're on iOS, you will need to ensure that *Enable Modules (C and Objective-C)* is also set *Yes* or this tip won't work. OS X works either way. 
+> <cite>Thanks to <a href="https://twitter.com/_psonice/status/455308002229518336">Chris Wood for pointing this out</a></cite>
+
 ## Tidy your schemes
 
 When you open up your project's schemes menu, do you see a bunch of schemes from third party projects in there? 
