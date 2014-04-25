@@ -51,7 +51,7 @@ prose:
   - /.ruby-version
   - /_config.yml
   - /_layouts
-  - /_includes
+  - /_includes/css
   - /_scss
   - /assets
   - /atom.xml
@@ -59,7 +59,6 @@ prose:
   - /favicon.*
   - /Gemfile
   - /Gemfile.lock
-  - /index.*
   - /LICENSE
   - /site.json
   - /links.jsonp
