@@ -309,9 +309,33 @@ legend span {
 	color: #444;
 }
 
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  margin: 0 0 20px 0;
+}
+
+th {
+  font-weight: bold;
+  padding: ($fontSize * 1.5 / 2);
+  text-align: left;
+}
+
+td {
+  padding: ($fontSize * 1.5 / 2);
+}
+
+tr, td, th {
+  vertical-align: middle;
+}
+
+
 /* MISC
  * ------------------------------------------------ */
 .subtract-bottom { margin-bottom: -20px !important; }
 .remove-bottom { margin-bottom: 0 !important; }
 .half-bottom { margin-bottom: 10px !important; }
 .add-bottom { margin-bottom: 20px !important; }
+
+

@@ -426,6 +426,23 @@ legend span {
   font-weight: normal;
   color: #444; }
 
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  margin: 0 0 20px 0; }
+
+th {
+  font-weight: bold;
+  padding: 10.5px;
+  text-align: left; }
+
+td {
+  padding: 10.5px; }
+
+tr, td, th {
+  vertical-align: middle; }
+
 /* MISC
  * ------------------------------------------------ */
 .subtract-bottom {

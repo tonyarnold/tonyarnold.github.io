@@ -38,10 +38,12 @@ NSLog(@"%f", [NSDate timeIntervalSinceReferenceDate] - start);
 
 ## Results
 
-- `-isEqualToString:` took 0.000014 seconds when the strings did not match
-- `-compare:` took 0.000007 seconds when the strings did not match
-- `-isEqualToString:` took 0.000001 seconds when the strings matched
-- `-compare:` took 0.000002 seconds when the strings matched
+| Method            | Result                | Time Logged (seconds) |
+|:------------------|:----------------------|:----------------------|
+|`-isEqualToString:`| Strings did not match | 0.000014              |
+|`-compare:`        | Strings did not match | 0.000007              |
+|`-isEqualToString:`| Strings matched       | 0.000001              |
+|`-compare:`        | Strings matched       | 0.000002              |
 
 Turns out that `-compare:` is roughly twice as fast as `-isEqualToString:` when the strings don't match and the inverse is true when the strings match — although with the matching strings the difference is very nearly negligible.
 

@@ -199,6 +199,13 @@ pre a:only-of-type::before {
 }
 
 #post {
+  blockquote, table {
+    margin: 0px 0px 20px -40px;
+    padding: 10px 10px 1px 20px;
+    border-left: 20px solid #ddd;
+    width:100%;
+  }
+  
   ul, ol {
     margin-left: 30px;
 
@@ -237,7 +244,20 @@ pre a:only-of-type::before {
       border-left-color: #ffffe0;
     }
   }
-
+    
+  table {    
+    tr th:first-child,
+    tr td:first-child {
+      padding-left: 20px;
+    }
+    
+    tr {
+      border-top: 1px solid #ddd;
+    }
+    
+    border-bottom: 1px solid #ddd;
+  }
+  
   .widescreen, pre {
     margin-left:-40px;
     margin-right:0px;
@@ -259,14 +279,6 @@ pre a:only-of-type::before {
   .source {
     font-style: italic;
   }
-}
-
-
-blockquote {
-  margin: 0px 0px 20px -40px;
-  padding: 10px 10px 1px 20px;
-  border-left: 20px solid #ddd;
-  width:100%;
 }
 
 ::selection {

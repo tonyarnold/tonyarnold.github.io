@@ -167,6 +167,11 @@ pre a:last-of-type::before {
 pre a:only-of-type::before {
   padding: 10px; }
 
+#post blockquote, #post table {
+  margin: 0px 0px 20px -40px;
+  padding: 10px 10px 1px 20px;
+  border-left: 20px solid #ddd;
+  width: 100%; }
 #post ul, #post ol {
   margin-left: 30px; }
   #post ul li blockquote, #post ol li blockquote {
@@ -190,6 +195,13 @@ pre a:only-of-type::before {
   #post pre:hover {
     background-color: #fffff6;
     border-left-color: #ffffe0; }
+#post table {
+  border-bottom: 1px solid #ddd; }
+  #post table tr th:first-child,
+  #post table tr td:first-child {
+    padding-left: 20px; }
+  #post table tr {
+    border-top: 1px solid #ddd; }
 #post .widescreen, #post pre {
   margin-left: -40px;
   margin-right: 0px; }
@@ -202,12 +214,6 @@ pre a:only-of-type::before {
     margin: 0px auto; }
 #post .source {
   font-style: italic; }
-
-blockquote {
-  margin: 0px 0px 20px -40px;
-  padding: 10px 10px 1px 20px;
-  border-left: 20px solid #ddd;
-  width: 100%; }
 
 ::selection {
   color: #fff;
