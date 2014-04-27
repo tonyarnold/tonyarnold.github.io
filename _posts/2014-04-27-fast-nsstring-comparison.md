@@ -15,6 +15,7 @@ Here's the simple test I ran:
 {% highlight obj-c %}
 NSString *someString = @"LANA!";
 NSString *otherString = @"LAAANAA!";
+NSString *sameString = @"LANA!";
 
 NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
 
@@ -22,15 +23,26 @@ BOOL boop = [someString isEqualToString:otherString];
 NSLog(@"%f", [NSDate timeIntervalSinceReferenceDate] - start);
 
 start = [NSDate timeIntervalSinceReferenceDate];
-BOOL phrasing = [someString compare:otherString] == NSOrderedSame;
+BOOL bleep = [someString compare:otherString] == NSOrderedSame;
+NSLog(@"%f", [NSDate timeIntervalSinceReferenceDate] - start);
+
+
+start = [NSDate timeIntervalSinceReferenceDate];
+BOOL boopSame = [someString isEqualToString:sameString];
+NSLog(@"%f", [NSDate timeIntervalSinceReferenceDate] - start);
+
+start = [NSDate timeIntervalSinceReferenceDate];
+BOOL bleepSame = [someString compare:sameString] == NSOrderedSame;
 NSLog(@"%f", [NSDate timeIntervalSinceReferenceDate] - start);
 {% endhighlight %}
 
 ## Results
 
-- `-isEqualToString:` took 0.000014 seconds
-- `-compare:` took 0.000007 seconds
+- `-isEqualToString:` took 0.000014 seconds when the strings did not match
+- `-compare:` took 0.000007 seconds when the strings did not match
+- `-isEqualToString:` took 0.000001 seconds when the strings matched
+- `-compare:` took 0.000002 seconds when the strings matched
 
-Turns out that `-compare:` is roughly twice as fast as `-isEqualToString:`.
+Turns out that `-compare:` is roughly twice as fast as `-isEqualToString:` when the strings don't match and the inverse is true when the strings match — although with the matching strings the difference is very nearly negligible.
 
-Personally, I'm going to stick to `-isEqualToString:` unless performance is absolutely critical — I find it much more readable.
+Personally, I'll probably stick to `-isEqualToString:` unless performance is absolutely critical — I find it much more readable, and that's almost always more important than saving 0.000007 seconds.
