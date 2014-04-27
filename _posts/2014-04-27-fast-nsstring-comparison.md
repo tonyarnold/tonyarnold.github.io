@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Fast NSString Comparisons
-date: 2014-04-27 21:51:00
+date: 27 April 2014 21:51:00
 tags: [Cocoa, Programming, Performance]
 ---
 
@@ -9,6 +9,7 @@ Earlier tonight, I came across a snippet of Objective-C code where the author ha
 issue when doing so, so I was intrigued (although I was pretty sure why this was being done):
 
 Here's the simple test I ran:
+
 ```objective-c
 NSString *someString = @"LANA!";
 NSString *otherString = @"LAAANAA!";
