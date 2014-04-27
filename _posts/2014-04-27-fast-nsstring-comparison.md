@@ -26,8 +26,8 @@ NSLog(@"%f", [NSDate timeIntervalSinceReferenceDate] - start);
 
 ## Results
 
-- `-isEqualToString:` == 0.000014
-- `-compare:` == 0.000007
+- `-isEqualToString:` took 0.000014 seconds
+- `-compare:` took 0.000007 seconds
 
 Turns out that `-compare:` is roughly twice as fast as `-isEqualToString:`.
 
