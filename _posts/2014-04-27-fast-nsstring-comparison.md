@@ -10,7 +10,7 @@ issue when doing so, so I was intrigued (although I was pretty sure why this was
 
 Here's the simple test I ran:
 
-```objective-c
+{% highlight obj-c %}
 NSString *someString = @"LANA!";
 NSString *otherString = @"LAAANAA!";
 
@@ -22,14 +22,12 @@ NSLog(@"%f", [NSDate timeIntervalSinceReferenceDate] - start);
 start = [NSDate timeIntervalSinceReferenceDate];
 BOOL phrasing = [someString compare:otherString] == NSOrderedSame;
 NSLog(@"%f", [NSDate timeIntervalSinceReferenceDate] - start);
-```
+{% endhighlight %}
 
 ## Results
 
-| Method | Logged Time |
-|--------|--------:|
-| `-isEqualToString:` | 0.000014 |
-| `-compare:` | 0.000007 |
+- `-isEqualToString:` == 0.000014
+- `-compare:` == 0.000007
 
 Turns out that `-compare:` is roughly twice as fast as `-isEqualToString:`.
 
