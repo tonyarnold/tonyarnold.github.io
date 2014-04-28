@@ -7,7 +7,9 @@ title: "The man, the beard, the mystery"
 
 <img src="http://static.tonyarnold.com/my-family.jpg" alt="Leah, Ted and Tony" class="widescreen" />
 
-Hi! I’m Tony Arnold, a {{ my_age | truncate: 2, '' }} year old chap from [Newcastle, Australia][NewcastleMapLink]. Professionally, I'm a developer at [Itty Bitty Apps](http://ittybittyapps.com/) where I work on the amazing iOS introspection tool [Reveal](http://revealapp.com/).
+# Tony _who?_
+
+Hi! I’m Tony Arnold, a {{ my_age | truncate: 2, '' }} year old chap from [Newcastle, Australia][NewcastleMapLink]. Professionally, I'm a developer at [Itty Bitty Apps](http://ittybittyapps.com/) where I work on the amazing visual debugging tool for iOS apps, [Reveal](http://revealapp.com/).
 
 I also have my own (_very_) small business — [The CocoaBots][TCB] — building apps for Apple's Mac, iPhone and iPad devices.
 

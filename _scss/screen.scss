@@ -432,7 +432,7 @@ i.fa-hn {
     font-size: 22px;
   }
 
-  #post {
+  #post, .content {
     pre,
     blockquote,
     ul li blockquote,
@@ -444,6 +444,7 @@ i.fa-hn {
 
 /* Tablet Portrait size to standard 960 (devices and browsers) */
 @media only screen and (min-width: 768px) and (max-width: 959px) {
+  .content .widescreen,
   #post .widescreen {
     width:565px;
   }
@@ -460,6 +461,7 @@ i.fa-hn {
     padding-left: 0px;
   }
 
+  .content .widescreen,
   #post .widescreen {
     margin-left:0px;
     width:100%;

@@ -357,10 +357,14 @@ i.fa-hn {
   #post pre,
   #post blockquote,
   #post ul li blockquote,
-  #post ol li blockquote {
+  #post ol li blockquote, .content pre,
+  .content blockquote,
+  .content ul li blockquote,
+  .content ol li blockquote {
     width: 100%; } }
 /* Tablet Portrait size to standard 960 (devices and browsers) */
 @media only screen and (min-width: 768px) and (max-width: 959px) {
+  .content .widescreen,
   #post .widescreen {
     width: 565px; } }
 /* All Mobile Sizes (devices and browser) */
@@ -372,6 +376,7 @@ i.fa-hn {
     border-width: 0;
     padding-left: 0px; }
 
+  .content .widescreen,
   #post .widescreen {
     margin-left: 0px;
     width: 100%; } }

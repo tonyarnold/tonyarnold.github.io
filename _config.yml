@@ -12,6 +12,12 @@ lsi: true
 sass:
     sass_dir: _scss
 
+gems:
+  - jekyll-mentions
+  - jemoji
+  - jekyll-redirect-from
+  - jekyll-sitemap
+  
 # Theme customization - please change from the defaults!
 theme:
   # Color for top bar, links, etc
@@ -42,7 +48,6 @@ theme:
 
   # Toggle "Postings are my own" disclaimer in footer
   show_disclaimer: false
-
 
 prose:
   ignore:
