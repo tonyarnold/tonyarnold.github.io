@@ -198,7 +198,8 @@ pre a:only-of-type::before {
   padding: 10px;
 }
 
-#post {
+#post,
+.content {
   blockquote, table {
     margin: 0px 0px 20px -40px;
     padding: 10px 10px 1px 20px;

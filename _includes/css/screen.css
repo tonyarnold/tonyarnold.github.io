@@ -167,52 +167,75 @@ pre a:last-of-type::before {
 pre a:only-of-type::before {
   padding: 10px; }
 
-#post blockquote, #post table {
+#post blockquote, #post table,
+.content blockquote,
+.content table {
   margin: 0px 0px 20px -40px;
   padding: 10px 10px 1px 20px;
   border-left: 20px solid #ddd;
   width: 100%; }
-#post ul, #post ol {
+#post ul, #post ol,
+.content ul,
+.content ol {
   margin-left: 30px; }
-  #post ul li blockquote, #post ol li blockquote {
+  #post ul li blockquote, #post ol li blockquote,
+  .content ul li blockquote,
+  .content ol li blockquote {
     margin-left: -70px;
     margin-right: 0px;
     padding-left: 45px; }
-  #post ul li img, #post ol li img {
+  #post ul li img, #post ol li img,
+  .content ul li img,
+  .content ol li img {
     margin-top: 16px;
     margin-bottom: 16px; }
-  #post ul li pre, #post ol li pre {
+  #post ul li pre, #post ol li pre,
+  .content ul li pre,
+  .content ol li pre {
     margin-left: -70px;
     margin-right: 0px; }
-#post pre {
+#post pre,
+.content pre {
   width: 100%;
   margin-bottom: 20px;
   background-color: #fafafa;
   border-left: 20px solid #f2f2f2;
   padding: 20px 10px 20px 30px; }
-  #post pre code {
+  #post pre code,
+  .content pre code {
     border: none; }
-  #post pre:hover {
+  #post pre:hover,
+  .content pre:hover {
     background-color: #fffff6;
     border-left-color: #ffffe0; }
-#post table {
+#post table,
+.content table {
   border-bottom: 1px solid #ddd; }
   #post table tr th:first-child,
-  #post table tr td:first-child {
+  #post table tr td:first-child,
+  .content table tr th:first-child,
+  .content table tr td:first-child {
     padding-left: 20px; }
-  #post table tr {
+  #post table tr,
+  .content table tr {
     border-top: 1px solid #ddd; }
-#post .widescreen, #post pre {
+#post .widescreen, #post pre,
+.content .widescreen,
+.content pre {
   margin-left: -40px;
   margin-right: 0px; }
-#post .widescreen {
+#post .widescreen,
+.content .widescreen {
   width: 700px; }
-#post .center {
+#post .center,
+.content .center {
   margin: 0px auto;
   text-align: center; }
-  #post .center img {
+  #post .center img,
+  .content .center img {
     margin: 0px auto; }
-#post .source {
+#post .source,
+.content .source {
   font-style: italic; }
 
 ::selection {
