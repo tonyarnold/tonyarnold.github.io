@@ -25,7 +25,7 @@ With a little bit of extra effort, you can make Clang Format available from with
 
 [ClangFormat-Xcode][clangformat-xcode] is an Xcode plugin developed by [Travis Jeffery](https://github.com/travisjeffery) that makes Clang's format tools available within Xcode.
 
-Travis has made the plugin available via Alcatraz, alternately to install the plugin manually:
+Travis has made the plugin available via [Alcatraz](http://alcatraz.io/). Alternately if you wish to install the plugin manually:
 
 1. Checkout the [git repository][clangformat-xcode]
 2. Build and run the `ClangFormat-Xcode.xcodeproj`
