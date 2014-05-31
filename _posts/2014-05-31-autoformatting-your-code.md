@@ -45,7 +45,19 @@ Clang Format has a number of styles packaged with it, including the code formatt
 
 My `.clang-format` looks like this:
 
-{% gist tonyarnold/42dd05b97556c8a91a6b %}
+    BasedOnStyle: Chromium
+    AlignTrailingComments: true
+    BreakBeforeBraces: Allman
+    ColumnLimit: 0
+    IndentWidth: 4
+    KeepEmptyLinesAtTheStartOfBlocks: false
+    ObjCSpaceAfterProperty: true
+    ObjCSpaceBeforeProtocolList: true
+    PointerBindsToType: false
+    SpacesBeforeTrailingComments: 1
+    TabWidth: 8
+    UseTab: Never
+
 
 ### Configure Globally
 
