@@ -11,7 +11,7 @@ Using consistent numbers of lines between common structures allows your brain to
 
 _"But"_, I hear you say, _"it takes too long to worry about formatting and laying out my code! What's a few misplaced brackets going to cost me in the long run?"_ and away you go, committing inconsistently formatted code.
 
-<img src="http://static.tonyarnold.com/picard-facepalm.jpeg" alt="Jean-Luc Picard facepalming" class="widescreen" width="900" height="540"/>
+<img src="http://static.tonyarnold.com/picard-facepalm.jpeg" alt="Jean-Luc Picard facepalming" class="widescreen" width="700" height="525"/>
 
 What if you didn't have to do anything extra while you're actually writing your code? (sans a little initial setup)
 
@@ -33,7 +33,7 @@ Travis has made the plugin available via Alcatraz, alternately to install the pl
 
 There will be a new menu item under *Edit &#8594; Clang Format* where you can configure and trigger automatic formatting of code in your project.
 
-<img src="http://static.tonyarnold.com/clang-format-menu.png" alt="Xcode Edit menu showing the Clang Format menu expanded" class="widescreen" width="625" height="712"/>
+<img src="http://static.tonyarnold.com/clang-format-menu.png" alt="Xcode Edit menu showing the Clang Format menu expanded" class="widescreen" width="700" height="700"/>
 
 You can format the current file, selected text within the current file or more than one file selected in the Xcode project navigator. I've assigned keystrokes to these using _System Preferences &#8594; Keyboard &#8594; Shortcuts &#8594; App Shortcuts_.
 
