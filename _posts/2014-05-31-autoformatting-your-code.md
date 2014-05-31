@@ -45,7 +45,7 @@ Clang Format has a number of styles packaged with it, including the code formatt
 
 My `.clang-format` looks like this:
 
-{% gist 42dd05b97556c8a91a6b %}
+{% gist tonyarnold/42dd05b97556c8a91a6b %}
 
 ### Configure Globally
 
@@ -59,11 +59,9 @@ Each project can (and should) have it's own configuration — just place a `.cla
 
 It's common to include third party code in your projects that you'd prefer not to re-format accidentally. Simply put a `.clang-format` file in the directory of the files you'd prefer not to format and make it's contents:
 
-```
----
-BasedOnStyle: None
-...
-```
+    ---
+    BasedOnStyle: None
+    ...
 
 ## You Have No Excuse Now
 
