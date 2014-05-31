@@ -207,7 +207,7 @@ pre a:only-of-type::before {
   #post pre:hover,
   .content pre:hover {
     background-color: #fffff6;
-    border-left-color: #ffffe0; }
+    border-color: #ffffe0; }
 #post table,
 .content table {
   border-bottom: 1px solid #ddd; }
