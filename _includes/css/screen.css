@@ -125,7 +125,7 @@ code, pre {
 
 pre {
   counter-reset: line-numbering;
-  border: solid 1px #d9d9d9;
+  border: solid 1px #f2f2f2;
   border-radius: 0;
   background: #fff;
   padding: 0;
