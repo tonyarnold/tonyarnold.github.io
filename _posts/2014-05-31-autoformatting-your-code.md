@@ -42,6 +42,8 @@ You can format the current file, selected text within the current file or more t
 
 I find that I often leave *Enable Format On Save* enabled once I have everything configured the way I like it. This means that every time I save, my files are automatically re-formatted to my liking and I don't have to think about it — nice, right?
 
+> I've had a few people let me know that the current build of ClangFormat-Xcode has issues formatting dictionary literals. This bug was fixed in Clang a week or two ago, and you can [download an updated build](http://static.tonyarnold.com/clang-format-20140601.zip) that I compiled today. Just place this new copy of `clang-format` in your PATH (`/usr/local/bin/clang-format` is a good spot) and then select *Edit &#8594; Clang Format &#8594; Use System ClangFormat*.
+
 ## Configure Clang Format
 
 Clang Format has a number of styles packaged with it, including the code formatting styles used by the LLVM project, Google, Chromium, Mozilla and WebKit. All of these projects make fairly heavy use of C++, so the way they format Objective-C can be less than ideal. Thankfully, Clang Format can be configured using a `.clang-format` file containing a series of configuration options.
@@ -83,6 +85,7 @@ It's common to include third party code in your projects that you'd prefer not t
 So there you have it. There'll be times where Clang Format's output doesn't quite match what you're expecting, but it's more important to be consistent and readable than perfect. I'd love to see more projects include a `.clang-format` file so that contributors can automatically adopt the formatting style without thinking about it.
 
 Go forth, be formatted (and let's all cross our fingers for this being included in Xcode.next!).
+
 
 
  [clang-format]: http://clang.llvm.org/docs/ClangFormat.html
