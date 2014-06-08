@@ -1,9 +1,6 @@
 ---
 layout: post
-date: 
-  - 2013-12-13T10:00:00.000Z
-  - "Fri Dec 13 2013 21:00:00 GMT+1100 (EST)"
-  - "Fri Dec 13 2013 21:00:00 GMT+1100 (EST),Fri Dec 13 2013 21:00:00 GMT+1100 (EST)"
+date: "Fri Dec 13 2013 21:00:00 GMT+1100 (EST)"
 title: "Refresh, read, refresh, read"
 published: true
 ---
