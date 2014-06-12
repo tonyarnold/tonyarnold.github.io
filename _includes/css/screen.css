@@ -241,12 +241,12 @@ pre,
 
 ::selection {
   color: #fff;
-  background: #990000;
+  background: {{ site.theme.highlight_color }};
   /* Safari */ }
 
 ::-moz-selection {
   color: #fff;
-  background: #990000;
+  background: {{ site.theme.highlight_color }};
   /* Firefox */ }
 
 .sidebar {
