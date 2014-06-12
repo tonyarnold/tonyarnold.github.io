@@ -339,7 +339,8 @@ i.fa-hn {
   padding-bottom: 10px; }
 
 #blog-posts {
-  margin-top: 0px; }
+  margin-top: 0px;
+  margin-left: 0px; }
 
 #related {
   margin-top: 3em; }
