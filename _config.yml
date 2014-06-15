@@ -21,7 +21,7 @@ gems:
 # Theme customization - please change from the defaults!
 theme:
   # Color for top bar, links, etc
-  highlight_color: '#663399'#'#990000'
+  highlight_color: '#990000'
 
   # Profile links on the left sidebar, leave blank to ignore
   social:
