@@ -2,7 +2,7 @@
 layout: post
 title: "Automatically Formatting Your Objective-C"
 date: "31 May 2014 13:22:00"
-tags: 
+tags:
   - Programming
   - "Objective-C"
 published: true
@@ -70,7 +70,7 @@ It's a good idea to have a global `.clang-format` configuration file — you pla
 
 ### Configuration Per Project
 
-Each project can (and should) have it's own configuration — just place a `.clang-format` file in the root of your project.
+Each project can (and should) have its own configuration — just place a `.clang-format` file in the root of your project.
 
 ### Configuration Per Folder
 
