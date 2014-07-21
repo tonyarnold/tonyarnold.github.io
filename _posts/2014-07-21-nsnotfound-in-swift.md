@@ -13,7 +13,7 @@ tags: [Swift, Programming, Learning]
 
 The class ended up looking like this:
 
-{% highlight swift %}
+{% highlight %}
 class ImagePageContentViewModel
 {
     var image: UIImage
