@@ -21,7 +21,7 @@ tags: [Swift, Programming, Learning]
         }
     }
 
-Unfortunately, I ran into a few errors that weren't obvious to me from the outset.
+Unfortunately, I ran into a few errors that didn't have  obvious solutions (at least to me!) from the outset.
 
 Straight up, if you've tried to use `NSNotFound` in Swift you've probably hit a few stumbling blocks. If you create the class above in your project, you'll see an error — **Ambiguous use of 'NSNotFound'**. To fix this, you'll need to be more explicit about where `NSNotFound` is coming from — easy enough, [as described by Erica Sadun](http://ericasadun.com/2014/06/13/swift-fixing-ambiguous-use-of-nsnotfound/) just use `Foundation.NSNotFound` instead.
 
