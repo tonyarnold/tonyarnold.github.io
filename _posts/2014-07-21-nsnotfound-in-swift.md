@@ -5,7 +5,7 @@ date: 21 July 2014 11:43:00
 tags: [Swift, Programming, Learning]
 ---
 
-> This information is current as of Xcode 6.0b3, and is subject to change in future seeds.
+> Disclaimer: This information is current as of Xcode 6.0b3, and is subject to change in future seeds. Also, I — like everyone outside Apple — am still learning Swift. Please, [let me know if I've missed something](https://twitter.com/tonyarnold/)!
 
 `NSNotFound` is currently a common way for Cocoa frameworks to indicate that a result couldn't be found when searching through indices and other serial data. I wanted to create a simple Swift class to represent the data behind a cell that displays an image, like so:
 
