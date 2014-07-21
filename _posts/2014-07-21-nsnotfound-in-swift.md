@@ -17,10 +17,10 @@ tags: [Swift, Programming, Learning]
 
     class ImagePageContentViewModel
     {
-        var image: UIImage?
+        var image: UIImage
         var index: Int
 
-        init(image:UIImage?, atIndex index:Int = NSNotFound)
+        init(image:UIImage, atIndex index:Int = NSNotFound)
         {
             self.image = image
             self.index = index
@@ -31,7 +31,7 @@ Unfortunately, I ran into a few errors that didn't have  obvious solutions (at l
 
 Straight up, if you've tried to use `NSNotFound` in Swift you've probably hit a few stumbling blocks. If you create the class above in your project, you'll see an error — **Ambiguous use of 'NSNotFound'**. To fix this, you'll need to be more explicit about where `NSNotFound` is coming from — easy enough, [as described by Erica Sadun](http://ericasadun.com/2014/06/13/swift-fixing-ambiguous-use-of-nsnotfound/) just use `Foundation.NSNotFound` instead.
 
-    init(image:UIImage?, atIndex index:Int = Foundation.NSNotFound) {
+    init(image:UIImage, atIndex index:Int = Foundation.NSNotFound) {
         // ...
     }
 
@@ -41,7 +41,7 @@ Next, you'll see Swift get a little tripped up trying to convert from an `NSInte
 
 It's pretty easy to give Swift hints about the types you'd like things to resolve to, and you'll probably need to do this a bit with numbers. In this instance, we'll explicity force this number to be an `Int`:
 
-    init(image:UIImage?, atIndex index:Int = Int(Foundation.NSNotFound)) {
+    init(image:UIImage, atIndex index:Int = Int(Foundation.NSNotFound)) {
         // ...
     }
 
