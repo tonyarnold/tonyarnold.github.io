@@ -9,7 +9,7 @@ tags: [Swift, Programming, Learning]
 
 ---
 
-**Update:** About 35 seconds after I posted this, @mattyohe [pointed out that this is exactly what Swift's optionals are for](https://twitter.com/mattyohe/status/491054206795923456). I fully expect to see `NSNotFound` go away in coming years.
+**Update:** About 35 seconds after I posted this, @mattyohe [pointed out that this is exactly what Swift's optionals are for](https://twitter.com/mattyohe/status/491054206795923456). I expect that `NSNotFound` will disappear at some point in the next few years.
 
 ---
 
