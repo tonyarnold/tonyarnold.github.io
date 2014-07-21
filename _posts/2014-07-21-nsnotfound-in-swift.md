@@ -13,7 +13,7 @@ tags: [Swift, Programming, Learning]
 
 The class ended up looking like this:
 
-    class ImagePageContentViewModel
+    class ImagePageViewModel
     {
         var image: UIImage
         var index: Int?
@@ -38,7 +38,7 @@ The class ended up looking like this:
 
 `NSNotFound` is currently a common way for Cocoa frameworks to indicate that a result couldn't be found when searching through indices and other serial data. I wanted to create a simple Swift class to represent the data behind a cell that displays an image, like so:
 
-    class ImagePageContentViewModel
+    class ImagePageViewModel
     {
         var image: UIImage
         var index: Int
@@ -70,10 +70,10 @@ It's pretty easy to give Swift hints about the types you'd like things to resolv
 
 This compiles and works as you'd expect. I can now call either:
 
-    let viewModel = ImagePageContentViewModel(image: myImage)
+    let viewModel = ImagePageViewModel(image: myImage)
 
 or
 
-    let viewModel = ImagePageContentViewModel(image: myImage, index: 6)
+    let viewModel = ImagePageViewModel(image: myImage, index: 6)
 
 I don't have enough experience with Swift yet to know if the conversion of an enumerable type in Objective-C to C should require wrapping in `Int()` so I've not filed this as a radar.
