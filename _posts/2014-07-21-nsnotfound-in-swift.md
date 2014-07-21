@@ -11,6 +11,29 @@ tags: [Swift, Programming, Learning]
 
 **Update:** About 35 seconds after I posted this, @mattyohe [pointed out that this is exactly what Swift's optionals are for](https://twitter.com/mattyohe/status/491054206795923456). I expect that `NSNotFound` will disappear at some point in the next few years.
 
+The class ended up looking like this:
+
+    class ImagePageContentViewModel
+    {
+        var image: UIImage
+        var index: Int?
+
+        init(image:UIImage, atIndex index:Int?)
+        {
+            self.image = image
+
+            if let index = index
+            {
+                self.index = index
+            }
+        }
+
+        convenience init(image:UIImage)
+        {
+            self.init(image:image, atIndex:.None)
+        }
+    }
+
 ---
 
 `NSNotFound` is currently a common way for Cocoa frameworks to indicate that a result couldn't be found when searching through indices and other serial data. I wanted to create a simple Swift class to represent the data behind a cell that displays an image, like so:
