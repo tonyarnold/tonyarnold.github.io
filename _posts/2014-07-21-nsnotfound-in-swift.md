@@ -13,28 +13,28 @@ tags: [Swift, Programming, Learning]
 
 The class ended up looking like this:
 
-    class ImagePageContentViewModel
+{% highlight swift %}
+class ImagePageContentViewModel
+{
+    var image: UIImage
+    var index: Int?
+
+    init(image:UIImage, atIndex index:Int?)
     {
-        var image: UIImage
-        var index: Int?
+        self.image = image
 
-        init(image:UIImage, atIndex index:Int?)
+        if let index = index
         {
-            self.image = image
-
-            if let index = index
-            {
-                self.index = index
-            }
-        }
-
-        convenience init(image:UIImage)
-        {
-            self.init(image:image, atIndex:.None)
+            self.index = index
         }
     }
 
----
+    convenience init(image:UIImage)
+    {
+        self.init(image:image, atIndex:.None)
+    }
+}
+{% endhighlight %}
 
 `NSNotFound` is currently a common way for Cocoa frameworks to indicate that a result couldn't be found when searching through indices and other serial data. I wanted to create a simple Swift class to represent the data behind a cell that displays an image, like so:
 
