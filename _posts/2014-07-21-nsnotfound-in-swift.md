@@ -7,6 +7,12 @@ tags: [Swift, Programming, Learning]
 
 > Disclaimer: This information is current as of Xcode 6.0b3, and is subject to change in future seeds. Also, I — like everyone outside Apple — am still learning Swift. Please, [let me know if I've missed something](https://twitter.com/tonyarnold/)!
 
+---
+
+**Update:** About 35 seconds after I posted this, @mattyohe [pointed out that this is exactly what Swift's optionals are for](https://twitter.com/mattyohe/status/491054206795923456). I fully expect to see `NSNotFound` go away in coming years.
+
+---
+
 `NSNotFound` is currently a common way for Cocoa frameworks to indicate that a result couldn't be found when searching through indices and other serial data. I wanted to create a simple Swift class to represent the data behind a cell that displays an image, like so:
 
     class ImagePageContentViewModel
