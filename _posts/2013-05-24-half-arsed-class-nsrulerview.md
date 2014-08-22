@@ -16,6 +16,7 @@ The default `NSRulerView` also updates as required to reflect the magnification 
 *\*mouth fart noise\**
 
 It gets better! [The documentation makes reference to][3]:
+
 > "If you want to do custom hash-marks and labels you should first look at doing it with a delegate.  You can do whatever kind of custom hash-marks you want through delegation as long as the hash-marks and labels are evenly spaced."
 
 However, there are no delegate methods that expose anything to do with customising the hash marks. Brilliant QA work there, guys!
