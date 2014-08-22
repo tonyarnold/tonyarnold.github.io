@@ -6,7 +6,6 @@ exclude: [LICENSE, CNAME, README.md, .gitignore, Gemfile, Gemfile.lock, .ruby-ve
 timezone: Australia/NSW
 future: false
 markdown: kramdown
-highlighter: rouge
 lsi: true
 
 kramdown:
