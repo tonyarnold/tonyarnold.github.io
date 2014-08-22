@@ -13,50 +13,55 @@ tags: [Swift, Programming, Learning]
 
 The class ended up looking like this:
 
-    class ImagePageViewModel
+{% highlight swift %}
+class ImagePageViewModel
+{
+    var image: UIImage
+    var index: Int?
+
+    init(image:UIImage, atIndex index:Int?)
     {
-        var image: UIImage
-        var index: Int?
+        self.image = image
 
-        init(image:UIImage, atIndex index:Int?)
+        if let index = index
         {
-            self.image = image
-
-            if let index = index
-            {
-                self.index = index
-            }
-        }
-
-        convenience init(image:UIImage)
-        {
-            self.init(image:image, atIndex:.None)
+            self.index = index
         }
     }
 
+    convenience init(image:UIImage)
+    {
+        self.init(image:image, atIndex:.None)
+    }
+}
+{% endhighlight %}
 ---
 
 `NSNotFound` is currently a common way for Cocoa frameworks to indicate that a result couldn't be found when searching through indices and other serial data. I wanted to create a simple Swift class to represent the data behind a cell that displays an image, like so:
 
-    class ImagePageViewModel
-    {
-        var image: UIImage
-        var index: Int
+{% highlight swift %}
+class ImagePageViewModel
+{
+    var image: UIImage
+    var index: Int
 
-        init(image:UIImage, atIndex index:Int = NSNotFound)
-        {
-            self.image = image
-            self.index = index
-        }
+    init(image:UIImage, atIndex index:Int = NSNotFound)
+    {
+        self.image = image
+        self.index = index
     }
+}
+{% endhighlight %}
 
 Unfortunately, I ran into a few errors that didn't have  obvious solutions (at least to me!) from the outset.
 
 Straight up, if you've tried to use `NSNotFound` in Swift you've probably hit a few stumbling blocks. If you create the class above in your project, you'll see an error — **Ambiguous use of 'NSNotFound'**. To fix this, you'll need to be more explicit about where `NSNotFound` is coming from — easy enough, [as described by Erica Sadun](http://ericasadun.com/2014/06/13/swift-fixing-ambiguous-use-of-nsnotfound/) just use `Foundation.NSNotFound` instead.
 
-    init(image:UIImage, atIndex index:Int = Foundation.NSNotFound) {
-        // ...
-    }
+{% highlight swift %}
+init(image:UIImage, atIndex index:Int = Foundation.NSNotFound) {
+    // ...
+}
+{% endhighlight %}
 
 Next, you'll see Swift get a little tripped up trying to convert from an `NSInteger` to an `NSNumber` and then back to an `Int` again — the error this time is **'NSNumber' is not a subtype of 'Int'**. In this class, I wanted to use pure Swift types as much as possible while maintaining Cocoa-isms like NSNotFound, so the `index` parameter is defined as an `Int`.
 
@@ -64,16 +69,22 @@ Next, you'll see Swift get a little tripped up trying to convert from an `NSInte
 
 It's pretty easy to give Swift hints about the types you'd like things to resolve to, and you'll probably need to do this a bit with numbers. In this instance, we'll explicity force this number to be an `Int`:
 
-    init(image:UIImage, atIndex index:Int = Int(Foundation.NSNotFound)) {
-        // ...
-    }
+{% highlight swift %}
+init(image:UIImage, atIndex index:Int = Int(Foundation.NSNotFound)) {
+    // ...
+}
+{% endhighlight %}
 
 This compiles and works as you'd expect. I can now call either:
 
-    let viewModel = ImagePageViewModel(image: myImage)
+{% highlight swift %}
+let viewModel = ImagePageViewModel(image: myImage)
+{% endhighlight %}
 
 or
 
-    let viewModel = ImagePageViewModel(image: myImage, index: 6)
+{% highlight swift %}
+let viewModel = ImagePageViewModel(image: myImage, index: 6)
+{% endhighlight %}
 
 I don't have enough experience with Swift yet to know if the conversion of an enumerable type in Objective-C to C should require wrapping in `Int()` so I've not filed this as a radar.
