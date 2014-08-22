@@ -12,7 +12,7 @@ issue when doing so, so I was intrigued (although I was pretty sure why this was
 
 Here's the simple test I ran:
 
-{% highlight obj-c %}
+```objc
 NSString *someString = @"LANA!";
 NSString *otherString = @"LAAANAA!";
 NSString *sameString = @"LANA!";
@@ -34,7 +34,7 @@ NSLog(@"%f", [NSDate timeIntervalSinceReferenceDate] - start);
 start = [NSDate timeIntervalSinceReferenceDate];
 BOOL bleepSame = [someString compare:sameString] == NSOrderedSame;
 NSLog(@"%f", [NSDate timeIntervalSinceReferenceDate] - start);
-{% endhighlight %}
+```
 
 ## Results
 

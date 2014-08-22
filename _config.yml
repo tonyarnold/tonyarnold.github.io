@@ -9,6 +9,9 @@ markdown: kramdown
 highlighter: rouge
 lsi: true
 
+kramdown:
+  input: GFM
+
 sass:
     sass_dir: _scss
 
