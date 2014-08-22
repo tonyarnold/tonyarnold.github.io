@@ -13,7 +13,7 @@ kramdown:
   input: GFM
 
 sass:
-    sass_dir: _scss
+    sass_dir: assets/css/_scss
 
 gems:
   - jekyll-mentions
