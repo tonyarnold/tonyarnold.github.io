@@ -5,10 +5,9 @@ date: 13 December 2014 15:00:00
 tags: [Swift, Programming, Learning]
 ---
 
-One of the many things about Swift that has made me happy is the introduction of default parameter values on methods. In Objective-C, it's pretty common to see APIs that looks a lot like the following code (taken from MagicalRecord):
+One of the many things about Swift that has made me happy is the introduction of default parameter values in methods. In Objective-C, it's pretty common to see APIs that look a lot like the following code (taken from MagicalRecord):
 
 {% highlight objective-c %}
-
 // NSManagedObjectContext+MagicalFinders.h
 
 + (instancetype)findFirstInContext:(NSManagedObjectContext *)context;
@@ -47,7 +46,6 @@ One of the many things about Swift that has made me happy is the introduction of
 {
   // Actual implementation of method
 }
-
 {% endhighlight %}
 
 This pattern is often referred to as the "telescopic pattern", or "telescoping methods". Basically, you implement a number of methods that each call the next, more specific method in the chain, providing default values at each stage as they become necessary. Users of the API can choose to use any of the methods, allowing for more succinct code, but only requiring a single "real" method implementation.
