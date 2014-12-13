@@ -80,4 +80,4 @@ let moreResults = findFirstWithPredicate(sortedBy:"someProperty",
 // You get the gist of it!
 {% endhighlight %}
 
-This allows for much more succinct methods calls, without the mountain of boilerplate we would have had to write in Objective-C!
+This allows for more succinct methods calls, without the mountain of boilerplate we would have had to write in Objective-C!
