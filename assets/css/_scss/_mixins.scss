@@ -68,7 +68,7 @@
 // text shadow
 // text-shadow ( list $shadow )
 @mixin text-shadow($shadow) {
-	$shadow: unquote($shadow);
+	$shadow: $shadow;
 	@if(type-of($shadow) != "list" and type-of($shadow) != "string") {
 		@warn "Invalid parameters passed. Expected a list or a string got #{type-of($shadow)}. Defaulting to none.";
 		$shadow: none;
@@ -83,7 +83,7 @@
 // box shadow
 // box-shadow ( list $shadow )
 @mixin box-shadow($shadow) {
-	$shadow: unquote($shadow);
+	$shadow: $shadow;
 	@if(type-of($shadow) != "list" and type-of($shadow) != "string") {
 		@warn "Invalid parameters passed. Expected a list or a string got #{type-of($shadow)}. Defaulting to none.";
 		$shadow: none;
