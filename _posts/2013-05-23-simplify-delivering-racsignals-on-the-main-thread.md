@@ -11,8 +11,8 @@ One of the common things you'll do when working with [ReactiveCocoa](http://gith
 Compare:
 
 {% highlight obj-c %}
-RACSignal *zoomSignal = [RACAbleWithStart(self.zoom) distinctUntilChanged];
-RAC(self.rulerView.tickFrequency) = [[zoomSignal map:^NSNumber *(NSNumber *zoom) {
+RACSignal *zoomSignal = [RACObserve(self, zoom) distinctUntilChanged];
+RAC(self, rulerView.tickFrequency) = [[zoomSignal map:^NSNumber *(NSNumber *zoom) {
     return @(4.f * zoom.floatValue);
 }] deliverOn:[RACScheduler mainThreadScheduler]];
 {% endhighlight %}
@@ -20,8 +20,8 @@ RAC(self.rulerView.tickFrequency) = [[zoomSignal map:^NSNumber *(NSNumber *zoom)
 To:
 
 {% highlight obj-c %}
-RACSignal *zoomSignal = [RACAbleWithStart(self.zoom) distinctUntilChanged];
-RAC(self.rulerView.tickFrequency) = [[zoomSignal map:^NSNumber *(NSNumber *zoom) {
+RACSignal *zoomSignal = [RACObserve(self, zoom) distinctUntilChanged];
+RAC(self, rulerView.tickFrequency) = [[zoomSignal map:^NSNumber *(NSNumber *zoom) {
     return @(4.f * zoom.floatValue);
 }] deliverOnMainThread];
 {% endhighlight %}
