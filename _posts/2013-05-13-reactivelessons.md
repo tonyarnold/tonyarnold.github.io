@@ -31,15 +31,15 @@ Here's the current state of using Key-Value Observation to observe and respond t
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
-                       context:(void *)context 
+                       context:(void *)context
 {
-						   
+
   if (context == &someStringChangeContext) {
     if ([keyPath isEqualToString:@"someString"]) {
       // Do a bunch of stuff here
     }
   }
-  
+
 }
 {% endhighlight %}
 
@@ -47,7 +47,7 @@ Here's the same thing using ReactiveCocoa:
 
 {% highlight obj-c %}
 RACSignal *stringChanged = RACObserve(self, someString);
-[stringChanged distinctUntilChanged] subscribeNext:^(NSString *string) {
+[stringChanged subscribeNext:^(NSString *string) {
   // Do a bunch of things here, just like you would with KVO
 }];
 {% endhighlight %}
@@ -71,12 +71,12 @@ Still with me? Every time the `self.someManagedObject.name` attribute changes, t
 But that's still not the real advantage of ReactiveCocoa. Consider this, you have an `NSDate` property on one of your objects that you'd like to display in a text field. ReactiveCocoa can help you do that, while providing the same binding-style advantages as above:
 
 {% highlight obj-c %}
-RACSignal *dateSignal = 
+RACSignal *dateSignal =
 [RACObserve(self, managedObject.startDate) distinctUntilChanged];
 
-RAC(self, someTextFieldForShowingTheDate.text) = 
+RAC(self, someTextFieldForShowingTheDate.text) =
 [[dateSignal map:^NSString *(NSDate *date) {
-  return [NSDateFormatter 
+  return [NSDateFormatter
             localizedStringFromDate:date
                           dateStyle:NSDateFormatterShortStyle
                           timeStyle:NSDateFormatterShortStyle];
