@@ -52,7 +52,7 @@ RACSignal *stringChanged = RACObserve(self, someString);
 }];
 {% endhighlight %}
 
-There's no need to tear down the observer when you're done, and [ReactiveCocoa][RAC] even takes care of weeding out non distinct changes for you! If you're only interested in using ReactiveCocoa as a simple replacement for KVO, there you go. "Bam" said the lady.
+There's no need to tear down the observer when you're done, and if you're only interested in using ReactiveCocoa as a simple replacement for KVO, there you go! "Bam" said the lady.
 
 ## 'Bringing It' Functional Reactive Style
 
