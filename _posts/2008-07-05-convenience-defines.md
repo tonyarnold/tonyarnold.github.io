@@ -5,7 +5,7 @@ tags: [Cocoa, Programming]
 date: 05 July 2008 13:00:00
 ---
 
-> ***Update:** Lazy programmer, indeed! After doing some research myself this afternoon (at the prompting of Karsten), I’d recommend not using anything but the `ZNCGAutoRelease()` method below - the others aren’t dangerous, but they’re really not necessary and just obscure your ability to properly debug your code. As for using macros, well, I guess that’s a matter of personal preference - what I’ve seen so far is that it does make debugging harder - you’re probably better off implementing proper methods for repeatable tasks. But it works if you want to use it.*
+> **Update:** Lazy programmer, indeed! After doing some research myself this afternoon (at the prompting of Karsten), I’d recommend not using anything but the `ZNCGAutoRelease()` method below - the others aren’t dangerous, but they’re really not necessary and just obscure your ability to properly debug your code. As for using macros, well, I guess that’s a matter of personal preference - what I’ve seen so far is that it does make debugging harder - you’re probably better off implementing proper methods for repeatable tasks. But it works if you want to use it.
 
 When I first started working on VirtueDesktops (all those years ago), I was still new to Objective-C and very new to the concept of (mostly) manual memory management. Thankfully Thomas (the previous developer) had the foresight to do what all good, lazy programmers should do and write himself a few small convenience methods into his codebase.
 
