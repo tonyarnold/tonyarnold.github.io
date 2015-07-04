@@ -8,7 +8,7 @@ tags:  [Mac, Productivity, Tips]
 
 If you've just finished installing your shiny new copy of [Mac OS X Lion][1], here are a few tips for Apple's replacement for Spaces and Exposé — "[Mission Control][2]". For each of these tips, I'm going to assume you've created at least one new Desktop in Mission Control — if you haven't, do that now.
 
-##Create a new Desktop for an application or window##
+## Create a new Desktop for an application or window##
 
 1. Activate Mission Control;
 2. Click and hold on either an individual window, or an application's icon;
@@ -17,7 +17,7 @@ If you've just finished installing your shiny new copy of [Mac OS X Lion][1], he
 4. Drop the selected item onto this new Desktop;
 5. Bingo! You have a new Desktop, with your selected items on it — simply click the new Desktop to switch to it.
 
-##Set different desktop images for each Desktop##
+## Set different desktop images for each Desktop##
 
 1. Switch to the Desktop you want to change the desktop picture on;
 2. Launch '**System Preferences.app**';
@@ -30,7 +30,7 @@ If you've just finished installing your shiny new copy of [Mac OS X Lion][1], he
     ![Mission Control with different desktop images](http://static.tonyarnold.com/mcdesktoppics-1311314159.png)
 7. Yell our 'hooray!' a little bit, cause it's pretty cool to have different desktop images on each of your Desktops (*'Hooray' completely optional*).
 
-##Set hotkeys to go directly to each Desktop##
+## Set hotkeys to go directly to each Desktop##
 
 1. Launch '**System Preferences.app**';
     ![style: margin-top:5px;background-image:none;border-width:0px;background-color:transparent;-webkit-box-shadow:none;-mozilla-box-shadow:none;box-shadow:none;; alt: System Preferences application icon in Finder](http://static.tonyarnold.com/sysprefsappicon-1311313183.png)
@@ -41,9 +41,9 @@ If you've just finished installing your shiny new copy of [Mac OS X Lion][1], he
 5. The final entries in the list on the right should correspond to your individual Desktops — they will be labelled '*Switch to Desktop 1*', '*Switch to Desktop 2*', etc;
    ![Keyboard Shortcuts system preferences with Mission Control selected](http://static.tonyarnold.com/keyboardshortcuts-1311313766.png)
 6. Set a keyboard shortcut — *make sure that you enable the shortcut by clicking on the checkbox next to its name*;
-7. Party like it's Mac OS X Snow Leopard running Hyperspaces (*Partying not provided in package)
+7. Party like it's Mac OS X Snow Leopard running Hyperspaces (*Partying not provided in package*)
 
-##Assign an application to a specific Desktop, or all Desktops using the Dock##
+## Assign an application to a specific Desktop, or all Desktops using the Dock##
 
 1. Right-click on the icon of the application in the Dock you want to move to another Desktop;
 2. Select '**Options >> Assign To >> All Desktops**' to show this application on all Desktops (this is useful for applications like the Finder, iChat and Twitter); OR
