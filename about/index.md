@@ -9,7 +9,7 @@ title: "The man, the beard, the mystery"
 
 # Tony _who?_
 
-Hi! I’m Tony Arnold, a {{ my_age | truncate: 2, '' }} year old chap from [Newcastle, Australia][NewcastleMapLink]. Professionally, I'm a developer at [Itty Bitty Apps](http://ittybittyapps.com/) where I work on the amazing visual debugging tool for iOS apps, [Reveal](http://revealapp.com/). I've also been helping to build [Bjango's](http://bjango.com/) upcoming UI design tool, [Skala](https://bjango.com/mac/skala/), and I ~~mess with~~ contribute to as many open source projects as my time allows.
+Hi! I’m Tony Arnold, a {{ my_age | truncate: 2, '' }} year old chap from [Newcastle, Australia][NewcastleMapLink]. Professionally, I'm a developer at [Itty Bitty Apps](http://ittybittyapps.com/) where I work on the amazing visual debugging tool for iOS apps, [Reveal](http://revealapp.com/). I've also been helping to build [Bjango's](http://bjango.com/) upcoming UI design tool, [Skala](https://bjango.com/mac/skala/), and I <del>mess with</del> contribute to as many open source projects as my time allows.
 
 I also have my own (_very_) small business — [The CocoaBots][TCB] — building apps for Apple's Mac, iPhone and iPad devices.
 
