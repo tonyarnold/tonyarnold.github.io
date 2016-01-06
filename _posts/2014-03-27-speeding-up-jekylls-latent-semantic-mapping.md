@@ -14,6 +14,8 @@ published: true
 
 Running Jekyll with Latent Semantic Indexing (or LSI) on a site of only 20-30 pages can take 5-10 minutes on a reasonably powerful Mac. I got tired of having to wait or isolate individual posts to get on with writing, so I took Jekyll's recommendation and installed the [GNU Scientific Library](http://www.gnu.org/software/gsl/) (or GSL).
 
+After properly installing GSL on my MacBook Pro, **building my site went from over 5 minutes for a site with about 100 posts, to under 5 seconds**.
+
 ## Prerequisites
 
  - You're using (or want to use) Jekyll's LSI and related posts function
