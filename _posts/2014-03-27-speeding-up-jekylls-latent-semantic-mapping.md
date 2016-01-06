@@ -2,7 +2,7 @@
 layout: post
 title: "Speeding up Jekyll's Latent Semantic Mapping on OS X"
 date: "27 March 2014 14:55:00"
-tags: 
+tags:
   - Web
   - Fix
   - Jekyll
@@ -12,23 +12,18 @@ tags:
 published: true
 ---
 
-Running Jekyll with Latent Semantic Indexing (or LSI) on a site of only 20-30 pages can take 5-10 minutes on a reasonably powerful Mac. I got tired of having to wait or isolate individual posts to get on with writing, so I took Jekyll's recommendation and tried to install the [GNU Scientific Library](http://www.gnu.org/software/gsl/) (or GSL).
-
-It was a bit of a disaster. GSL itself installs just fine via [Homebrew][brew], but the `rb-gsl` ruby gem and many of it's dependencies would not compile.
-
-So, doing what I always do, I stayed up far too late and fixed the problems. After properly installing GSL on my MacBook Pro, **building my site went from over 5 minutes for a site with about 100 posts, to under 5 seconds**.
-
+Running Jekyll with Latent Semantic Indexing (or LSI) on a site of only 20-30 pages can take 5-10 minutes on a reasonably powerful Mac. I got tired of having to wait or isolate individual posts to get on with writing, so I took Jekyll's recommendation and installed the [GNU Scientific Library](http://www.gnu.org/software/gsl/) (or GSL).
 
 ## Prerequisites
 
- - You're using or want to use Jekyll's LSI and related posts function
+ - You're using (or want to use) Jekyll's LSI and related posts function
  - [Xcode][xcode] (and most likely the command-line tools)
  - [Homebrew][brew]
  - Ruby, RubyGems and Bundler
 
 ## Instructions
 
-1. Install GSL via homebrew:
+1. Install GSL via [homebrew][brew]:
 
         $ brew install gsl
 
@@ -37,8 +32,7 @@ So, doing what I always do, I stayed up far too late and fixed the problems. Aft
         source 'https://rubygems.org'
 
         gem 'jekyll'
-        gem 'narray', :git => "https://github.com/tonyarnold/narray"
-        gem 'gsl', :git => "https://github.com/tonyarnold/rb-gsl"
+        gem 'gsl'
 
     > **Note:** If you already have a Gemfile, the important lines are `narray` and `gsl`. Be sure to include the git repository links, as these contain my fixes to compile on OS X 10.9 "Mavericks".
 
