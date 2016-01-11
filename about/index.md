@@ -5,7 +5,7 @@ title: "The man, the beard, the mystery"
 
 {% capture my_age %}{{ site.time | date: %Y | minus: 1980.44 | round }}{% endcapture %}
 
-<img src="http://static.tonyarnold.com/my-family.jpg" alt="Leah, Ted and Tony" class="widescreen" />
+<img src="http://static.tonyarnold.com/my-family-2016.jpg" alt="Leah, Ted, Beth and Tony" class="widescreen" />
 
 # Tony _who?_
 
