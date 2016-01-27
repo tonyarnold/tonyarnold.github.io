@@ -3,7 +3,8 @@ layout: default
 title: "The man, the beard, the mystery"
 ---
 
-{% capture my_age %}{{ site.time | date: %Y | minus: 1980.44 | round }}{% endcapture %}
+{% capture current_year %}{{ site.time | date: %Y}}{% endcapture %}
+{% capture my_age %}{{ current_year | minus: 1980.44 }}{% endcapture %}
 
 <img src="http://static.tonyarnold.com/my-family-2016.jpg" alt="Leah, Ted, Beth and Tony" class="widescreen" />
 
@@ -11,7 +12,7 @@ title: "The man, the beard, the mystery"
 
 Hi! I’m Tony Arnold, a {{ my_age | truncate: 2, '' }} year old chap from [Newcastle, Australia][NewcastleMapLink]. Professionally, I'm a developer at [Itty Bitty Apps](http://ittybittyapps.com/) where I work on the amazing visual debugging tool for iOS apps, [Reveal](http://revealapp.com/). I've also been helping to build [Bjango's](http://bjango.com/) upcoming UI design tool, [Skala](https://bjango.com/mac/skala/), and I <del>mess with</del> contribute to as many open source projects as my time allows.
 
-I also have my own (_very_) small business — [The CocoaBots][TCB] — building apps for Apple's Mac, iPhone and iPad devices.
+I also have my own (_very_) small business — [The CocoaBots][TCB] — building apps for Apple devices.
 
 If you’d like to get in contact with me, please feel free to [send me an e-mail][Email].
 
