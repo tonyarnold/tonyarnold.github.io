@@ -7,7 +7,7 @@ tags: [Mac, Programming, Xcode]
 
 <img src="http://static.tonyarnold.com/xcode-build-duration.png" alt="Xcode Toolbar showing build duration" class="widescreen" />
 
-Ever wondered how long your builds in Xcode are taking? Here's a quick way to show them as in the image above:
+Ever wondered how long your builds in Xcode are taking? Here's a quick way to show them as inside Xcode after each build:
 
 1. In your terminal, type:
 
