@@ -17,3 +17,5 @@ defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
 
 2. Relaunch Xcode.
 3. Build your project to see the duration of each build!
+
+If you're looking for something with a bit more control over how the duration is displayed, you should check out Craig Edwards' [BuildMeUp Xcode Plugin](https://github.com/edwardaux/BuildMeUp).
