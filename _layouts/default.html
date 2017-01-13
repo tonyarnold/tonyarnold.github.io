@@ -1,31 +1,30 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if page.url == '/index.html' %}{{ site.theme.name }} - {{ site.theme.tagline }}{% else %}{{ page.title }} - {{ site.theme.name }}{% endif %}</title>
-  <meta name="author" content="{{ site.theme.name }}" />
-  <meta name="description" content="The blog of {{ site.theme.name }}" />
-  <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}" />
-
-  <link rel="shortcut icon" href="/favicon.gif">
-  <link rel="alternate" type="application/rss+xml" title="{{ site.theme.name }}" href="{{site.url}}/atom.xml" />
-
-  <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
-  <link rel="stylesheet" href="/assets/css/all.css">
-  <link rel="stylesheet" href="/assets/css/screen.css">
-  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.url == '/index.html' %}{{ site.theme_settings.name }} - {{ site.theme_settings.tagline }}{% else %}{{ page.title
+        }} - {{ site.theme_settings.name }}{% endif %}</title>
+    <meta name="author" content="{{ site.theme_settings.name }}" />
+    <meta name="description" content="The blog of {{ site.theme_settings.name }}" />
+    <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.theme_settings.name }}" href="{{site.url}}/atom.xml" />
+    <link rel="preload" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.min.css">
 </head>
+
 <body>
-  <div class="container">
-    <div class="four columns sidebar">{% include sidebar.html %}</div>
-    <div class="eleven columns content">{{ content }}
-      <div class="footer">{% include footer.html %}</div>
+    <div class="container">
+        <div class="four columns sidebar">{% include sidebar.html %}</div>
+        <div class="eleven columns content">{{ content }}
+            <div class="footer">{% include footer.html %}</div>
+        </div>
     </div>
-  </div>
-  {% include analytics.html %}
+    {% include analytics.html %}
 </body>
+
 </html>

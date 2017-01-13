@@ -1,130 +1,115 @@
-# General Jekyll Config
+---
 url: http://tonyarnold.com
-exclude: [LICENSE, CNAME, README.md, .gitignore, Gemfile, Gemfile.lock, .ruby-version, .ruby-gemset, .DS_Store]
-
-# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+title: tonyarnold.com
+exclude:
+- LICENSE
+- CNAME
+- README.md
+- ".gitignore"
+- Gemfile
+- Gemfile.lock
+- ".ruby-version"
+- ".ruby-gemset"
+- ".DS_Store"
 timezone: Australia/NSW
 future: false
 markdown: kramdown
-lsi: true
-
+lsi: false
 kramdown:
   input: GFM
-
 sass:
-    sass_dir: assets/css/_scss
-
+  sass_dir: assets/css/_scss
 gems:
-  - jekyll-mentions
-  - jemoji
-  - jekyll-redirect-from
-  - jekyll-sitemap
-
-# Theme customization - please change from the defaults!
-theme:
-  # Color for top bar, links, etc
-  highlight_color: '#990000'
-
-  # Profile links on the left sidebar, leave blank to ignore
+- jekyll-mentions
+- jemoji
+- jekyll-redirect-from
+- jekyll-sitemap
+theme_settings:
+  highlight_color: "#990000"
   social:
     github: tonyarnold
     bitbucket: tonyarnold
     flickr: tonyarnold
-    #hacker_news: swanson
-    #stackexchange: 348619
-    #stackoverflow: 348619
-    #adn: tonyarnold
     twitter: tonyarnold
-    #facebook: zuck
-    #tumblr: animalygifs
-    #linkedin: philipjagielski
-    #gplus: 109897301214575359936
-
-  # "Hi, I'm _______"
   name: Tony Arnold
   email: tony@tonyarnold.com
-  tagline: "readwrite, nonnull, nonatomic, strong"
-
-  # Google Analytics key, leave blank to ignore
+  tagline: readwrite, nonnull, nonatomic, strong
   google_analytics_key: UA-87298-13
-
-  # Toggle "Postings are my own" disclaimer in footer
   show_disclaimer: false
-
 prose:
   ignore:
-  - /.gitignore
-  - /.ruby-gemset
-  - /.ruby-version
-  - /_config.yml
-  - /_layouts
-  - /_includes
-  - /_scss
-  - /assets
-  - /atom.xml
-  - /CNAME
-  - /favicon.*
-  - /Gemfile
-  - /Gemfile.lock
-  - /index.*
-  - /LICENSE
-  - /site.json
-  - /links.jsonp
+  - "/.gitignore"
+  - "/.ruby-gemset"
+  - "/.ruby-version"
+  - "/_config.yml"
+  - "/_layouts"
+  - "/_includes"
+  - "/_scss"
+  - "/assets"
+  - "/atom.xml"
+  - "/CNAME"
+  - "/favicon.*"
+  - "/Gemfile"
+  - "/Gemfile.lock"
+  - "/index.*"
+  - "/LICENSE"
+  - "/site.json"
+  - "/links.jsonp"
   rooturl: ''
   siteurl: http://tonyarnold.com'
-  relativeLinks: 'http://tonyarnold.com/links.jsonp'
-  media: 'assets/media'
+  relativeLinks: http://tonyarnold.com/links.jsonp
+  media: assets/media
   metadata:
-    "":
-      - name: "layout"
-        field:
-          element: "hidden"
-          value: "default"
-      - name: "title"
-        field:
-          element: "text"
-          label: "Title"
-          value: ""
+    '':
+    - name: layout
+      field:
+        element: hidden
+        value: default
+    - name: title
+      field:
+        element: text
+        label: Title
+        value: ''
     _posts:
-      - name: "layout"
-        field:
-          element: "hidden"
-          value: "post"
-      - name: "title"
-        field:
-          element: "text"
-          label: "Title"
-          value: ""
-      - name: "date"
-        field:
-          element: "text"
-          label: "Date"
-          placeholder: "eg. 27 March 2014 10:32:29"
-      - name: "tags"
-        field:
-          element: "multiselect"
-          label: "Add Tags"
-          placeholder: "Choose Tags"
-          alterable: true
-          options:
-          - name: "Cocoa"
-            value: "Cocoa"
-          - name: "Entertainment"
-            value: "Entertainment"
-          - name: "Life"
-            value: "Life"
-          - name: "Mac"
-            value: "Mac"
-          - name: "Programming"
-            value: "Programming"
-          - name: "Web"
-            value: "Web"
-          - name: "Work"
-            value: "Work"
-          - name: "WWDC"
-            value: "WWDC"
-      - name: "source"
-        field:
-          element: "text"
-          label: "Source URL"
-          value: ""
+    - name: layout
+      field:
+        element: hidden
+        value: post
+    - name: title
+      field:
+        element: text
+        label: Title
+        value: ''
+    - name: date
+      field:
+        element: text
+        label: Date
+        placeholder: eg. 27 March 2014 10:32:29
+    - name: tags
+      field:
+        element: multiselect
+        label: Add Tags
+        placeholder: Choose Tags
+        alterable: true
+        options:
+        - name: Cocoa
+          value: Cocoa
+        - name: Entertainment
+          value: Entertainment
+        - name: Life
+          value: Life
+        - name: Mac
+          value: Mac
+        - name: Programming
+          value: Programming
+        - name: Web
+          value: Web
+        - name: Work
+          value: Work
+        - name: WWDC
+          value: WWDC
+    - name: source
+      field:
+        element: text
+        label: Source URL
+        value: ''
