@@ -5,7 +5,7 @@ tags: [Cocoa, Programming]
 date: 24 January 2007 23:00:00
 ---
 
-{% capture years_ago %}{{ site.time | date: %Y | minus:2005 }}{% endcapture %}
+{% capture years_ago %}{{ site.time | date: "%Y" | minus:2005 }}{% endcapture %}
 
 > ## Outdated Info
 > Hi there! So it's the future now ({{site.time | date: "%Y"}} to be precise) and the recommendations in this post aren't valid anymore. I'd recommend you have a look at [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack) instead of using the code here in anything you're working on.

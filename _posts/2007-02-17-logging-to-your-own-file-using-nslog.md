@@ -5,7 +5,7 @@ tags: [Cocoa, Programming]
 date: 17 February 2007 11:30:00
 ---
 
-{% capture years_ago %}{{ site.time | date: %Y | minus:2005 }}{% endcapture %}
+{% capture years_ago %}{{ site.time | date: "%Y" | minus:2005 }}{% endcapture %}
 
 > ## Outdated Info
 > Hi there! So it's the future now ({{site.time | date: "%Y"}} to be precise) and the recommendations in this post aren't valid anymore.
@@ -37,4 +37,4 @@ int main(int argc, char *argv[])
 }
 {% endhighlight %}
 
-Now, all of your logging messages will be pushed to a log file with the same name as your application under `~/Library/Logs/`. 
+Now, all of your logging messages will be pushed to a log file with the same name as your application under `~/Library/Logs/`.

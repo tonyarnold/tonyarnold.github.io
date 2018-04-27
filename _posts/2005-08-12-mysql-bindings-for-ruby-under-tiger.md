@@ -5,7 +5,7 @@ date: 12 August 2005 16:30:00
 tags: [MySQL, Programming, Rails, Ruby, Web]
 ---
 
-{% capture years_ago %}{{ site.time | date: %Y | minus:2005 }}{% endcapture %}
+{% capture years_ago %}{{ site.time | date: "%Y" | minus:2005 }}{% endcapture %}
 
 > ## Outdated Information
 >

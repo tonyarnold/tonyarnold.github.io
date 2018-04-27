@@ -5,7 +5,7 @@ tags: [Cocoa, Programming]
 date: 06 October 2006 06:30:00
 ---
 
-{% capture years_ago %}{{ site.time | date: %Y | minus:2005 }}{% endcapture %}
+{% capture years_ago %}{{ site.time | date: "%Y" | minus:2005 }}{% endcapture %}
 
 > ## Outdated Info
 > Hi there! So it's the future now ({{site.time | date: "%Y"}} to be precise) and things have moved on: Interface Builder Plugins aren't possible anymore, so this post is just a wonderful curiosity.

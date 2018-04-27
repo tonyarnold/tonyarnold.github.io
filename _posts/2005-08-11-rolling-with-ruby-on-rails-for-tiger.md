@@ -5,7 +5,7 @@ date: 11 August 2005 09:30:00
 tags: [Mac, Programming, Ruby, Rails, Web]
 ---
 
-{% capture years_ago %}{{ site.time | date: %Y | minus:2005 }}{% endcapture %}
+{% capture years_ago %}{{ site.time | date: "%Y" | minus:2005 }}{% endcapture %}
 
 > ## Outdated Information
 >
@@ -55,7 +55,7 @@ To make sure everything installed properly, go back to the terminal and type the
 
 You should see the following output:
 
-    create  
+    create
     create  app/apis
     create  app/controllers
     create  app/helpers
