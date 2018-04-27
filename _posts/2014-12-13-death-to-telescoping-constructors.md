@@ -7,7 +7,7 @@ tags: [Swift, Programming, Learning]
 
 One of the many things about Swift that has made me happy is the introduction of default parameter values in methods. In Objective-C, it's pretty common to see APIs that look a lot like the following code (taken from MagicalRecord):
 
-```objective-c
+```obj-c
 // NSManagedObjectContext+MagicalFinders.h
 
 + (instancetype)findFirstInContext:(NSManagedObjectContext *)context;
@@ -37,8 +37,7 @@ One of the many things about Swift that has made me happy is the introduction of
                              sortedBy:nil
                             ascending:YES
                             inContext:context];
-}
-
+}2
 + (instancetype)findFirstWithPredicate:(NSPredicate *)searchterm
                               sortedBy:(NSString *)sortedBy
                              ascending:(BOOL)ascending
