@@ -16,8 +16,7 @@ Me? All the time. So I did a bit of [hunting about][1] and devised the following
 
 #### Source
 
-{% highlight obj-c %}
-
+```objective-c
 #import <Cocoa/Cocoa.h>
 
 @interface ZNLog : NSObject {}
@@ -48,7 +47,7 @@ Me? All the time. So I did a bit of [hunting about][1] and devised the following
 }
 
 @end
-{% endhighlight %}
+```
 
 #### License
 
