@@ -15,14 +15,14 @@ Have you ever found yourself needing to have your application record quite a bit
 
 #### Source
 
-{% highlight obj-c %}
+```objective-c
 #import <stdio.h.
 #import <sys/param.h>
-{% endhighlight %}
+```
 
 Then make your “main” method look like this:
 
-{% highlight obj-c %}
+```objective-c
 int main(int argc, char *argv[])
 {
   id pool = [NSAutoreleasePool new];
@@ -35,6 +35,6 @@ int main(int argc, char *argv[])
 
   return NSApplicationMain(argc,  (const char **) argv);
 }
-{% endhighlight %}
+```
 
 Now, all of your logging messages will be pushed to a log file with the same name as your application under `~/Library/Logs/`.
