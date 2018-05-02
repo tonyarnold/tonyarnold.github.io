@@ -2,7 +2,7 @@
 layout: post
 published: true
 title: How to create a grid of CALayers
-tags: 
+tags:
   - Cocoa
   - Programming
 date: "14 December 2007 00:37:00"
@@ -69,7 +69,7 @@ for (HSSpace *space in spacesInfo.spaces) {
 
   CGFloat x = itemWidth * currentColumn;
   CGFloat y = constraintLayer.bounds.size.height - (itemHeight * currentRow);
-  
+
   CALayer *spaceLayer = [CALayer layer];
   spaceLayer.name = [NSString stringWithFormat:@"SpaceLayer%@", space.number];
   spaceLayer.bounds = CGRectMake( 0, 0, itemWidth, itemHeight );
@@ -150,6 +150,6 @@ for (HSSpace *space in spacesInfo.spaces) {
 
 
  [1]: http://www.apple.com/macosx/technology/coreanimation.html
- [2]: http://tonyarnold.com/projects/hyperspaces/
+ [2]: /projects/hyperspaces/
  [4]: http://neilang.com/
  [5]: http://jamespamplin.com/

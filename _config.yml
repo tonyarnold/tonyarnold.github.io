@@ -1,4 +1,4 @@
-url: 'http://tonyarnold.com'
+url: 'https://tonyarnold.com'
 title: tonyarnold.com
 exclude:
   - LICENSE
@@ -58,8 +58,8 @@ prose:
     - /site.json
     - /links.jsonp
   rooturl: ''
-  siteurl: 'http://tonyarnold.com'''
-  relativeLinks: 'http://tonyarnold.com/links.jsonp'
+  siteurl: 'https://tonyarnold.com'''
+  relativeLinks: 'https://tonyarnold.com/links.jsonp'
   media: assets/media
   metadata:
     '':

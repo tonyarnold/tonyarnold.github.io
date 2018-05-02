@@ -2,7 +2,7 @@
 layout: post
 published: true
 title: Growling Panic Style
-tags: 
+tags:
   - Mac
 date: "09 December 2007 20:04:00"
 ---
@@ -17,4 +17,4 @@ Download the [Growling Panic Style][4] from the project page.
 
  [2]: http://panic.com/
  [3]: http://stevenf.com/
- [4]: http://tonyarnold.com/projects/growling-panic-style/
+ [4]: /projects/growling-panic-style/
