@@ -46,4 +46,6 @@ Here's what you need to do:
     ~/Library/Developer/Xcode/DerivedData/YOURPROJECT-ID/Build/Intermediates.noindex/YOURPROJECT.build/Debug/YOURTARGET.build/DerivedSources/
     ```
 
-If you find the editing experience with the GYB format to be a particular point of upset, you should consider integrating Krzysztof Zabłocki's [Sourcery](https://github.com/krzysztofzablocki/Sourcery), as it uses Swift-based [Stencil](https://github.com/stencilproject/Stencil) templates that provide a properly supported editing experience within Xcode.
+8.  That's it! Commit your changes and get started replacing your boilerplate with automated GYB files.
+
+> **Final Note:** If you find the experience of editing GYB files to be a particular point of upset, you should consider integrating Krzysztof Zabłocki's [Sourcery](https://github.com/krzysztofzablocki/Sourcery), as it uses Swift-based [Stencil](https://github.com/stencilproject/Stencil) templates that provide a much nicer experience while editing within Xcode.
