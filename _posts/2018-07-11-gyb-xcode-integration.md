@@ -48,4 +48,4 @@ Here's what you need to do:
 
 8.  That's it! Commit your changes and get started replacing your boilerplate with automated GYB files.
 
-> **Alternatives:** You could consider integrating Krzysztof Zabłocki's [Sourcery](https://github.com/krzysztofzablocki/Sourcery) instead of GYB - it provides much the same result in a similar template format, but has a bunch of well document examples and tutorials available.
+> **Alternatives:** You could consider integrating Krzysztof Zabłocki's [Sourcery](https://github.com/krzysztofzablocki/Sourcery) instead of GYB - it provides much the same result in a similar template format, but has a bunch of well documented examples and tutorials available.
