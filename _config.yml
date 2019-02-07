@@ -36,7 +36,6 @@ theme_settings:
   name: Tony Arnold
   email: tony@tonyarnold.com
   tagline: 'readwrite, nonnull, nonatomic, strong'
-  google_analytics_key: UA-87298-13
   show_disclaimer: false
 prose:
   ignore:
