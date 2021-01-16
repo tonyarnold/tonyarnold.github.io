@@ -37,7 +37,8 @@ One of the many things about Swift that has made me happy is the introduction of
                              sortedBy:nil
                             ascending:YES
                             inContext:context];
-}2
+}
+
 + (instancetype)findFirstWithPredicate:(NSPredicate *)searchterm
                               sortedBy:(NSString *)sortedBy
                              ascending:(BOOL)ascending
