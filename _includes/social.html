@@ -1,17 +1,12 @@
 <div id="stalker">
   {% if site.theme_settings.social.github %}
   <a title="{{ site.theme_settings.social.github }} on Github" href="https://github.com/{{ site.theme_settings.social.github }}">
-    <i class="fa fa-github-square"></i>
+    <i class="fa-brands fa-github-square"></i>
   </a>
   {% endif %}
-  {% if site.theme_settings.social.bitbucket %}
-  <a title="{{ site.theme_settings.social.bitbucket }} on Bitbucket" href="https://bitbucket.com/{{ site.theme_settings.social.bitbucket }}/">
-    <i class="fa fa-bitbucket-square"></i>
-  </a>
-  {% endif %}
-  {% if site.theme_settings.social.flickr %}
-  <a title="{{ site.theme_settings.name }} on Flickr" href="https://flickr.com/photos/{{site.theme_settings.social.flickr }}">
-    <i class="fa fa-flickr"></i>
+  {% if site.theme_settings.social.mastodon %}
+  <a title="{{ site.theme_settings.name }} on Flickr" href="https://mastodon.social/@{{site.theme_settings.social.mastodon }}">
+    <i class="fa-brands fa-mastodon"></i>
   </a>
   {% endif %}
   {% if site.theme_settings.social.hacker_news %}
@@ -34,7 +29,7 @@
   {% endif %}
   {% if site.theme_settings.social.twitter %}
   <a title="{{ site.theme_settings.social.twitter }} on Twitter" href="https://twitter.com/{{ site.theme_settings.social.twitter }}">
-    <i class="fa fa-twitter-square"></i>
+    <i class="fa-brands fa-twitter-square"></i>
   </a>
   {% endif %}
   {% if site.theme_settings.social.adn %}

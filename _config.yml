@@ -30,8 +30,7 @@ theme_settings:
   highlight_color: '#990000'
   social:
     github: tonyarnold
-    bitbucket: tonyarnold
-    flickr: tonyarnold
+    mastodon: tonyarnold
     twitter: tonyarnold
   name: Tony Arnold
   email: tony@tonyarnold.com
