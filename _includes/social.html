@@ -5,26 +5,23 @@
   </a>
   {% endif %}
   {% if site.theme_settings.social.mastodon %}
-  <a title="{{ site.theme_settings.name }} on Flickr" href="https://mastodon.social/@{{site.theme_settings.social.mastodon }}">
+  <a title="{{ site.theme_settings.name }} on Flickr" href="https://mastodon.social/@{{ site.theme_settings.social.mastodon }}">
     <i class="fa-brands fa-mastodon"></i>
   </a>
   {% endif %}
   {% if site.theme_settings.social.hacker_news %}
-  <a title="{{ site.theme_settings.social.hacker_news }} on Hacker News" href="https://news.ycombinator.com/user?id={{site.theme_settings.social.hacker_news }}">
-     <span class="fa-stack">
-      <i class="fa fa-stack-1x fa-square"></i>
-      <i class="fa fa-stack-1x fa-hn">Y</i>
-    </span>
+  <a title="{{ site.theme_settings.social.hacker_news }} on Hacker News" href="https://news.ycombinator.com/user?id={{ site.theme_settings.social.hacker_news }}">
+    <i class="fa-brands fa-hacker-news-square"></i>
   </a>
   {% endif %}
   {% if site.theme_settings.social.stackexchange %}
-  <a title="{{ site.theme_settings.name }} on Stack Exchange" href="https://stackexchange.com/users/{{site.theme_settings.social.stackexchange }}">
-    <i class="fa fa-stack-exchange"></i>
+  <a title="{{ site.theme_settings.name }} on Stack Exchange" href="https://stackexchange.com/users/{{ site.theme_settings.social.stackexchange }}">
+    <i class="fa-brands fa-stack-exchange"></i>
   </a>
   {% endif %}
   {% if site.theme_settings.social.stackoverflow %}
-  <a title="{{ site.theme_settings.name }} on Stack Overflow" href="http://stackoverflow.com/users/{{site.theme_settings.social.stackoverflow }}">
-    <i class="fa fa-stack-overflow"></i>
+  <a title="{{ site.theme_settings.name }} on Stack Overflow" href="http://stackoverflow.com/users/{{ site.theme_settings.social.stackoverflow }}">
+    <i class="fa-brands fa-stack-overflow"></i>
   </a>
   {% endif %}
   {% if site.theme_settings.social.twitter %}
@@ -32,29 +29,19 @@
     <i class="fa-brands fa-twitter-square"></i>
   </a>
   {% endif %}
-  {% if site.theme_settings.social.adn %}
-  <a title="{{ site.theme_settings.social.adn }} on App.net" href="https://alpha.app.net/{{ site.theme_settings.social.adn }}">
-    <i class="fa fa-adn"></i>
-  </a>
-  {% endif %}
   {% if site.theme_settings.social.facebook %}
   <a title="{{ site.theme_settings.name }} on Facebook" href="https://facebook.com/{{ site.theme_settings.social.facebook }}">
-    <i class="fa fa-facebook-square"></i>
+    <i class="fa-brands fa-facebook-square"></i>
   </a>
   {% endif %}
   {% if site.theme_settings.social.tumblr %}
   <a title="{{ site.theme_settings.name }} on tumblr" href="https://{{ site.theme_settings.social.tumblr }}.tumblr.com">
-    <i class="fa fa-tumblr-square"></i>
+    <i class="fa-brands fa-tumblr-square"></i>
   </a>
   {% endif %}
   {% if site.theme_settings.social.linkedin %}
   <a title="{{ site.theme_settings.name }} on LinkedIn" href="https://www.linkedin.com/in/{{ site.theme_settings.social.linkedin }}">
-    <i class="fa fa-linkedin-square"></i>
-  </a>
-  {% endif %}
-  {% if site.theme_settings.social.gplus %}
-  <a title="{{ site.theme_settings.name }} on Google Plus" href="https://plus.google.com/{{ site.theme_settings.social.gplus }}">
-    <i class="fa fa-google-plus-square"></i>
+    <i class="fa-brands fa-linkedin-square"></i>
   </a>
   {% endif %}
   <a title="RSS feed" id="rss" href="/atom.xml">
