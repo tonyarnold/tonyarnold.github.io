@@ -19,7 +19,7 @@ If you’d like to get in contact with me, please feel free to [send me an e-mai
 
 ## Disclaimer
 
-All opinions I express on this site are my own, and do not reflect or represent the opinions of Itty Bitty Apps, Bjango or any of the projects I'm involved in. _If you have a beef about something I've said here, [your beef is with me][Email]_.
+All opinions I express on this site are my own, and do not reflect or represent the opinions of Itty Bitty Apps or any of the projects I'm involved in. _If you have a beef about something I've said here, [your beef is with me][Email]_.
 
 
  [TCB]: http://thecocoabots.com/
