@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySQL Bindings for Ruby under Mac OS X Tiger - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2005/08/12/mysql-bindings-for-ruby-under-tiger.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  August 12, 2005
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  MySQL Bindings for Ruby under Mac OS X Tiger
+
+</h1>
+
+<div id="post">
+  
+<blockquote>
+  <h2 id="outdated-information">Outdated Information</h2>
+
+  <p>The last time this post was updated, it was 18 years old. I wouldn’t recommend using the instructions below on anything but a Mac running Mac OS X 10.4 “Tiger”.</p>
+
+  <p>Also, these instructions are not for Mac OS X Server - it comes with it’s own version of MySQL installed, and thus the procedure below probably won’t work without some modifications (then again, if you’re running Server, you’re probably skilled enough to figure out what to change yourself). Apologies for anyone on Server who has tried to follow these instructions.</p>
+</blockquote>
+
+<p>OK, after yesterdays mammoth post this one should be a bit quicker. Basically, there are a few issues with the building of native gems under Mac OS X at the moment, and until they’re dealt with up-stream, getting certain rubygems to install is going to be trial and error.</p>
+
+<h4 id="1-download-and-install-mysql">1. Download and install MySQL</h4>
+
+<p>I’ll leave you to figure this out - I use the latest 5.x release myself, but version 4.x will work just as well. You can get the disk images from <a href="http://www.mysql.com/">MySQL.com</a>. There is also a launch daemon written by Jacob Stetser, which you can <a href="http://blog.unquiet.net/archives/2005/05/19/launchd-item-for-mysql/">grab from his blog</a> (I would recommend using this over the MySQL.com bundled startup item).</p>
+
+<h4 id="2-un-install-any-mysql-rubygems-you-may-already-have-installed">2. Un-install any MySQL rubygems you may already have installed</h4>
+
+<p>We need to remove any earlier – possibly failed – attempts at installing the binding:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo gem uninstall mysql
+</code></pre></div></div>
+
+<p>If all goes well, you’ll now be ruby-mysql-less.</p>
+
+<h4 id="3-download-and-install-the-latest-mysql-bindings">3. Download and install the latest MySQL bindings</h4>
+
+<p>For some reason, people have been seeing dynamic linker issues with the latest released version of the mysql bindings, but Courtenay over at <a href="">http://habtm.com/</a> found that using the version 2.7 bindings resolves this issue</p>
+
+<p>So go ahead and download <a href="http://tmtm.org/downloads/mysql/ruby/mysql-ruby-2.7.tar.gz">http://tmtm.org/downloads/mysql/ruby/mysql-ruby-2.7.tar.gz</a>, I’ll wait. When you’re done, extract the archive and switch back to the terminal and <code class="language-plaintext highlighter-rouge">cd</code> to where you’ve extracted the source. The parts you need to type are in bold below.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo gcc_select 4.0
+$ export PATH=/usr/local/mysql/bin:$PATH
+$ ruby extconf.rb --with-mysql-config
+$ make
+$ sudo make install
+</code></pre></div></div>
+
+<p>Guess what? If everything proceeded as above, you’re done! Next time, I’ll post some information about actually using the mysql bindings (even given my preference for sqlite). For now, <a href="http://wiki.rubyonrails.com/">the Ruby on Rails wiki</a> has some great tutorials and starting points, as well as information about contacting other rails developers. Getting in contact with other Rails developers is something I really recommend you do, as the Rails community has some great minds you can learn from, and some friendly people who can help you when you get stuck. Good luck!</p>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

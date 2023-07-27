@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrating GYB with Xcode - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2018/07/11/gyb-xcode-integration.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  July 11, 2018
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  Integrating GYB with Xcode
+
+</h1>
+
+<div id="post">
+  <p>NSHipster posted a great article on <a href="https://nshipster.com/swift-gyb/">using GYB to reduce boilerplate in your Swift projects</a>, but I found the suggestion of how to integrate with Xcode via a Build Phase a bit loose and messy (at least in terms of littering your project directory with generated files).</p>
+
+<p>I’d suggest you have a look at creating a custom Build Rule instead - this will have the advantage of outputting the generated Swift files to a directory outside of your project (therefore leaving your Git status clean during CI and other automated processes).</p>
+
+<p>Here’s what you need to do:</p>
+
+<ol>
+  <li>
+    <p>Do exactly as <a href="https://nshipster.com/swift-gyb/#using-gyb-in-xcode">Mattt suggests in his article</a> and download the GYB scripts into your project directory:</p>
+
+    <div class="language-sh highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir </span>Scripts
+<span class="nv">$ </span><span class="nb">cd </span>Scripts
+<span class="nv">$ </span>wget https://github.com/apple/swift/raw/master/utils/gyb
+<span class="nv">$ </span>wget https://github.com/apple/swift/raw/master/utils/gyb.py
+<span class="nv">$ </span><span class="nb">chmod</span> +x gyb
+</code></pre></div>    </div>
+  </li>
+  <li>In Xcode, select your project, then the target you wish to use GYB files with, then select the <em>Build Rules</em> tab.</li>
+  <li>
+    <p>Use the small <em>+</em> button to add a new Build Rule, then configure it as follows:</p>
+
+    <ul>
+      <li>Process <strong>Source files with names matching:</strong> <code class="language-plaintext highlighter-rouge">*.gyb</code>
+</li>
+      <li>
+        <p>Using <strong>Custom script:</strong>, using the following script:</p>
+
+        <div class="language-sh highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="s2">"</span><span class="k">${</span><span class="nv">PROJECT_DIR</span><span class="k">}</span><span class="s2">/Scripts/gyb"</span> <span class="nt">--line-directive</span> <span class="s1">''</span> <span class="nt">-o</span> <span class="s2">"</span><span class="k">${</span><span class="nv">DERIVED_FILE_DIR</span><span class="k">}</span><span class="s2">/</span><span class="k">${</span><span class="nv">INPUT_FILE_BASE</span><span class="k">}</span><span class="s2">"</span> <span class="s2">"</span><span class="k">${</span><span class="nv">INPUT_FILE_PATH</span><span class="k">}</span><span class="s2">"</span>
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>Add one entry to <strong>Output Files</strong>:</p>
+
+        <div class="language-sh highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="si">$(</span>DERIVED_FILE_DIR<span class="si">)</span>/<span class="si">$(</span>INPUT_FILE_BASE<span class="si">)</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Create a new GYB file in your project - remember that it <strong>must</strong> have a file extension of <code class="language-plaintext highlighter-rouge">.swift.gyb</code>
+</li>
+  <li>Add the new GYB file to your target’s <em>Compile Sources</em> phase.</li>
+  <li>Add <code class="language-plaintext highlighter-rouge">Scripts/gyb.pyc</code> to your <code class="language-plaintext highlighter-rouge">.gitignore</code> file.</li>
+  <li>
+    <p>Build your project. You can check that the output of your GYB is as you expect by navigating to the <code class="language-plaintext highlighter-rouge">DERIVED_FILE_DIR</code> directory. This is usually some variation of the following:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>~/Library/Developer/Xcode/DerivedData/YOURPROJECT-ID/Build/Intermediates.noindex/YOURPROJECT.build/Debug/YOURTARGET.build/DerivedSources/
+</code></pre></div>    </div>
+  </li>
+  <li>That’s it! Commit your changes and get started replacing your boilerplate with automated GYB files.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Alternatives:</strong> You could consider integrating Krzysztof Zabłocki’s <a href="https://github.com/krzysztofzablocki/Sourcery">Sourcery</a> instead of GYB - it provides much the same result in a similar template format, but has a bunch of well documented examples and tutorials available.</p>
+</blockquote>
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+    <li>
+      <span>13 Dec 2014 »</span> <a href="/2014/12/13/death-to-telescoping-constructors.html">Swift: Death to Telescoping Constructors</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

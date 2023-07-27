@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrated documentation for Xcode projects - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2008/03/28/integrated-documentation-for-xcode-projects.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  March 28, 2008
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  Integrated documentation for Xcode projects
+
+</h1>
+
+<div id="post">
+  <p>I’ve been thinking for the past week or so about how I can contribute something back to the mac development community - a lot of good people spend a lot of time helping me out with my issues as they come up, and I believe improving our toolchain is probably the best way for me to contribute. Documentation, to be specific.</p>
+
+<p>If we take the time to properly document and comment our source code, we’re unlikely to want to have to re-document that into a human readable format such as HTML or PDF, right? I’ve previously used tools such as <a href="http://developer.apple.com/opensource/tools/headerdoc.html">HeaderDoc</a> and <a href="http://www.naturaldocs.org/">NaturalDocs</a> depending on the language and framework I’m coding in to achieve this end – with wildly varying results. HeaderDoc’s default output is quite ugly, and has some glaring omissions in terms of it’s parsing of some of the newer documentation tags.</p>
+
+<p>So I’m thinking about starting up a <a href="http://code.google.com/">Google Code</a> project around this, and I’m just trying to get a feel for what people think about this idea, what they would use, and how they would see this working. So far I’ve solicited a little feedback and the following are things I know I’d like to see:</p>
+
+<ul>
+  <li>
+<strong>Xcode build integration</strong>: the generation of this documentation should work as part of the Xcode build process. No messing around with external tools;</li>
+  <li>
+<strong>Comment formats should use what’s already out there</strong>: Lots of our code is already documented using HeaderDoc’s comment format - we should try to expand upon that if we need to - not replace it (but I’m open to suggestion here);</li>
+  <li>
+<strong>The generated output should look good</strong>. No arguments there.</li>
+</ul>
+
+<p>Comments ahoy, my peers!</p>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

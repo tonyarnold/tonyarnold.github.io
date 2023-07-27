@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolling with Ruby on Rails on Mac OS X Tiger - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2005/08/11/rolling-with-ruby-on-rails-for-tiger.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  August 11, 2005
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  Rolling with Ruby on Rails on Mac OS X Tiger
+
+</h1>
+
+<div id="post">
+  
+<blockquote>
+  <h2 id="outdated-information">Outdated Information</h2>
+
+  <p>The last time this post was updated, it was 18 years old. I wouldn’t recommend using the instructions below on anything but a Mac running Mac OS X 10.4 “Tiger”.</p>
+</blockquote>
+
+<p>I’ve found myself helping a few people get up and running with <a href="http://www.rubyonrails.com/">Ruby on Rails</a> over the last month, mainly due to my <a href="/2005/12/14/ruby-on-rails-1-installer-for-mac-os-x-tiger.html">Ruby on Rails installer package</a>. I thought it might be a good idea to document installing and setting up rails from end to end on Mac OS X, given the difficulties some people are encountering along the way.</p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<ul>
+  <li>You should install the Xcode Tools package (it’s on your Tiger installer disc) before starting the instructions below - I’ve had reports of Rails working without the Xcode tools, but it’s just simpler to have them there anyway.</li>
+  <li>You must not be using a custom-installed version of Ruby or Apache (i.e. via Fink or DarwinPorts), as the installer package augments the included versions that come with Mac OS X Tiger, and will not work with custom-installed binaries.</li>
+  <li>You should be familiar with some basic terminal commands. These instructions will help, but Rails itself has components that can only be run from the command line.</li>
+</ul>
+
+<h3 id="download-and-install-the-package">Download and install the package</h3>
+
+<p>First up, grab the package I mentioned above: <a href="/2005/12/14/ruby-on-rails-1-installer-for-mac-os-x-tiger.html">Ruby on Rails installer</a> (about 6.6 Mb), and install it. This package includes:</p>
+
+<ul>
+  <li>A fix for Ruby 1.8.2 that comes with Mac OS X 10.4 - by default, it tries to cross-compile an native rubygems extensions for i686 as well as ppc. This won’t work on a standard Tiger install, so we remove those references.</li>
+  <li>FastCGI developer’s kit</li>
+  <li>RubyGems 0.8.10 with the following gems pre-installed:
+    <ul>
+      <li>BlueCloth 1.0</li>
+      <li>FastCGI Bindings for Ruby 0.8.6.1</li>
+      <li>Madeleine 0.7.1</li>
+      <li>Rake 0.6.2
+        <ul>
+          <li>RedCloth 3.0.4</li>
+          <li>Ruby on Rails 0.13.1</li>
+          <li>SQLite 3 Bindings for Ruby 1.1.0</li>
+          <li>Syntax 1.0.0</li>
+          <li>More…</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="update-your-rubygems">Update your rubygems</h3>
+
+<p>The installer package I created was built a few months ago, so some of the gems have newer versions available. Thankfully, gems are really, really easy to update. Open a new terminal window and paste this in:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo gem update
+</code></pre></div></div>
+
+<p>This will go through the process of bringing all of your gems, including Rails, up to the latest versions available. Accept any questions it asks about dependencies.</p>
+
+<h3 id="create-a-test-rails-application">Create a test rails application</h3>
+
+<p>To make sure everything installed properly, go back to the terminal and type the following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd ~
+$ mkdir Rails
+$ cd Rails
+$ rails Test
+</code></pre></div></div>
+
+<p>You should see the following output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>create
+create  app/apis
+create  app/controllers
+create  app/helpers
+create  app/models
+create  app/views/layouts
+create  config/environments
+create  components
+create  db
+create  doc
+create  lib
+create  log
+create  public/images
+create  public/javascripts
+create  public/stylesheets
+create  script
+create  test/fixtures
+create  test/functional
+create  test/mocks/development
+create  test/mocks/test
+create  test/unit
+create  vendor
+create  Rakefile
+create  README
+create  CHANGELOG
+create  app/controllers/application.rb
+create  app/helpers/application_helper.rb
+create  test/test_helper.rb
+create  config/database.yml
+create  config/routes.rb
+create  public/.htaccess
+create  config/environment.rb
+create  config/environments/production.rb
+create  config/environments/development.rb
+create  config/environments/test.rb
+create  script/console
+create  script/destroy
+create  script/generate
+create  script/server
+create  script/runner
+create  script/benchmarker
+create  script/profiler
+create  script/breakpointer
+create  public/dispatch.rb
+create  public/dispatch.cgi
+create  public/dispatch.fcgi
+create  public/404.html
+create  public/500.html
+create  public/index.html
+create  public/favicon.ico
+create  public/javascripts/prototype.js
+create  public/javascripts/effects.js
+create  public/javascripts/dragdrop.js
+create  public/javascripts/controls.js
+create  doc/README_FOR_APP
+create  log/server.log
+create  log/production.log
+create  log/development.log
+create  log/test.log
+</code></pre></div></div>
+
+<p>If that all worked, congratulations! You now have a working rails install. At this point, you could simple type:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd ~/Rails/Test
+$ ./script/server
+</code></pre></div></div>
+
+<p>And rails will bring up WEBrick, a simple ruby-based web server that you can use to develop with. You’ll notice that WEBrick is slow - which is why we’re going to use Apache instead.</p>
+
+<h3 id="setting-the-right-permissions-on-your-application">Setting the right permissions on your application</h3>
+
+<p>If your rails application is still running WEBrick, stop that now by pressing control-c. There are a couple of ways to do set-up rails applications under Apache, but I’m going to stick with what I consider to be the most straight-forward approach. Your applications will be served under URLs like http://localhost/testapp/.</p>
+
+<p>First up, we need to make sure that the permissions on your rails application are OK. This is the most common error I’ve come across when setting up a new application. It’s important to know which user the Apache is running as - by default under Mac OS X, it’s the user <code class="language-plaintext highlighter-rouge">www</code> with a group of <code class="language-plaintext highlighter-rouge">www</code>. Obviously, you still need to be able to write to your application, so we’re just going to change the group on the applications files by typing:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd ~/Rails/
+$ sudo chgrp -R www Test
+</code></pre></div></div>
+
+<p>Now we need to make sure that the <code class="language-plaintext highlighter-rouge">db</code>, <code class="language-plaintext highlighter-rouge">log</code>, and <code class="language-plaintext highlighter-rouge">public</code>, and any logs stored in <code class="language-plaintext highlighter-rouge">log</code> can be accessed and written to by Apache:</p>
+
+<p>$ cd ~/Rails/Test
+  $ chmod 0775 db
+  $ chmod 0777 log
+  $ chmod 0775 public
+  $ chmod 0666 log/*.log</p>
+
+<p>Right, your permissions should be OK at this point, so let’s move on to configuring Apache to see your rails application!</p>
+
+<h3 id="set-up-apache-to-handle-your-rails-applications">Set-up Apache to handle your rails applications</h3>
+
+<p>In your favourite text editor (I use <a href="http://www.macromates.com/">Macromate’s TextMate</a>) open up <code class="language-plaintext highlighter-rouge">/etc/httpd/httpd.conf</code>. Scroll right to the bottom and make sure the following code is present:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;IfModule mod_fastcgi.c&gt;
+    FastCgiIpcDir /tmp/fcgi_ipc/
+    AddHandler fastcgi-script .fcgi
+&lt;/IfModule&gt;
+</code></pre></div></div>
+
+<p>Now you’ll need to add the code to handle your application:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Alias /test/ "/Users/YOURUSERNAME/Rails/Test/public/"
+Alias /test "/Users/YOURUSERNAME/Rails/Test/public/"
+
+&lt;Directory /Users/YOURUSERNAME/Rails/Test/public/&gt;
+    Options ExecCGI FollowSymLinks
+    AllowOverride all
+    Order allow,deny
+    Allow from all
+&lt;/Directory&gt;
+</code></pre></div></div>
+
+<p>Save and close the file. Now inside your <code class="language-plaintext highlighter-rouge">Test</code> rails application, you’ll need to open <code class="language-plaintext highlighter-rouge">public/.htaccess</code> and change the following line:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RewriteRule ^(.*)$ dispatch.cgi [QSA,L]
+</code></pre></div></div>
+
+<p>to</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
+</code></pre></div></div>
+
+<p>You’ll also need to add the following line underneath <code class="language-plaintext highlighter-rouge">RewriteEngine On</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RewriteBase /test/
+</code></pre></div></div>
+
+<p>Save and close the file. Now, type the following in your terminal:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apachectl graceful
+</code></pre></div></div>
+
+<h3 id="check-your-application">Check your application</h3>
+
+<p>Open your web browser and point it at <a href="http://localhost/test/">http://localhost/test/</a>. If everything worked OK, you should be rolling on rails!</p>
+
+<p>I’ll try to post some more information about where to go from here, and also how to install the mysql ruby bindings which can be troublesome, and aren’t included in my package (I use sqlite as my database while developing). For now, have fun!</p>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

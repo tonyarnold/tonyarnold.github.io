@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Server for Mac OS X Client - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2005/11/09/chat-server-for-mac-os-x-client.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  November 09, 2005
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  Chat Server for Mac OS X Client
+
+</h1>
+
+<div id="post">
+  <blockquote>
+  <h2 id="notice">Notice</h2>
+
+  <p><em>Given the age of this package, I’ve decided to take it down. I cannot support a package for an operating system and processor architecture that I no longer run.</em></p>
+</blockquote>
+
+<p>OK, I’ve been putting this off for a while. Same as pretty much everything else I release at the moment, I make no guarantees - this package works for me, and I’ll be pleased if it works for you too. Oh, and as with everything else I’ve made so far, <strong>it’s Tiger only, and is only compiled for PowerPC-based macs</strong>.</p>
+
+<h2 id="what-is-it">What is it?</h2>
+
+<p>This installer package installs the version of jabber than Apple bundles with Mac OS X Server as ‘iChat Server’. I’ve renamed it to plain ole’ ‘Chat Server’ so people don’t confuse my dodgy work with the Apple version. I’ve also added jabber transports for MSN and Yahoo! (although you’ll need to use a dedicated client like <a href="http://psi.affinix.com/">Affinix’s Psi</a> jabber client to activate that functionality).</p>
+
+<h2 id="how-do-i-use-it">How do I use it?</h2>
+
+<p>Run the installer, reboot, then open iChat and follow the instructions below:</p>
+
+<ol>
+  <li>Open iChat, then go to “<em>iChat » Preferences…</em>”</li>
+  <li>Go to the “<em>Accounts</em>” tab, then select the “<em>+</em>” symbol at the bottom of the window to add a new account</li>
+  <li>Under “<em>Account Type</em>”, select “<strong>Jabber Account</strong>”</li>
+  <li>For Jabber ID, enter the username of the account you are currently logged in as, plus ‘<strong><a href="https://github.com/localhost" class="user-mention">@localhost</a></strong>’ – for example, my account login is ‘<strong>tony</strong>’, so my Jabber ID would be ‘<strong>tony@localhost</strong>’</li>
+  <li>Set “<em>Server</em>” to ‘<strong>localhost</strong>’, and “<em>Password</em>” to the password of the account you are currently logged in as.</li>
+  <li>Don’t forget to enter a description!</li>
+  <li>Select “<em>Add</em>” – if all went according to plan, you should now be able to connect to your locally installed Chat Server!</li>
+</ol>
+
+<h2 id="how-do-i-chat-to-my-msnyahoo-buddies">How do I chat to my MSN/Yahoo! buddies?</h2>
+
+<p>Using <a href="http://psi.affinix.com/">Affinix’s Psi</a>, set-up and connect to your local chat server (the trick is to follow iChat’s settings, but also select “Use SSL encryption (to server)” and “Allow Plaintext Login” under the “Connection” tab. Then follow these instructions:</p>
+
+<ol>
+  <li>Make sure you are successfully connected to your local Chat Server</li>
+  <li>Go to “<em>General » Service Discovery</em>” and select the account you’ve just set-up</li>
+  <li>You should see both “<em>MSN Transport</em>” and “<em>Yahoo! Transport</em>” – right-click on whichever one you want to use (yes, you can use both at the same time) and select “<em>Register</em>”</li>
+  <li>Fill in your username and password for whichever network you just chose and hit “<em>Register</em>”</li>
+  <li>If all went according to plan, you should be asked to authorise the network transport you just added - do that, then close Psi and re-open iChat</li>
+  <li>Voila! You can now chat to your MSN/Yahoo! buddies directly from iChat (although you can’t send files or images to them as you do your iChat buddies)</li>
+</ol>
+
+<h2 id="enough-already--wheres-the-download">Enough already – where’s the download?</h2>
+
+<strike>OK, OK, you can download it here: Install Chat Server.zip (8.9Mb). As always, let me know if you run into trouble via the comments.</strike>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean up your projects with Xcode 5 - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2014/04/10/clean-up-your-projects-with-xcode-5.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  April 10, 2014
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  Clean up your projects with Xcode 5
+
+</h1>
+
+<div id="post">
+  <p>Xcode 5 introduced a host of new features, fixes and performance enhancements but it also makes it possible to simplify your Xcode project and discard some maintenance tasks.</p>
+
+<h2 id="link-frameworks-automatically">Link Frameworks Automatically</h2>
+
+<p>Every Xcode project you’ve worked with is likely to have a <em>Frameworks</em> group at the root of the project. If you’re on OS X it might contain things like <em>Cocoa.framework</em>, <em>Foundation.framework</em> and <em>CoreData.framework</em>, on iOS it holds <em>UIKit.framework</em> and friends. One of the improvements that came with Xcode 5 was <a href="http://clang.llvm.org/docs/Modules.html">LLVM Modules</a>. One of the improvements that modules brings is the ability to automatically link any system frameworks that you <code class="language-plaintext highlighter-rouge">#import</code>. This is <strong>awesome</strong>, and it’s one less thing you now have to look after.</p>
+
+<p>As long as you’re only keeping system frameworks in that group, you can delete it. <strong>Yes, delete the entire “Frameworks” group</strong>. Just ensure that you’ve enabled <em>Link Frameworks Automatically</em> in your Xcode project’s settings.</p>
+
+<p><img src="http://static.tonyarnold.com/xcode-project-settings-lfa.png" alt="Xcode project settings showing 'Link Frameworks Automatically' setting" class="widescreen"></p>
+
+<blockquote>
+  <p>If you’re on iOS, you will need to ensure that <em>“Enable Modules (C and Objective-C)”</em> is also set <em>“Yes”</em> or this tip won’t work. OS X works either way. 
+<cite><a href="https://twitter.com/_psonice/status/455308002229518336">Thanks to Chris Wood for pointing this out</a></cite></p>
+</blockquote>
+
+<h2 id="tidy-your-schemes">Tidy your schemes</h2>
+
+<p>When you open up your project’s schemes menu, do you see a bunch of schemes from third party projects in there?</p>
+
+<p><img src="http://static.tonyarnold.com/xcode-schemes-menu-super-cluttered.png" alt="Xcode schemes menu showing many schemes" class="center" width="265" height="282"></p>
+
+<p>To clean them up, go to <em>Product → Scheme → Manage Schemes…</em> and uncheck <em>Show</em> for any that you don’t want to see.</p>
+
+<p><img src="http://static.tonyarnold.com/xcode-schemes-menu-deps-removed.png" alt="Xcode schemes menu showing just the important schemes" class="center" width="265" height="182"></p>
+
+<blockquote>
+  <p>The caveat is that unless you check the “Shared” column, these settings will be reset if your user project settings are ever reset. It’s easy enough to reapply.</p>
+</blockquote>
+
+<h2 id="schemes-for-unit-tests-are-unnecessary">Schemes for unit tests are unnecessary</h2>
+
+<p>Older projects often show schemes for any unit test bundles you have in your project — you don’t actually need to show them at all!</p>
+
+<blockquote>
+  <p>It was necessary under Xcode 4 to have separate schemes for your test targets so that <abbr title="Continuous Integration">CI</abbr> servers could find and run them (<code class="language-plaintext highlighter-rouge">xcodebuild</code> didn’t support the “test” action until Xcode 5).</p>
+</blockquote>
+
+<p>As long as your test targets specify their <em>Target Dependencies</em> properly, you can just go to <em>Product → Scheme → Manage Schemes…</em> and delete any test schemes that are listed.</p>
+
+<p><img src="http://static.tonyarnold.com/xcode-schemes-menu-clean.png" alt="Xcode schemes menu looking super sharp" class="center" width="248" height="142"></p>
+
+<p>Wow, what an improvement. And no loss of functionality!</p>
+
+<h2 id="sort-your-classes">Sort your classes</h2>
+
+<p>This is a simple one, but manually ordering your classes and groups is one way to waste a lot of time. Why not just right click on a group/project in the Xcode navigator and select <em>Sort Files By Name</em>?</p>
+
+<p><img src="http://static.tonyarnold.com/xcode-context-menu-sort-files-by-name.png" alt="Xcode context menu showing 'Sort Files By Name' highlighted" class="center" width="283" height="411"></p>
+
+<h2 id="simple-is-good">Simple is good</h2>
+
+<p>Hopefully these tips have helped you clean up your Xcode project a little. Hopefully you’ve also removed a few things you don’t really need to see from your line of sight, freeing up a little bit of brain power for something else!</p>
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

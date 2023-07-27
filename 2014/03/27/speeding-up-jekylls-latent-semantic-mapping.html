@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speeding up Jekyll's Latent Semantic Mapping on OS X - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2014/03/27/speeding-up-jekylls-latent-semantic-mapping.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  March 27, 2014
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  Speeding up Jekyll's Latent Semantic Mapping on OS X
+
+</h1>
+
+<div id="post">
+  <p>Running Jekyll with Latent Semantic Indexing (or <abbr title="Latent Semantic Indexing">LSI</abbr>) on a site of only 20-30 pages can take 5-10 minutes on a reasonably powerful Mac. I got tired of having to wait or isolate individual posts to get on with writing, so I took Jekyll’s recommendation and installed the <a href="http://www.gnu.org/software/gsl/"><abbr title="GNU's Not Unix!">GNU</abbr> Scientific Library</a> (or <abbr title="GNU Scientific Library">GSL</abbr>).</p>
+
+<p>After properly installing <abbr title="GNU Scientific Library">GSL</abbr> on my MacBook Pro, <strong>building my site went from over 5 minutes for a site with about 100 posts, to under 5 seconds</strong>.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<ul>
+  <li>You’re using (or want to use) Jekyll’s <abbr title="Latent Semantic Indexing">LSI</abbr> and related posts function</li>
+  <li>
+<a href="https://itunes.apple.com/au/app/xcode/id497799835?mt=12">Xcode</a> (and most likely the command-line tools)</li>
+  <li><a href="http://brew.sh/">Homebrew</a></li>
+  <li>Ruby, RubyGems and Bundler</li>
+</ul>
+
+<h2 id="instructions">Instructions</h2>
+
+<ol>
+  <li>
+    <p>Install <abbr title="GNU Scientific Library">GSL</abbr> via <a href="http://brew.sh/">homebrew</a>:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ brew install gsl
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>If you don’t already have a <code class="language-plaintext highlighter-rouge">Gemfile</code> for your Jekyll site, create one that looks similar to this:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> source 'https://rubygems.org'
+
+ gem 'jekyll'
+ gem 'gsl'
+</code></pre></div>    </div>
+
+    <blockquote>
+      <p><strong>Note:</strong> If you already have a Gemfile, the important lines are <code class="language-plaintext highlighter-rouge">narray</code> and <code class="language-plaintext highlighter-rouge">gsl</code>. Be sure to include the git repository links, as these contain my fixes to compile on OS X 10.9 “Mavericks”.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Now use Bundler to install the dependencies on your Mac:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ cd {YOUR SITE'S FOLDER}
+ $ bundle install
+</code></pre></div>    </div>
+
+    <blockquote>
+      <p><strong>Note:</strong> It’s probably worth while looking into a tool like <a href="http://rvm.io/"><abbr title="Ruby Version Manager">RVM</abbr></a>, <a href="http://rbenv.org">rbenv</a> or similar that will let you create gemsets so that you don’t pollute the system rubygems unnecessarily.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Now start up Jekyll and activate <abbr title="Latent Semantic Indexing">LSI</abbr> (add <code class="language-plaintext highlighter-rouge">--watch</code> if you want to rebuild on any change to your content):</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> $ jekyll serve --lsi
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Make yourself a coffee with all the extra time you’re going to save not sitting around waiting for the <abbr title="Latent Semantic Indexing">LSI</abbr> indexer to finish!</p>
+  </li>
+</ol>
+
+<p>Et voilà! Super speedy site rebuilds with more intelligent related posts for each page.</p>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

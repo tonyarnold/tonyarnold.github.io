@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I’ve changed blog software again - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2007/07/25/ive-changed-blog-software-again.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  July 25, 2007
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  I’ve changed blog software again
+
+</h1>
+
+<div id="post">
+  <p>In what appears to be a biannual ‘thing’ for me over the last few years, I’ve thrown out my old blog software and replaced it with something that suits my needs and skills better. I’m now running <a href="http://symphony21.com/">Symphony</a>, by <a href="http://21degrees.com.au/">21 Degrees</a>, which is:</p>
+
+<ol>
+  <li>
+<strong>Not a Rails app (it’s PHP)</strong>. Whilst not entirely happy with this (as I am a huge advocate of the “Rails Way™”), both Typo and Mephisto were generally a little unreliable for me over my time using them. There’s also the fact that neither are receiving serious attention anymore - and let’s be honest, everyone loves new features once in a while;</li>
+  <li>
+<strong><a href="http://symphony21.com/">Symphony</a> is run entirely off a combination of XML and XSLTs</strong>. If you’ve not worked with this combination for web sites before, you’re missing out. XSLT is the language god would present his structured data with;</li>
+  <li>
+<strong>It’s faster</strong>. No idea why, but my Rails sites on Dreamhost always ran slowly.</li>
+  <li>
+<strong>It’s more configurable</strong> - check out the “Projects” section of my site - that’s all generated using a custom page type I set-up once and forget about.</li>
+  <li>I like shiny things. <strong>Obey my blog</strong> - and its shiny updated design.</li>
+  <li>
+<strong>The search pages currently suck</strong>. I’m working on them.</li>
+  <li>
+<strong>My RSS feed has moved</strong>, and I haven’t rewritten the old URL yet (I’ll get to it).</li>
+</ol>
+
+<h4 id="code-splurge">Code splurge</h4>
+
+<p>Here’s some naff XSL I wrote (with some assistance from <a href="http://overture21.com/forum/comments.php?DiscussionID=1352">members and their examples at Overture</a>) to scan through my XML structure and append the location of the installed <a href="http://symphony21.com/">Symphony</a> application to the front of all absolute URLs. This means I can move my blog where-ever I like, and all of my links within pages will continue working. It’s also a good example of advanced XSL usage.</p>
+
+<figure class="highlight"><pre><code class="language-xslt" data-lang="xslt">&lt;xsl:template match="p | ul | ol | li | h1 | h2 | h3 | h4 | h5 | h6 | blockquote | em | strong | code | pre | acronym | span"&gt;
+    &lt;xsl:element name="{name(.)}"&gt;
+        &lt;xsl:apply-templates select="@*"/&gt;
+        &lt;xsl:apply-templates/&gt;
+    &lt;/xsl:element&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match="a | img"&gt;
+  &lt;xsl:element name="{name(.)}"&gt;
+    &lt;xsl:apply-templates select="@*"/&gt;
+    &lt;xsl:if test="substring(@src,1,1)='/'"&gt;
+      &lt;xsl:attribute name="src"&gt;&lt;xsl:value-of select="$root"/&gt;&lt;xsl:value-of select="@src"/&gt;&lt;/xsl:attribute&gt;
+    &lt;/xsl:if&gt;
+    &lt;xsl:if test="substring(@href,1,1)='/'"&gt;
+      &lt;xsl:attribute name="href"&gt;&lt;xsl:value-of select="$root"/&gt;&lt;xsl:value-of select="@href"/&gt;&lt;/xsl:attribute&gt;
+    &lt;/xsl:if&gt;
+    &lt;xsl:apply-templates/&gt;
+  &lt;/xsl:element&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match="@*"&gt;
+    &lt;xsl:attribute name="{name(.)}"&gt;&lt;xsl:value-of select="."/&gt;&lt;/xsl:attribute&gt;
+&lt;/xsl:template&gt;
+
+&lt;xsl:template match="text()"&gt;
+    &lt;xsl:value-of select="."/&gt;
+&lt;/xsl:template&gt;</code></pre></figure>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

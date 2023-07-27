@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working with NSNotFound in Swift - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2014/07/21/nsnotfound-in-swift.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  July 21, 2014
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  Working with NSNotFound in Swift
+
+</h1>
+
+<div id="post">
+  <blockquote>
+  <p>Disclaimer: This information is current as of Xcode 6.0b3, and is subject to change in future seeds. Also, I — like everyone outside Apple — am still learning Swift. Please, <a href="https://twitter.com/tonyarnold/">let me know if I’ve missed something</a>!</p>
+</blockquote>
+
+<hr>
+
+<p><strong>Update:</strong> About 35 seconds after I posted this, <a href="https://github.com/mattyohe" class="user-mention">@mattyohe</a> <a href="https://twitter.com/mattyohe/status/491054206795923456">pointed out that this is exactly what Swift’s optionals are for</a>. I expect that <code class="language-plaintext highlighter-rouge">NSNotFound</code> will disappear at some point in the next few years.</p>
+
+<p>The class ended up looking like this:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">class</span> <span class="kt">ImagePageViewModel</span>
+<span class="p">{</span>
+    <span class="k">var</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span>
+    <span class="k">var</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span>
+
+    <span class="nf">init</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span><span class="kt">UIImage</span><span class="p">,</span> <span class="n">atIndex</span> <span class="nv">index</span><span class="p">:</span><span class="kt">Int</span><span class="p">?)</span>
+    <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span>
+
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">index</span> <span class="o">=</span> <span class="n">index</span>
+        <span class="p">{</span>
+            <span class="k">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">index</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span><span class="kt">UIImage</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span><span class="n">image</span><span class="p">,</span> <span class="nv">atIndex</span><span class="p">:</span><span class="o">.</span><span class="kt">None</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<hr>
+
+<p><code class="language-plaintext highlighter-rouge">NSNotFound</code> is currently a common way for Cocoa frameworks to indicate that a result couldn’t be found when searching through indices and other serial data. I wanted to create a simple Swift class to represent the data behind a cell that displays an image, like so:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kd">class</span> <span class="kt">ImagePageViewModel</span>
+<span class="p">{</span>
+    <span class="k">var</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span>
+    <span class="k">var</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span>
+
+    <span class="nf">init</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span><span class="kt">UIImage</span><span class="p">,</span> <span class="n">atIndex</span> <span class="nv">index</span><span class="p">:</span><span class="kt">Int</span> <span class="o">=</span> <span class="kt">NSNotFound</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">index</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Unfortunately, I ran into a few errors that didn’t have  obvious solutions (at least to me!) from the outset.</p>
+
+<p>Straight up, if you’ve tried to use <code class="language-plaintext highlighter-rouge">NSNotFound</code> in Swift you’ve probably hit a few stumbling blocks. If you create the class above in your project, you’ll see an error — <strong>Ambiguous use of ‘NSNotFound’</strong>. To fix this, you’ll need to be more explicit about where <code class="language-plaintext highlighter-rouge">NSNotFound</code> is coming from — easy enough, <a href="http://ericasadun.com/2014/06/13/swift-fixing-ambiguous-use-of-nsnotfound/">as described by Erica Sadun</a> just use <code class="language-plaintext highlighter-rouge">Foundation.NSNotFound</code> instead.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="nf">init</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span><span class="kt">UIImage</span><span class="p">,</span> <span class="n">atIndex</span> <span class="nv">index</span><span class="p">:</span><span class="kt">Int</span> <span class="o">=</span> <span class="kt">Foundation</span><span class="o">.</span><span class="kt">NSNotFound</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Next, you’ll see Swift get a little tripped up trying to convert from an <code class="language-plaintext highlighter-rouge">NSInteger</code> to an <code class="language-plaintext highlighter-rouge">NSNumber</code> and then back to an <code class="language-plaintext highlighter-rouge">Int</code> again — the error this time is <strong>‘NSNumber’ is not a subtype of ‘Int’</strong>. In this class, I wanted to use pure Swift types as much as possible while maintaining Cocoa-isms like NSNotFound, so the <code class="language-plaintext highlighter-rouge">index</code> parameter is defined as an <code class="language-plaintext highlighter-rouge">Int</code>.</p>
+
+<blockquote>
+  <p>I’m sure there’s a pragmatic argument to be made for just defining this parameter as an NSNumber and wiping your hands of the problem, but I’m being idealistic in my adoption and learning of Swift so assume that I really want this parameter to be an Int.</p>
+</blockquote>
+
+<p>It’s pretty easy to give Swift hints about the types you’d like things to resolve to, and you’ll probably need to do this a bit with numbers. In this instance, we’ll explicity force this number to be an <code class="language-plaintext highlighter-rouge">Int</code>:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="nf">init</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span><span class="kt">UIImage</span><span class="p">,</span> <span class="n">atIndex</span> <span class="nv">index</span><span class="p">:</span><span class="kt">Int</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="kt">Foundation</span><span class="o">.</span><span class="kt">NSNotFound</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This compiles and works as you’d expect. I can now call either:</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nv">viewModel</span> <span class="o">=</span> <span class="kt">ImagePageViewModel</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span> <span class="n">myImage</span><span class="p">)</span></code></pre></figure>
+
+<p>or</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nv">viewModel</span> <span class="o">=</span> <span class="kt">ImagePageViewModel</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span> <span class="n">myImage</span><span class="p">,</span> <span class="nv">index</span><span class="p">:</span> <span class="mi">6</span><span class="p">)</span></code></pre></figure>
+
+<p>I don’t have enough experience with Swift yet to know if the conversion of an enumerable type in Objective-C to C should require wrapping in <code class="language-plaintext highlighter-rouge">Int()</code> so I’ve not filed this as a radar.</p>
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

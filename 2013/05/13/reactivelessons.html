@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReactiveLessons - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2013/05/13/reactivelessons.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  May 13, 2013
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  ReactiveLessons
+
+</h1>
+
+<div id="post">
+  <p>In my experience, there are three simple ways to think about using <a href="https://github.com/ReactiveCocoa/ReactiveCocoa/">ReactiveCocoa</a>:</p>
+
+<ul>
+  <li>As a lovely, simple replacement API for Key-Value Observation;</li>
+  <li>As a way to introduce Functional Reactive Programming (FRP) into Cocoa apps;</li>
+  <li>A hybrid of the two.</li>
+</ul>
+
+<h2 id="key-value-observation-done-right">Key-Value Observation Done Right</h2>
+
+<p>Here’s the current state of using Key-Value Observation to observe and respond to changes to a string property on my fictional class:</p>
+
+<figure class="highlight"><pre><code class="language-obj-c" data-lang="obj-c"><span class="c1">// In your viewDidLoad/awakeFromNib/init</span>
+<span class="p">[</span><span class="n">self</span> <span class="nf">addObserver</span><span class="p">:</span><span class="n">self</span>
+       <span class="nl">forKeyPath:</span><span class="s">@"someString"</span>
+          <span class="nl">options:</span><span class="n">NSKeyValueObservingOptionNew</span>
+          <span class="nl">context:</span><span class="o">&amp;</span><span class="n">someStringChangeContext</span><span class="p">];</span>
+
+<span class="c1">// In dealloc</span>
+<span class="p">[</span><span class="n">self</span> <span class="nf">removeObserver</span><span class="p">:</span><span class="n">self</span>
+          <span class="nl">forKeyPath:</span><span class="s">@"someString"</span>
+             <span class="nl">context:</span><span class="o">&amp;</span><span class="n">someStringChangeContext</span><span class="p">];</span>
+
+<span class="c1">// Elsewhere in your class</span>
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">observeValueForKeyPath</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">keyPath</span>
+                      <span class="nf">ofObject</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">object</span>
+                        <span class="nf">change</span><span class="p">:(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">change</span>
+                       <span class="nf">context</span><span class="p">:(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="nv">context</span>
+<span class="p">{</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">context</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">someStringChangeContext</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">([</span><span class="n">keyPath</span> <span class="nf">isEqualToString</span><span class="p">:</span><span class="s">@"someString"</span><span class="p">])</span> <span class="p">{</span>
+      <span class="c1">// Do a bunch of stuff here</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+<span class="p">}</span></code></pre></figure>
+
+<p>Here’s the same thing using ReactiveCocoa:</p>
+
+<figure class="highlight"><pre><code class="language-obj-c" data-lang="obj-c"><span class="n">RACSignal</span> <span class="o">*</span><span class="n">stringChanged</span> <span class="o">=</span> <span class="n">RACObserve</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">someString</span><span class="p">);</span>
+<span class="p">[</span><span class="n">stringChanged</span> <span class="nf">subscribeNext</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="n">string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Do a bunch of things here, just like you would with KVO</span>
+<span class="p">}];</span></code></pre></figure>
+
+<p>There’s no need to tear down the observer when you’re done, and if you’re only interested in using ReactiveCocoa as a simple replacement for KVO, there you go! “Bam” said the lady.</p>
+
+<h2 id="bringing-it-functional-reactive-style">‘Bringing It’ Functional Reactive Style</h2>
+
+<p>The real drive behind the GitHub team building ReactiveCocoa is something called “<a href="http://blog.maybeapps.com/post/42894317939/input-and-output?3ed07280">Functional Reactive Programming</a>” (or FRP). I’m the first to admit that I don’t always understand the most elegant way to approach problems in Cocoa apps using FRP, but the basic gist is that you’re removing unnecessary state from your code.</p>
+
+<p>In the KVO example above, we’re dealing with a string property on a fictional class instance, the actual real-world use of this would not be so abstract. It’s likely that we’re taking a string value from some data source and displaying it in a text field. So here’s that:</p>
+
+<figure class="highlight"><pre><code class="language-obj-c" data-lang="obj-c"><span class="n">RACSignal</span> <span class="o">*</span><span class="n">nameSignal</span> <span class="o">=</span> <span class="p">[</span><span class="n">RACObserve</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">someManagedObject</span><span class="p">.</span><span class="n">name</span><span class="p">)</span> <span class="nf">distinctUntilChanged</span><span class="p">];</span>
+
+<span class="n">RAC</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">someTextField</span><span class="p">.</span><span class="n">text</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="n">nameSignal</span> <span class="nf">deliverOn</span><span class="p">:[</span><span class="n">RACScheduler</span> <span class="nf">mainThreadScheduler</span><span class="p">]];</span></code></pre></figure>
+
+<p>Still with me? Every time the <code class="language-plaintext highlighter-rouge">self.someManagedObject.name</code> attribute changes, that change will automatically propagate to the text field. Conceptually, it’s quite a lot like Cocoa Bindings, but unlike bindings it’s available for use on iOS.</p>
+
+<p>But that’s still not the real advantage of ReactiveCocoa. Consider this, you have an <code class="language-plaintext highlighter-rouge">NSDate</code> property on one of your objects that you’d like to display in a text field. ReactiveCocoa can help you do that, while providing the same binding-style advantages as above:</p>
+
+<figure class="highlight"><pre><code class="language-obj-c" data-lang="obj-c"><span class="n">RACSignal</span> <span class="o">*</span><span class="n">dateSignal</span> <span class="o">=</span>
+<span class="p">[</span><span class="n">RACObserve</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">managedObject</span><span class="p">.</span><span class="n">startDate</span><span class="p">)</span> <span class="nf">distinctUntilChanged</span><span class="p">];</span>
+
+<span class="n">RAC</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">someTextFieldForShowingTheDate</span><span class="p">.</span><span class="n">text</span><span class="p">)</span> <span class="o">=</span>
+<span class="p">[[</span><span class="n">dateSignal</span> <span class="nf">map</span><span class="p">:</span><span class="o">^</span><span class="n">NSString</span> <span class="o">*</span><span class="p">(</span><span class="n">NSDate</span> <span class="o">*</span><span class="n">date</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">NSDateFormatter</span>
+            <span class="nl">localizedStringFromDate:</span><span class="n">date</span>
+                          <span class="nl">dateStyle:</span><span class="n">NSDateFormatterShortStyle</span>
+                          <span class="nl">timeStyle:</span><span class="nf">NSDateFormatterShortStyle</span><span class="p">];</span>
+<span class="p">}]</span> <span class="nf">deliverOn</span><span class="p">:[</span><span class="n">RACScheduler</span> <span class="nf">mainThreadScheduler</span><span class="p">]</span><span class="err">;</span></code></pre></figure>
+
+<p>Now any time the date changes on the managed object, the text field will automatically update as well, converting from <code class="language-plaintext highlighter-rouge">NSDate</code> to <code class="language-plaintext highlighter-rouge">NSString</code> as it goes. Nifty, hey?</p>
+
+<h2 id="danger-high-voltage-reactions">Danger! High Voltage Reactions</h2>
+
+<p>So ReactiveCocoa, yay! More succinct code, yay! “Should I be using this right now?” I hear you ask?</p>
+
+<p>In the course of adopting ReactiveCocoa for use in my own projects, I’ve discovered some not awesome things:</p>
+
+<ul>
+  <li>Thinking about things in an FRP way currently takes longer for complex situations. At least for now, I’m finding I spend a lot less time on the simple interactions between my data and the UI, but a lot longer on complex problems. There’s a lot of abstract thinking and explanations in FRP;</li>
+  <li>It’s really easy to end up with hundreds of lines of subscriptions and maps for more complex UIs — I call this “ReactiveSpaghetti”. I don’t think this problem is unique to ReactiveCocoa, but it’s easier to see it in action when your <code class="language-plaintext highlighter-rouge">- (void)viewDidLoad</code> method turns into a RACParty;</li>
+  <li>A lot of Xcode and LLDB’s nice debug handling doesn’t work well with ReactiveCocoa. You will be dumped into an untraceable stream of RACSignals and blocks at some point. Don’t even get me started on crash reports that originate from within ReactiveCocoa! There are logging methods built into ReactiveCocoa, but they’re not going to do you any good with a user-uploaded crash log;</li>
+</ul>
+
+<p>So ReactiveCocoa is not all peaches and cream, but to date I’ve also noticed no performance issues and I feel like I’m expressing myself more clearly through RAC-enabled code than I was beforehand.</p>
+
+<p><strong>After my experiences, I could happily just stick to using the -subscribeNext: and -map: methods in a very simple, KVO-esque manner.</strong></p>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

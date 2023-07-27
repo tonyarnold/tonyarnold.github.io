@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixing an annoying Exposé bug in NSWindow - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2008/08/10/fix-an-annoying-expose-bug-with-nswindow.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  August 10, 2008
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  Fixing an annoying Exposé bug in NSWindow
+
+</h1>
+
+<div id="post">
+  <p><img src="http://static.tonyarnold.com/missing_shadows-1306152494.jpg" alt="Missing shadows on windows in Exposé" class="widescreen"></p>
+
+<p>You’ve seen it before - Exposé’s F-10 mode stops working for no apparent reason. F-9 is still good to go, but F-10 just looks busted.</p>
+
+<h2 id="why">Why?</h2>
+
+<p>Your application has set one of it’s <code class="language-plaintext highlighter-rouge">NSWindow</code> instances to the desktop level or lower (<code class="language-plaintext highlighter-rouge">kCGDesktopIconWindowLevel</code> or <code class="language-plaintext highlighter-rouge">kCGDesktopWindowLevelKey</code> are where it all seems to start).</p>
+
+<h2 id="can-i-fix-it">Can I fix it?</h2>
+
+<p>Yes - fixing this problem is simple - either stop using windows at or below the desktop icon level, or add the following code to a window category or subclass in your project and execute the “<code class="language-plaintext highlighter-rouge">clearExposeTags</code>” method upon an active instance of your troublesome <code class="language-plaintext highlighter-rouge">NSWindow</code>. If you’re using <code class="language-plaintext highlighter-rouge">CGSPrivate.h</code>, you can just include the method without all the <code class="language-plaintext highlighter-rouge">typedefs</code> and <code class="language-plaintext highlighter-rouge">extern</code>s.</p>
+
+<figure class="highlight"><pre><code class="language-obj-c" data-lang="obj-c"><span class="k">typedef</span> <span class="kt">int</span> <span class="n">CGSConnection</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">int</span> <span class="n">CGSWindow</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="k">enum</span> <span class="p">{</span>
+    <span class="n">CGSTagNone</span>        <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>      <span class="c1">// No tags</span>
+    <span class="n">CGSTagExposeFade</span>  <span class="o">=</span> <span class="mh">0x0002</span><span class="p">,</span> <span class="c1">// Fade out when Expose activates.</span>
+    <span class="n">CGSTagNoShadow</span>    <span class="o">=</span> <span class="mh">0x0008</span><span class="p">,</span> <span class="c1">// No window shadow.</span>
+    <span class="n">CGSTagTransparent</span> <span class="o">=</span> <span class="mh">0x0200</span><span class="p">,</span> <span class="c1">// Transparent to mouse clicks.</span>
+    <span class="n">CGSTagSticky</span>      <span class="o">=</span> <span class="mh">0x0800</span><span class="p">,</span> <span class="c1">// Appears on all workspaces.</span>
+<span class="p">}</span> <span class="n">CGSWindowTag</span><span class="p">;</span>
+
+<span class="k">extern</span> <span class="n">CGSConnection</span> <span class="nf">_CGSDefaultConnection</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="k">extern</span> <span class="n">CGError</span> <span class="nf">CGSClearWindowTags</span><span class="p">(</span><span class="k">const</span> <span class="n">CGSConnection</span> <span class="n">cid</span><span class="p">,</span> 
+																	<span class="k">const</span> <span class="n">CGSWindow</span> <span class="n">wid</span><span class="p">,</span> 
+																	<span class="n">CGSWindowTag</span> <span class="o">*</span><span class="n">tags</span><span class="p">,</span> 
+																	<span class="kt">int</span> <span class="n">thirtyTwo</span><span class="p">);</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="n">OSStatus</span><span class="p">)</span><span class="n">clearExposeTags</span>
+<span class="p">{</span>
+    <span class="n">CGSConnection</span> <span class="n">cid</span><span class="p">;</span>
+    <span class="n">CGSWindow</span> <span class="n">wid</span><span class="p">;</span>
+    <span class="n">CGSWindowTag</span> <span class="n">tags</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+    
+    <span class="n">wid</span> <span class="o">=</span> <span class="p">[</span><span class="n">self</span> <span class="nf">windowNumber</span><span class="p">];</span>
+    <span class="n">cid</span> <span class="o">=</span> <span class="n">_CGSDefaultConnection</span><span class="p">();</span>
+    <span class="n">tags</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x02</span><span class="p">;</span>
+    <span class="n">tags</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	
+    <span class="k">return</span> <span class="n">CGSClearWindowTags</span><span class="p">(</span><span class="n">cid</span><span class="p">,</span> <span class="n">wid</span><span class="p">,</span> <span class="n">tags</span><span class="p">,</span> <span class="mi">32</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

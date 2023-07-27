@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xgl and the future of Virtue - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2006/02/08/xgl-and-the-future-of-virtue.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  February 08, 2006
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  Xgl and the future of Virtue
+
+</h1>
+
+<div id="post">
+  <p>Wow. Holy goddamn crap.</p>
+
+<p><a href="http://www.novell.com/linux/xglrelease/">http://www.novell.com/linux/xglrelease/</a></p>
+
+<p>Watch the movies. Especially the cube. I’m sorry guys, but it will be a while before I can make a desktop manager that will do that on the mac. As I mentioned in my earlier posts about Virtue, I’m just starting out with mac programming - if people want to see a desktop manager similar to the one Nat and co demoed, I’m going to need guru help. Virtue has basically hit a wall in terms of visuals — we’re limited to what Apple decides to include in the CoreGraphics/Dock code, and even then, they could pull all the transitions at any point. We need a way forward.</p>
+
+<p>Here’s a list of things I’m looking into, but would appreciate advice on from anyone in the know:</p>
+
+<ul>
+  <li>The internals of how Mac OS is presently managing the existence of two user accounts logged in at the same time in relation to NSWorkspace/desktops. You may have noticed that Virtue presently changes desktops and <strong>then</strong> the desktop picture changes, whereas in fast user switching the desktop picture is <em>part of the transition</em>. I’m sure I’m missing something small in the entirely undocumented, entirely unsupported calls I’m making (:P), but if anybody else has ever looked at this code, and has any ideas, I’m all ears!</li>
+  <li>OpenGL vs. CoreImage. As much as I’d love to use CoreImage as the basis for whatever effect/transition engine this new desktop manager uses, from what I’ve seen CI transitions are slow. Especially for large images. Am I right in assuming that OpenGL is likely to be more efficient? What is being used in Keynote? I would love to have the extensibility of CoreImage though…</li>
+</ul>
+
+<p>Don’t count this as being an announcement of an actual product yet - I <strong>want</strong> to make this happen, but I’m not even sure it’s possible. Chances are that I’ll spend the next 7 months writing something, and 10.5 will include everything we’re looking for (fingers crossed!).</p>
+
+<p>Am I nuts? Wait… don’t answer that…</p>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

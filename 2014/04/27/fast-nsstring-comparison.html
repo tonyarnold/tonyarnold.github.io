@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast NSString Comparisons - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2014/04/27/fast-nsstring-comparison.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  April 27, 2014
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  Fast NSString Comparisons
+
+</h1>
+
+<div id="post">
+  <blockquote>
+  <p>About 35 seconds after I posted this article, <a href="https://twitter.com/insertjokehere/status/460387480211300352">Lawrence Lomax pointed out</a> that Mark Dalrymple had <a href="http://blog.bignerdranch.com/334-isequal-vs-isequaltostring/">already published exhaustive details about NSString comparisons on the Big Nerd Ranch blog</a>. Go read that and stop wasting your time over here!</p>
+</blockquote>
+
+<p>Earlier tonight, I came across a snippet of Objective-C code where the author had used <code class="language-plaintext highlighter-rouge">-compare:</code> instead of <code class="language-plaintext highlighter-rouge">-isEqualToString:</code> in every instance. My general rule is to always use the highest-level, most readable API unless there is a critical performance
+issue when doing so, so I was intrigued (although I was pretty sure why this was being done):</p>
+
+<p>Here’s the simple test I ran:</p>
+
+<div class="language-objc highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">NSString</span> <span class="o">*</span><span class="n">someString</span> <span class="o">=</span> <span class="s">@"LANA!"</span><span class="p">;</span>
+<span class="n">NSString</span> <span class="o">*</span><span class="n">otherString</span> <span class="o">=</span> <span class="s">@"LAAANAA!"</span><span class="p">;</span>
+<span class="n">NSString</span> <span class="o">*</span><span class="n">sameString</span> <span class="o">=</span> <span class="s">@"LANA!"</span><span class="p">;</span>
+
+<span class="n">NSTimeInterval</span> <span class="n">start</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDate</span> <span class="nf">timeIntervalSinceReferenceDate</span><span class="p">];</span>
+
+<span class="n">BOOL</span> <span class="n">boop</span> <span class="o">=</span> <span class="p">[</span><span class="n">someString</span> <span class="nf">isEqualToString</span><span class="p">:</span><span class="n">otherString</span><span class="p">];</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@"%f"</span><span class="p">,</span> <span class="p">[</span><span class="n">NSDate</span> <span class="nf">timeIntervalSinceReferenceDate</span><span class="p">]</span> <span class="k">-</span> <span class="n">start</span><span class="p">);</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDate</span> <span class="nf">timeIntervalSinceReferenceDate</span><span class="p">];</span>
+<span class="n">BOOL</span> <span class="n">bleep</span> <span class="o">=</span> <span class="p">[</span><span class="n">someString</span> <span class="nf">compare</span><span class="p">:</span><span class="n">otherString</span><span class="p">]</span> <span class="o">==</span> <span class="n">NSOrderedSame</span><span class="p">;</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@"%f"</span><span class="p">,</span> <span class="p">[</span><span class="n">NSDate</span> <span class="nf">timeIntervalSinceReferenceDate</span><span class="p">]</span> <span class="k">-</span> <span class="n">start</span><span class="p">);</span>
+
+
+<span class="n">start</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDate</span> <span class="nf">timeIntervalSinceReferenceDate</span><span class="p">];</span>
+<span class="n">BOOL</span> <span class="n">boopSame</span> <span class="o">=</span> <span class="p">[</span><span class="n">someString</span> <span class="nf">isEqualToString</span><span class="p">:</span><span class="n">sameString</span><span class="p">];</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@"%f"</span><span class="p">,</span> <span class="p">[</span><span class="n">NSDate</span> <span class="nf">timeIntervalSinceReferenceDate</span><span class="p">]</span> <span class="k">-</span> <span class="n">start</span><span class="p">);</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSDate</span> <span class="nf">timeIntervalSinceReferenceDate</span><span class="p">];</span>
+<span class="n">BOOL</span> <span class="n">bleepSame</span> <span class="o">=</span> <span class="p">[</span><span class="n">someString</span> <span class="nf">compare</span><span class="p">:</span><span class="n">sameString</span><span class="p">]</span> <span class="o">==</span> <span class="n">NSOrderedSame</span><span class="p">;</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@"%f"</span><span class="p">,</span> <span class="p">[</span><span class="n">NSDate</span> <span class="nf">timeIntervalSinceReferenceDate</span><span class="p">]</span> <span class="k">-</span> <span class="n">start</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="results">Results</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Method</th>
+      <th style="text-align: left">Result</th>
+      <th style="text-align: left">Time Logged (seconds)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-isEqualToString:</code></td>
+      <td style="text-align: left">Strings did not match</td>
+      <td style="text-align: left">0.000014</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-compare:</code></td>
+      <td style="text-align: left">Strings did not match</td>
+      <td style="text-align: left">0.000007</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-isEqualToString:</code></td>
+      <td style="text-align: left">Strings matched</td>
+      <td style="text-align: left">0.000001</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-compare:</code></td>
+      <td style="text-align: left">Strings matched</td>
+      <td style="text-align: left">0.000002</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Turns out that <code class="language-plaintext highlighter-rouge">-compare:</code> is roughly twice as fast as <code class="language-plaintext highlighter-rouge">-isEqualToString:</code> when the strings don’t match and the inverse is true when the strings match — although with the matching strings the difference is very nearly negligible.</p>
+
+<p>Personally, I’ll probably stick to <code class="language-plaintext highlighter-rouge">-isEqualToString:</code> unless performance is absolutely critical — I find it much more readable, and that’s almost always more important than saving 0.000007 seconds.</p>
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatically Formatting Your Objective-C - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2014/05/31/autoformatting-your-code.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  May 31, 2014
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  Automatically Formatting Your Objective-C
+
+</h1>
+
+<div id="post">
+  <p>One of the tenets of writing good code is keeping your code readable. This is a conversation that includes more than just the visual aesthetic of how you lay out your classes, but today I’d like to focus on that because it’s something we can automate (whereas good class design is what keeps us all employed, and presently <em>can’t</em> be automated).</p>
+
+<p>Using consistent numbers of lines between common structures allows your brain to more easily pick up patterns in your code, which helps you scan the structure of your classes faster. It’s also hugely beneficial when introducing a new developer to your existing code — the patterns make reading and learning your classes a much nicer experience.</p>
+
+<p><em>“But”</em>, I hear you say, <em>“it takes too long to worry about formatting and laying out my code! What’s a few misplaced brackets going to cost me in the long run?”</em> and away you go, committing inconsistently formatted code.</p>
+
+<p><img src="http://static.tonyarnold.com/picard-facepalm.jpeg" alt="Jean-Luc Picard facepalming" class="widescreen"></p>
+
+<p>What if you didn’t have to do anything extra while you’re actually writing your code? (sans a little initial setup)</p>
+
+<p>The great news is that there are multiple tools available to help format Objective-C, but the one to watch seems to be <a href="http://clang.llvm.org/docs/ClangFormat.html">Clang Format</a>. Given that it is integrated into the Clang toolset, there’s a good chance that Apple may include it in a future release of Xcode.</p>
+
+<p>Out of the box, <code class="language-plaintext highlighter-rouge">clang-format</code> is a command-line tool that you can run directly on your source files. It doesn’t add/remove code from your source, instead focusing on adjusting the whitespace characters within your source to make code more consistent.</p>
+
+<p>With a little bit of extra effort, you can make Clang Format available from within Xcode.</p>
+
+<h2 id="install-clangformat-xcode">Install ClangFormat-Xcode</h2>
+
+<p><a href="https://github.com/travisjeffery/ClangFormat-Xcode/">ClangFormat-Xcode</a> is an Xcode plugin developed by <a href="https://github.com/travisjeffery">Travis Jeffery</a> that makes Clang’s format tools available within Xcode.</p>
+
+<p>Travis has made the plugin available via <a href="http://alcatraz.io/">Alcatraz</a>. Alternately if you wish to install the plugin manually:</p>
+
+<ol>
+  <li>Checkout the <a href="https://github.com/travisjeffery/ClangFormat-Xcode/">git repository</a>
+</li>
+  <li>Build and run the <code class="language-plaintext highlighter-rouge">ClangFormat-Xcode.xcodeproj</code>
+</li>
+  <li>Restart Xcode</li>
+</ol>
+
+<p>There will be a new menu item under <em>Edit → Clang Format</em> where you can configure and trigger automatic formatting of code in your project.</p>
+
+<p><img src="http://static.tonyarnold.com/clang-format-menu.png" alt="Xcode Edit menu showing the Clang Format menu expanded" class="widescreen"></p>
+
+<p>You can format the current file, selected text within the current file or more than one file selected in the Xcode project navigator. I’ve assigned keystrokes to these using <em>System Preferences → Keyboard → Shortcuts → App Shortcuts</em>.</p>
+
+<p>I find that I often leave <em>Enable Format On Save</em> enabled once I have everything configured the way I like it. This means that every time I save, my files are automatically re-formatted to my liking and I don’t have to think about it — nice, right?</p>
+
+<blockquote>
+  <p>I’ve had a few people let me know that the current build of ClangFormat-Xcode has issues formatting dictionary literals. This bug was fixed in Clang a week or two ago, and you can <a href="http://static.tonyarnold.com/clang-format-20140601.zip">download an updated build</a> that I compiled today. Just place this new copy of <code class="language-plaintext highlighter-rouge">clang-format</code> in your PATH (<code class="language-plaintext highlighter-rouge">/usr/local/bin/clang-format</code> is a good spot) and then select <em>Edit → Clang Format → Use System ClangFormat</em>.</p>
+</blockquote>
+
+<h2 id="configure-clang-format">Configure Clang Format</h2>
+
+<p>Clang Format has a number of styles packaged with it, including the code formatting styles used by the LLVM project, Google, Chromium, Mozilla and WebKit. All of these projects make fairly heavy use of C++, so the way they format Objective-C can be less than ideal. Thankfully, Clang Format can be configured using a <code class="language-plaintext highlighter-rouge">.clang-format</code> file containing a series of configuration options.</p>
+
+<p>My <code class="language-plaintext highlighter-rouge">.clang-format</code> looks like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>BasedOnStyle: Chromium
+AlignTrailingComments: true
+BreakBeforeBraces: Allman
+ColumnLimit: 0
+IndentWidth: 4
+KeepEmptyLinesAtTheStartOfBlocks: false
+ObjCSpaceAfterProperty: true
+ObjCSpaceBeforeProtocolList: true
+PointerBindsToType: false
+SpacesBeforeTrailingComments: 1
+TabWidth: 8
+UseTab: Never
+</code></pre></div></div>
+
+<h3 id="configure-globally">Configure Globally</h3>
+
+<p>It’s a good idea to have a global <code class="language-plaintext highlighter-rouge">.clang-format</code> configuration file — you place this in your home directory: <code class="language-plaintext highlighter-rouge">~/.clang-format</code></p>
+
+<h3 id="configuration-per-project">Configuration Per Project</h3>
+
+<p>Each project can (and should) have its own configuration — just place a <code class="language-plaintext highlighter-rouge">.clang-format</code> file in the root of your project.</p>
+
+<h3 id="configuration-per-folder">Configuration Per Folder</h3>
+
+<p>It’s common to include third party code in your projects that you’d prefer not to re-format accidentally. Simply put a <code class="language-plaintext highlighter-rouge">.clang-format</code> file in the directory of the files you’d prefer not to format and make it’s contents:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+BasedOnStyle: None
+...
+</code></pre></div></div>
+
+<h2 id="you-have-no-excuse-now">You Have No Excuse Now</h2>
+
+<p>So there you have it. There’ll be times where Clang Format’s output doesn’t quite match what you’re expecting, but it’s more important to be consistent and readable than perfect. I’d love to see more projects include a <code class="language-plaintext highlighter-rouge">.clang-format</code> file so that contributors can automatically adopt the formatting style without thinking about it.</p>
+
+<p>Go forth, be formatted (and let’s all cross our fingers for this being included in Xcode.next!).</p>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Label Button Interface Builder Palette - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2006/10/06/color-label-button-interface-builder-palette.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  October 06, 2006
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  Color Label Button Interface Builder Palette
+
+</h1>
+
+<div id="post">
+  
+<blockquote>
+  <h2 id="outdated-info">Outdated Info</h2>
+  <p>Hi there! So it’s the future now (2023 to be precise) and things have moved on: Interface Builder Plugins aren’t possible anymore, so this post is just a wonderful curiosity.</p>
+</blockquote>
+
+<p>So <a href="http://virtuedesktops.info/">VirtueDesktops</a> has a small problem in that when it was written, Cocoa Bindings were new and not as well understood as they are now. Lately, I’ve been spending a my time brushing up my understanding of basic cocoa concepts that I may have missed first go around. Below is the result of that brushing, and something that I think is drastically under utilised - custom Interface Builder (IB) palettes.</p>
+
+<p><img src="http://static.tonyarnold.com/color_label-1306152068.png" alt="ColorLabelButtonImage" class="center"></p>
+
+<p><a href="http://virtuedesktops.info/">VirtueDesktops</a> has the concept of “labelling” your desktops, much like you label files in the Finder. Given how used to the existing UI users are, representing it in the same fashion in the <a href="http://virtuedesktops.info/">VirtueDesktops</a> UI seems entirely logical to me. Surprise, surprise, this is one of those wonderful custom UI elements that Apple is so damned famous for not opening to developers (and in this case, I can understand given how little it is used elsewhere). So what do you do in a situation like this?</p>
+
+<p>Thomas (the original author of <a href="http://virtuedesktops.info/">VirtueDesktops</a>), made a custom subclass of the NSControl and NSActionCell cocoa classes, and hooked this into a view programmatically. It worked well (and is still present in the current release of <a href="http://virtuedesktops.info/">VirtueDesktops</a>), and for all intents and purposes is a completely valid approach to the problem. Unfortunately, it has the side effect of swizzling view code (in the MVC sense) into places I don’t think view code belongs. And I can’t use IB to nicely manage every aspect of my UI (which is idealistic, but possible).</p>
+
+<p>Here’s my approach: For custom controls like this, I’m writing them into a simple, reusable framework and IB palette. This way, I can make my actual code a lot, lot simpler which has the flow on effect of making it easier to find and resolve existing bugs.</p>
+
+<p>You can <a href="http://static.tonyarnold.com/ColorLabelButton.zip">download an early version of this framework</a> and palette from this site, but I’ll give you a little warning - once you start using objects from a custom IB palette in your code, you need to keep that palette for future reference - if it gets deleted, and you’re still using an object dragged from the custom palette, your nib files will no longer open. I’m also not entirely happy with my cocoa prefix - I think I may move my namespace under my personal company name (boomBalada), but we’ll deal with that when we come to it.</p>
+
+<p>I’ll try to write up a tutorial of how to construct your own custom IB palettes shortly (same bat-time, same bat-channel…).</p>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

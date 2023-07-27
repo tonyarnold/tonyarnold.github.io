@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detecting when the active Space changes - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2007/11/11/detecting-when-the-active-space-changes.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  November 11, 2007
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  Detecting when the active Space changes
+
+</h1>
+
+<div id="post">
+  <p>OK, so there’s been a discussion about this on the cocoa-dev list of late, and no-one answered the question - I figure I’ll jump into the fray given that this is exactly what I’ve been working on with Hyperspaces.</p>
+
+<p>There are two things you have to understand up front:</p>
+
+<p><strong>There is a notification “com.apple.switchSpaces” posted when a user chooses to switch spaces via the menu extra</strong>. This notification can also be (ab)used to switch spaces using your app as well - however…</p>
+
+<p><strong>There is no other notification that your active space has changed</strong>, and it is only posted by the menu extra. <strong>You need to check for changes from the CoreGraphicsServer</strong> - the easiest way to do that is as follows. It’s up to you to write the code that uses this, but attaching it to a simple NSTimer would probably work just fine.</p>
+
+<figure class="highlight"><pre><code class="language-obj-c" data-lang="obj-c"><span class="k">-</span><span class="p">(</span><span class="n">NSNumber</span> <span class="o">*</span><span class="p">)</span><span class="n">CGSSpaceNumber</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">spaceNumber</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="n">CGSGetWorkspace</span><span class="p">(</span><span class="n">_CGSDefaultConnection</span><span class="p">(),</span> <span class="o">&amp;</span><span class="n">spaceNumber</span><span class="p">);</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">NSNumber</span> <span class="nf">numberWithInt</span><span class="p">:</span> <span class="p">(</span><span class="n">spaceNumber</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)];</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>I use this method in <a href="http://thecocoabots.com/hyperspaces/">Hyperspaces</a>, and it works just fine for my purposes (with the requisite delay associated with my application having to scan for changes). Apple’s Eric Schlegel <a href="http://www.cocoabuilder.com/archive/message/cocoa/2007/11/11/192797">explains the reasoning behind why there is no notification on the cocoa-dev list</a>. Long story short, it sounds like Apple’s not quite done developing Spaces yet, and they don’t want people relying on APIs that aren’t finalised.</p>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

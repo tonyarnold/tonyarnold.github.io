@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to create a grid of CALayers - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2007/12/14/how-to-create-a-grid-of-calayers.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  December 14, 2007
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  How to create a grid of CALayers
+
+</h1>
+
+<div id="post">
+  <p><em>Update: this is indeed a dodgy method I’ve posted below. I’ll update this post when I can, but you’re better off digging out your 8th grade maths and working out the coordinates of surrounding cells and constraining all edges to each other. Friends don’t let friends blog at 12.30am.</em></p>
+
+<p>So I’ve been puzzling for a few weeks through the dim and darkened alleyways of <a href="http://www.apple.com/macosx/technology/coreanimation.html">Leopard’s new Core Animation APIs</a> and the rather wonderful CALayer. One of the features I’m planning for <a href="/projects/hyperspaces/">Hyperspaces</a> is a desktop pager that will show basic approximations of your on-screen windows - sort of like what used to be in VirtueDesktops, but way cooler because it will use Core Animation to smoothly animate changes in state.</p>
+
+<p>Unfortunately, I hit a rather interesting problem while attempting to draw a grid of self-positioning CALayers. See, you can tie CALayers together using constraints, but in a traditional grid of objects you need to tie all the edges of the grid objects to each other (and the outer grid objects to the frame of the constraining frame) - but you can’t constrain CALayers using CALayers that haven’t been created yet (still with me? sounds sane, right?).</p>
+
+<p><img src="http://static.tonyarnold.com/calayer_grid_example-1306152218.png" alt="CALayer grid example" class="center"></p>
+
+<p>So the answer turned out to be to cheat. First, constrain the width and height of all CALayer grid objects to be consistently based on the height and width of the constraining CALayer (scaled to fit the number of columns and rows we’re trying to get onscreen). Tie all the “outer” CALayers to the constraining CALayer on the edges where they connect with it. Now, tie the left and top edges of all CALayers to the right and bottom edges of the CALayers around them as shown to the left.</p>
+
+<p>So in the interests of getting more Core Animation code out there, here is my somewhat dodgy, but completely re-usable approach to drawing a grid of CALayers in your own monstrosity of an application. I’m open to being completely corrected by someone willing to write a proper CALayoutManager for this. <a href="http://neilang.com/">Neil</a>, <a href="http://jamespamplin.com/">James</a> - now that you’ve been through Cocoa bootcamp, I expect to see some really inappropriate Core Animation, OK? Use this as a starting point:</p>
+
+<figure class="highlight"><pre><code class="language-obj-c" data-lang="obj-c"><span class="n">NSRect</span> <span class="n">pagerViewFrame</span> <span class="o">=</span> <span class="p">[</span><span class="n">pagerView</span> <span class="nf">frame</span><span class="p">];</span>
+<span class="n">pagerLayers</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMutableArray</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span>
+
+<span class="n">CALayer</span><span class="o">*</span> <span class="n">mainLayer</span> <span class="o">=</span> <span class="p">[</span><span class="n">pagerView</span> <span class="nf">layer</span><span class="p">];</span>
+
+<span class="n">CALayer</span> <span class="o">*</span><span class="n">constraintLayer</span> <span class="o">=</span> <span class="p">[</span><span class="n">CALayer</span> <span class="nf">layer</span><span class="p">];</span>
+<span class="p">[</span><span class="n">pagerView</span> <span class="nf">setLayer</span><span class="p">:</span><span class="n">constraintLayer</span><span class="p">];</span>
+<span class="p">[</span><span class="n">pagerView</span> <span class="nf">setWantsLayer</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+<span class="n">constraintLayer</span><span class="p">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="n">mainLayer</span><span class="p">.</span><span class="n">bounds</span><span class="p">;</span>
+<span class="n">constraintLayer</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">@"constraintsLayer"</span><span class="p">;</span>
+<span class="n">constraintLayer</span><span class="p">.</span><span class="n">anchorPoint</span> <span class="o">=</span> <span class="n">CGPointMake</span><span class="p">(</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">5</span> <span class="p">);</span>
+<span class="n">constraintLayer</span><span class="p">.</span><span class="n">autoresizingMask</span> <span class="o">=</span> <span class="p">(</span><span class="n">kCALayerWidthSizable</span><span class="o">|</span><span class="n">kCALayerHeightSizable</span><span class="p">);</span>
+<span class="n">constraintLayer</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSColor</span> <span class="nf">blackColor</span><span class="p">].</span><span class="n">CGColor</span><span class="p">;</span>
+<span class="n">constraintLayer</span><span class="p">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">CGPointMake</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">);</span>
+<span class="n">constraintLayer</span><span class="p">.</span><span class="n">contentsGravity</span> <span class="o">=</span> <span class="n">kCAGravityResizeAspect</span><span class="p">;</span>
+<span class="n">constraintLayer</span><span class="p">.</span><span class="n">masksToBounds</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+<span class="n">constraintLayer</span><span class="p">.</span><span class="n">layoutManager</span> <span class="o">=</span> <span class="p">[</span><span class="n">CAConstraintLayoutManager</span> <span class="nf">layoutManager</span><span class="p">];</span>
+
+<span class="c1">// Initialization code here.</span>
+<span class="n">HSSpaces</span> <span class="o">*</span><span class="n">spacesInfo</span> <span class="o">=</span> <span class="p">[</span><span class="n">HSSpaces</span> <span class="nf">sharedInstance</span><span class="p">];</span>
+
+<span class="kt">float</span> <span class="n">itemWidth</span> <span class="o">=</span> <span class="p">(</span><span class="n">pagerViewFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="p">[</span><span class="n">spacesInfo</span><span class="p">.</span><span class="n">columns</span> <span class="nf">floatValue</span><span class="p">]);</span>
+<span class="kt">float</span> <span class="n">itemHeight</span> <span class="o">=</span> <span class="p">(</span><span class="n">pagerViewFrame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="p">[</span><span class="n">spacesInfo</span><span class="p">.</span><span class="n">rows</span> <span class="nf">floatValue</span><span class="p">]);</span>
+<span class="kt">float</span> <span class="n">currentRow</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="kt">float</span> <span class="n">currentColumn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+
+<span class="k">for</span> <span class="p">(</span><span class="n">HSSpace</span> <span class="o">*</span><span class="n">space</span> <span class="k">in</span> <span class="n">spacesInfo</span><span class="p">.</span><span class="n">spaces</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="k">if</span> <span class="p">(</span> <span class="p">[</span><span class="n">space</span><span class="p">.</span><span class="n">number</span> <span class="nf">intValue</span><span class="p">]</span> <span class="o">%</span> <span class="p">[</span><span class="n">spacesInfo</span><span class="p">.</span><span class="n">columns</span> <span class="nf">intValue</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="n">currentRow</span><span class="o">++</span><span class="p">;</span>
+    <span class="n">currentColumn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// We need to calculate whether we are:</span>
+  <span class="c1">//  a) Dealing with an edge</span>
+  <span class="c1">//    i) Right?</span>
+  <span class="c1">//    ii) Left?</span>
+  <span class="c1">//    iii) Top?</span>
+  <span class="c1">//    iv) Bottom?</span>
+
+  <span class="n">BOOL</span> <span class="n">isRightEdge</span> <span class="o">=</span> <span class="p">(</span><span class="n">currentColumn</span> <span class="o">==</span> <span class="p">([</span><span class="n">spacesInfo</span><span class="p">.</span><span class="n">columns</span> <span class="nf">floatValue</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
+  <span class="n">BOOL</span> <span class="n">isLeftEdge</span> <span class="o">=</span> <span class="p">(</span><span class="n">currentColumn</span> <span class="o">==</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">);</span>
+  <span class="n">BOOL</span> <span class="n">isTopEdge</span> <span class="o">=</span> <span class="p">(</span><span class="n">currentRow</span> <span class="o">==</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">);</span>
+  <span class="n">BOOL</span> <span class="n">isBottomEdge</span> <span class="o">=</span> <span class="p">(</span><span class="n">currentRow</span> <span class="o">==</span> <span class="p">([</span><span class="n">spacesInfo</span><span class="p">.</span><span class="n">rows</span> <span class="nf">floatValue</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
+
+  <span class="n">CGFloat</span> <span class="n">x</span> <span class="o">=</span> <span class="n">itemWidth</span> <span class="o">*</span> <span class="n">currentColumn</span><span class="p">;</span>
+  <span class="n">CGFloat</span> <span class="n">y</span> <span class="o">=</span> <span class="n">constraintLayer</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">-</span> <span class="p">(</span><span class="n">itemHeight</span> <span class="o">*</span> <span class="n">currentRow</span><span class="p">);</span>
+
+  <span class="n">CALayer</span> <span class="o">*</span><span class="n">spaceLayer</span> <span class="o">=</span> <span class="p">[</span><span class="n">CALayer</span> <span class="nf">layer</span><span class="p">];</span>
+  <span class="n">spaceLayer</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="nf">stringWithFormat</span><span class="p">:</span><span class="s">@"SpaceLayer%@"</span><span class="p">,</span> <span class="n">space</span><span class="p">.</span><span class="n">number</span><span class="p">];</span>
+  <span class="n">spaceLayer</span><span class="p">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">itemWidth</span><span class="p">,</span> <span class="n">itemHeight</span> <span class="p">);</span>
+  <span class="n">spaceLayer</span><span class="p">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">CGPointMake</span><span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">);</span>
+  <span class="n">spaceLayer</span><span class="p">.</span><span class="n">borderColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSColor</span> <span class="nf">yellowColor</span><span class="p">].</span><span class="n">CGColor</span><span class="p">;</span>
+  <span class="n">spaceLayer</span><span class="p">.</span><span class="n">borderWidth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">space</span><span class="p">.</span><span class="n">color</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">spaceLayer</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="n">space</span><span class="p">.</span><span class="n">color</span><span class="p">.</span><span class="n">CGColor</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">spaceLayer</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSColor</span> <span class="nf">blackColor</span><span class="p">].</span><span class="n">CGColor</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="p">[</span><span class="n">constraintLayer</span> <span class="nf">addSublayer</span><span class="p">:</span><span class="n">spaceLayer</span><span class="p">];</span>
+
+  <span class="n">currentColumn</span><span class="o">++</span><span class="p">;</span>
+
+
+  <span class="c1">// Set-up constraints</span>
+  <span class="p">[</span><span class="n">spaceLayer</span> <span class="nf">addConstraint</span><span class="p">:</span>
+    <span class="p">[</span><span class="n">CAConstraint</span> <span class="nf">constraintWithAttribute</span><span class="p">:</span><span class="n">kCAConstraintHeight</span>
+                               <span class="nl">relativeTo:</span><span class="s">@"superlayer"</span>
+                                <span class="nl">attribute:</span><span class="n">kCAConstraintHeight</span>
+                                    <span class="nl">scale:</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span> <span class="o">/</span> <span class="p">[</span><span class="n">spacesInfo</span><span class="p">.</span><span class="n">rows</span> <span class="nf">floatValue</span><span class="p">])</span>
+                                    <span class="nl">offset:</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">]];</span>
+
+  <span class="p">[</span><span class="n">spaceLayer</span> <span class="nf">addConstraint</span><span class="p">:</span>
+    <span class="p">[</span><span class="n">CAConstraint</span> <span class="nf">constraintWithAttribute</span><span class="p">:</span><span class="n">kCAConstraintWidth</span>
+                               <span class="nl">relativeTo:</span><span class="s">@"superlayer"</span>
+                                <span class="nl">attribute:</span><span class="n">kCAConstraintWidth</span>
+                                    <span class="nl">scale:</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span> <span class="o">/</span> <span class="p">[</span><span class="n">spacesInfo</span><span class="p">.</span><span class="n">columns</span> <span class="nf">floatValue</span><span class="p">])</span>
+                                    <span class="nl">offset:</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">]];</span>
+
+  <span class="c1">// Minimum X</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">isLeftEdge</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">spaceLayer</span> <span class="nf">addConstraint</span><span class="p">:</span>
+        <span class="p">[</span><span class="n">CAConstraint</span> <span class="nf">constraintWithAttribute</span><span class="p">:</span><span class="n">kCAConstraintMinX</span>
+                                   <span class="nl">relativeTo:</span><span class="s">@"superlayer"</span>
+                                    <span class="nl">attribute:</span><span class="n">kCAConstraintMinX</span><span class="p">]];</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">spaceLayer</span> <span class="nf">addConstraint</span><span class="p">:</span>
+        <span class="p">[</span><span class="n">CAConstraint</span> <span class="nf">constraintWithAttribute</span><span class="p">:</span><span class="n">kCAConstraintMinX</span>
+                                   <span class="nl">relativeTo:</span><span class="p">[</span><span class="n">NSString</span> <span class="nf">stringWithFormat</span><span class="p">:</span><span class="s">@"SpaceLayer%i"</span><span class="p">,([</span><span class="n">space</span><span class="p">.</span><span class="n">number</span> <span class="nf">intValue</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
+                                    <span class="nl">attribute:</span><span class="n">kCAConstraintMaxX</span><span class="p">]];</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Maximum X</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">isRightEdge</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">spaceLayer</span> <span class="nf">addConstraint</span><span class="p">:</span>
+        <span class="p">[</span><span class="n">CAConstraint</span> <span class="nf">constraintWithAttribute</span><span class="p">:</span><span class="n">kCAConstraintMaxX</span>
+                                   <span class="nl">relativeTo:</span><span class="s">@"superlayer"</span>
+                                    <span class="nl">attribute:</span><span class="n">kCAConstraintMaxX</span><span class="p">]];</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Minimum Y</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">isBottomEdge</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">spaceLayer</span> <span class="nf">addConstraint</span><span class="p">:</span>
+        <span class="p">[</span><span class="n">CAConstraint</span> <span class="nf">constraintWithAttribute</span><span class="p">:</span><span class="n">kCAConstraintMinY</span>
+                                   <span class="nl">relativeTo:</span><span class="s">@"superlayer"</span>
+                                    <span class="nl">attribute:</span><span class="n">kCAConstraintMinY</span><span class="p">]];</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Maximum Y</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">isTopEdge</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">spaceLayer</span> <span class="nf">addConstraint</span><span class="p">:</span>
+        <span class="p">[</span><span class="n">CAConstraint</span> <span class="nf">constraintWithAttribute</span><span class="p">:</span><span class="n">kCAConstraintMaxY</span>
+                                   <span class="nl">relativeTo:</span><span class="s">@"superlayer"</span>
+                                    <span class="nl">attribute:</span><span class="n">kCAConstraintMaxY</span><span class="p">]];</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">spaceLayer</span> <span class="nf">addConstraint</span><span class="p">:</span>
+        <span class="p">[</span><span class="n">CAConstraint</span> <span class="nf">constraintWithAttribute</span><span class="p">:</span><span class="n">kCAConstraintMaxY</span>
+                                   <span class="nl">relativeTo:</span><span class="p">[</span><span class="n">NSString</span> <span class="nf">stringWithFormat</span><span class="p">:</span><span class="s">@"SpaceLayer%i"</span><span class="p">,([</span><span class="n">space</span><span class="p">.</span><span class="n">number</span> <span class="nf">intValue</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">currentRow</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))]</span>
+                                    <span class="nl">attribute:</span><span class="n">kCAConstraintMinY</span><span class="p">]];</span>
+  <span class="p">}</span>
+
+<span class="p">}</span></code></pre></figure>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

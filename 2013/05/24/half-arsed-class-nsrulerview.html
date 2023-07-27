@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Half Arsed Class: NSRulerView - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2013/05/24/half-arsed-class-nsrulerview.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  May 24, 2013
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  Half Arsed Class: NSRulerView
+
+</h1>
+
+<div id="post">
+  <p><em>This is a little thing I think I’ll start doing to relieve frustration after working with awfully designed or just plain buggy classes. Half Arsed Class will pick out classes that have pissed me off from AppKit, Foundation and UIKit. Hopefully I’ll also be able to retract these on a semi-regular basis.</em></p>
+
+<p>Today’s Half Arsed Class is brought to you by the <code class="language-plaintext highlighter-rouge">NSRulerView</code> class, which allows you to set a completely custom measurement unit setup so that you can draw rulers against your <code class="language-plaintext highlighter-rouge">NSScrollView</code> instances.</p>
+
+<p>Sadly, <strong><a href="http://www.cocoabuilder.com/archive/cocoa/175535-nsrulerview-subclass-and-drawhashmarksandlabelsinrect-nsrect-rect.html">there’s no way to actually get those measurement units back</a></strong>. So, if you want to customise how the ticks on your ruler are drawn you’re completely out of luck. <a href="http://lists.apple.com/archives/cocoa-dev/2011/Aug/msg00471.html">You’ll have to do all of the calculations, all of the math, and all of the drawing yourself</a>.</p>
+
+<p>The default <code class="language-plaintext highlighter-rouge">NSRulerView</code> also updates as required to reflect the magnification level of the scroll view it’s tied to. Via a private instance variable. With no other piece of the puzzle exposed.</p>
+
+<p><em>*mouth fart noise*</em></p>
+
+<p>It gets better! <a href="http://developer.apple.com/library/mac/DOCUMENTATION/Cocoa/Reference/ApplicationKit/Classes/NSRulerView_Class/Reference/Reference.html#//apple_ref/occ/instm/NSRulerView/drawHashMarksAndLabelsInRect:">The documentation makes reference to</a>:</p>
+
+<blockquote>
+  <p>“If you want to do custom hash-marks and labels you should first look at doing it with a delegate.  You can do whatever kind of custom hash-marks you want through delegation as long as the hash-marks and labels are evenly spaced.”</p>
+</blockquote>
+
+<p>However, there are no delegate methods that expose anything to do with customising the hash marks. Brilliant QA work there, guys!</p>
+
+<p>So, if you find yourself thinking “NSRulerView looks like what I need!”, think again. It’s only useful if you want it in exactly the form you find it.</p>
+
+<p><a href="http://www.openradar.me/13980710">Radar filed</a>: I need a drink.</p>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Animation uses a lot of memory - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2009/08/23/core-animation-uses-a-lot-of-memory.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  August 23, 2009
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  Core Animation uses a lot of memory
+
+</h1>
+
+<div id="post">
+  <p>Here’s something Apple should probably put on the box when they sell Core Animation to new developers: It uses a <em>lot</em> of RAM. Before you dive in with both feet, you need to ask whether the features you get from Core Animation will really be worth the overhead.</p>
+
+<p>In <a href="http://hyperspacesapp.com/">Hyperspaces</a>, if you’re running on a single monitor set-up, you’ll generally see RAM usage around the 60-100Mb mark (RSIZE). Two screens, you’re going straight beyond the 100Mb mark. I assume it grows exponentially from there, but I’ve no machines on hand that will drive more than 2 screens (<em>Update:</em> I assume wrong - the caching is pretty good for CGImageRefs and their ilk. It won’t grow exponentially).</p>
+
+<p>On a single monitor set-up, there are two layer-backed views - one screen-size view that sits behind your desktop icons, and one smaller view that contains the switcher. If I run up Hyperspaces without either of my layer-backed views enabled, the application uses 13Mb RAM - so the core (for what it does) is quite compact. If I re-enable the layer-backed switcher window, memory usage instantly jumps to 56Mb - the switcher is usually about 500 - 600px wide, and about 100px high (with 3 spaces enabled).</p>
+
+<p>I have spent <em>months</em> trying to bring this number down by any means possible. So far, I’ve tried:</p>
+
+<ol>
+  <li>Cropping and chopping my <a href="http://developer.apple.com/documentation/graphicsimaging/reference/CGImage/Reference/reference.html">CGImageRef</a> objects down to only exactly what’s needed for display;</li>
+  <li>Aggressively caching and uncaching <a href="http://developer.apple.com/documentation/graphicsimaging/reference/CGImage/Reference/reference.html">CGImageRef</a> objects (thanks go out to <a href="http://seanpatrickobrien.com/">Sean O’Brien</a> for helping me with that);</li>
+  <li>Storing only the <a href="http://developer.apple.com/documentation/graphicsimaging/Reference/CGImageSource/index.html">CGImageSourceRef</a> for each of my images and explicitly telling those sources not to cache their <a href="http://developer.apple.com/documentation/graphicsimaging/reference/CGImage/Reference/reference.html">CGImageRefs</a>;</li>
+  <li>Saving those cropped and chopped <a href="http://developer.apple.com/documentation/graphicsimaging/reference/CGImage/Reference/reference.html">CGImageRef</a> objects out to cached JPEG2000 files and then reading those files back into cached <a href="http://developer.apple.com/documentation/Cocoa/Reference/Foundation/Classes/NSData_Class/index.html">NSData</a> objects to be decoded when needed;</li>
+</ol>
+
+<p>There are probably other things I’ve tried that have worked to varying degrees, but those items above are the ones that made a difference. They don’t solve the problem.</p>
+
+<p>If you’re writing a background application that you expect your users to have open all the time, you (unfortunately) will need to think very carefully about whether you should use Core Animation in your application. I’ve had feedback from users of <a href="http://hyperspacesapp.com/">Hyperspaces</a> that they would prefer to leave the animation in - while I pitch <a href="http://hyperspacesapp.com/">Hyperspaces</a> as a tool that provides context to Apple’s Spaces, I’m pretty sure a lot of the users are more into the eye candy and the softly fading desktop images :)</p>
+
+<p>I’ve certainly asked for advice about this issue in a few different places, as well as done my research - and I’d be very happy to be proven wrong (please?!).</p>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

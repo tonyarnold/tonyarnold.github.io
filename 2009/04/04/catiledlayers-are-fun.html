@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATiledLayers are fun - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2009/04/04/catiledlayers-are-fun.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  April 04, 2009
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  CATiledLayers are fun
+
+</h1>
+
+<div id="post">
+  <p>One of the big issues I’m trying to address for <a href="http://thecocoabots.com/hyperspaces/">Hyperspaces</a> 1.0 is related to video memory:</p>
+
+<p>Core Animation likes to cache any imagery you insert into a layer onto the user’s graphics card, which is fantastic when you’re running on a machine with more than 256Mb VRAM - things are smooth as silk and you get great fades between changes. Unfortunately, for users running on Macs that don’t have that much VRAM there is a big problem - if the image you load into the layer is too big to fit into VRAM, Core Animation just doesn’t draw it. White backgrounds for the win.</p>
+
+<p>Apple’s answer to this problem is the <code class="language-plaintext highlighter-rouge">CATiledLayer</code>. Basically, it allows you divide a much larger image into smaller chunks that <em>can</em> be cached on older video cards. For <a href="http://thecocoabots.com/hyperspaces/">Hyperspaces</a>, I’m working on replicating the drawing styles of the standard Mac OS X desktop background - “Fit To Screen”, “Fill Screen”, “Stretch To Fill Screen”, “Center” and “Tile”. Tiled desktops are fine - I’m rendering those using a <code class="language-plaintext highlighter-rouge">CATiledLayer</code> in the build you’re all using right now (1.0fc4).</p>
+
+<p>What’s interesting though is what happens when I play lazy programmer:</p>
+
+<iframe src="//player.vimeo.com/video/3987685?byline=0&amp;portrait=0" width="720" height="451" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" class="widescreen"></iframe>
+
+<p>Lovely, no? It would be a cool effect with a longer fade, and if I weren’t already getting complaints about how slow <a href="http://thecocoabots.com/hyperspaces/">Hyperspaces</a> is to change desktop backgrounds right now. I’m still working on the final code - I’ll post it when it’s done for reference - but the simple answer to this problem is twofold:</p>
+
+<ul>
+  <li>
+<em>Make the tiles as large as you can</em> - this isn’t too tricky. Apple defaults this to 256px by 256px, but I haven’t done enough research to know what’s reasonable - it’s really going to be based upon your target audience, and whether they have decent graphics cards or not;</li>
+  <li>
+<em>Cache the “sliced” image pieces</em> - the video you see above is the result of me slicing a <code class="language-plaintext highlighter-rouge">CGImageRef</code> up in real time;</li>
+</ul>
+
+<p>I hope you enjoy the (unintended) effect!</p>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

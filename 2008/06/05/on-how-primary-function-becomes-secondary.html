@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On how primary function becomes secondary - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2008/06/05/on-how-primary-function-becomes-secondary.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  June 05, 2008
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  On how primary function becomes secondary
+
+</h1>
+
+<div id="post">
+  <p>Over the last month, I’ve been slowly expanding my list of testers who are helping me with <a href="http://hyperspacesapp.com/">Hyperspaces</a>. Initially, most of the testers viewed <a href="http://hyperspacesapp.com/">Hyperspaces</a> as a novelty (which it is), but didn’t leave it running. They’d test whether a new build worked, and then go back to what they were doing. It was an interesting thing to watch: I’d poured months and months of my time into making the visual space switcher function properly, and nobody was really using it.</p>
+
+<ul>
+  <li>Does it show a near real-time overview of what’s happening on all of your spaces? <strong>Check.</strong>
+</li>
+  <li>Does it use nearly no CPU? <strong>Check.</strong>
+</li>
+  <li>Does it look good? myyeeeeah - <strong>it’s not terrible.</strong>
+</li>
+</ul>
+
+<p>Initially, I didn’t pay much attention to what was happening here, and just plowed through adding in some of what I considered to be secondary features. This included the ability to set a different desktop image, a tinted colour overlay and text labels on each of your spaces.</p>
+
+<p>It turns out I was seriously off-base with what people actually miss from <a href="http://virtuedesktops.info/">VirtueDesktops</a> and it’s ilk. The big ticket item that seems to be missing from Apple’s implementation with Spaces is context: <strong>Which space am I currently working in?</strong></p>
+
+<p>Anyhow, those are just my observations - don’t assume that you know what’s important based solely upon your own experience and ideas. In my case, this wasn’t time lost or wasted - the technical work involved in gathering information about how Spaces works is used just about everywhere in <a href="http://hyperspacesapp.com/">Hyperspaces</a>, and once I’ve released the app, I’ll share a lot of what I’ve learned so that others can benefit from that research.</p>
+
+<p>Now before <a href="http://neilang.com/">Neil</a> has a go at me for not releasing a public beta before <a href="http://developer.apple.com/wwdc/">WWDC</a> - because apparently he’s not too keen on attending with a “has been” - I am serious about getting <a href="http://hyperspacesapp.com/">Hyperspaces</a> into your hands as soon as I can, but I’m not going to release something that is <strong>almost</strong> good enough. I’m almost there, and you can help me - I’m about to build the final visuals for the switcher, and I’d appreciate some feedback.</p>
+
+<p>Here’s how it looks in 1.0 alpha build 404 (heh - yes, I see it too):</p>
+
+<p><img src="http://static.tonyarnold.com/switcher_now.png" alt="Current Hyperspaces switcher" class="center"></p>
+
+<p>It functions much as you’d expect - you click on a space to switch to it. The active space shows a live-updating image of your current space, and the others show ghosted representations of your windows. Everything is drawn using CoreAnimation, so transitions of window positions smoothly fade in and out as window positions change on other spaces.</p>
+
+<p>Here are my rough ideas mocked up using Fireworks for where this is could head:</p>
+
+<h2 id="the-quicksilver-concept">The QuickSilver concept</h2>
+
+<p>The first is a QuickSilver-style window that would include other functionality and configuration options:</p>
+
+<p><img src="http://static.tonyarnold.com/idea_window.png" alt="QuickSilver-style switcher idea" class="center"></p>
+
+<h2 id="the-hud-concept">The HUD concept</h2>
+
+<p>The second (and my current front-runner with a bit more polish) is this black, hud-like window. It also reflects some of the design elements of Hyperspaces very, very unique icon which I’ll be introducing before the week is out.</p>
+
+<p><img src="http://static.tonyarnold.com/idea_black.png" alt="HUD-style switcher idea" class="center"></p>
+
+<p>Leave your thoughts in the comments.</p>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

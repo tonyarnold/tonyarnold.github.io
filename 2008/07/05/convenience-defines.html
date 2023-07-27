@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convenience #DEFINEs - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2008/07/05/convenience-defines.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  July 05, 2008
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  Convenience #DEFINEs
+
+</h1>
+
+<div id="post">
+  <blockquote>
+  <p><strong>Update:</strong> Lazy programmer, indeed! After doing some research myself this afternoon (at the prompting of Karsten), I’d recommend not using anything but the <code class="language-plaintext highlighter-rouge">ZNCGAutoRelease()</code> method below - the others aren’t dangerous, but they’re really not necessary and just obscure your ability to properly debug your code. As for using macros, well, I guess that’s a matter of personal preference - what I’ve seen so far is that it does make debugging harder - you’re probably better off implementing proper methods for repeatable tasks. But it works if you want to use it.</p>
+</blockquote>
+
+<p>When I first started working on VirtueDesktops (all those years ago), I was still new to Objective-C and very new to the concept of (mostly) manual memory management. Thankfully Thomas (the previous developer) had the foresight to do what all good, lazy programmers should do and write himself a few small convenience methods into his codebase.</p>
+
+<p>They’ve had a couple of minor additions and changes since then, but line-for-line, they’ve stood the test of time and I find them an invaluable way to reduce some of the fuss involved in manually managing your object assignments, copies and releases.</p>
+
+<figure class="highlight"><pre><code class="language-obj-c" data-lang="obj-c"><span class="cp">#define ZNCGAutoRelease(x) (__typeof(x))[NSMakeCollectable(x) autorelease]
+</span>
+<span class="cp">#define ZNAssign(aTarget, aSource) \
+if (aTarget != nil) {              \
+    [aTarget autorelease];         \
+}                                  \
+aTarget = [aSource retain];
+</span>
+<span class="cp">#define ZNAssignCopy(aTarget, aSource) \
+if (aTarget != nil) {                  \
+    [aTarget autorelease];             \
+}                                      \
+aTarget = [aSource copy];
+</span>
+<span class="cp">#define ZNRelease(aTarget)   \
+if (aTarget != nil) {        \
+    id oldObject = aTarget;  \
+    aTarget = nil;           \
+    [oldObject release];     \
+}</span></code></pre></figure>
+
+<p>I use these <strong>everywhere</strong> in my code, but just the other day I discovered the absolutely incredibly wonderful <a href="http://clang.llvm.org/StaticAnalysis.html">Clang Static Analysis</a> tools (more on this shortly!), and based on some feedback it gave around these calls (nothing bad!) it made me wonder - should I be using <code class="language-plaintext highlighter-rouge">#define</code> to create conveniences for my methods? Is this best practice, or should I just go back to doing this all by hand?</p>
+
+<p>I’m hoping some of my CocoaPeers™ will be able to provide me with some advice here, but if you think the code’s good for your needs - go for your life and use it.</p>
+
+<p>Oh, and happy 4th of July to our friends in the states. We’re waiting for you here on the 5th :)</p>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

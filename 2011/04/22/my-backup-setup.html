@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Backup Setup - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2011/04/22/my-backup-setup.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  April 22, 2011
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  My Backup Setup
+
+</h1>
+
+<div id="post">
+  <p>After the gushing “<a href="/mac/work/2011/04/22/thankyou-backblaze.html">Thankyou, Backblaze</a>” post from earlier today, I thought it might be of some interest to others how I backup my Mac (like an elephant — hooo, I tied in a photo of my travels again!).</p>
+
+<p><img src="http://static.tonyarnold.com/elephant-1306151150.png" alt="Elephants have long memory. Like a backup. And a boss." class="widescreen"></p>
+
+<p>I consider backing up to be common sense these days. If you use your Mac for work or for play, you have information that you’d be upset were it to disappear. Not backing up is the computing equivalent of driving without a seatbelt: you might not have an accident today, but you’ll be thankful for it when you do.</p>
+
+<p>I have four levels of backups setup — that might sound a bit excessive, but I’ve found some services are better suited to looking after different types of information:</p>
+
+<h3 id="dropbox"><a href="http://db.tt/hsOUhWJ">Dropbox</a></h3>
+
+<p>Dropbox is the centre of my backup strategy. My most important work-related documents all live in my Dropbox. I have a 50Gb account, of which I use about 5% for all of my client data, business records and any personal documents. I don’t store my Music, my Movies or any non-document content with Dropbox. With the advent of Xcode 4 and defaulting to storing intermediate build files in <em>~/Library/Developer/Xcode/Derived Data</em>, I can safely leave these here without causing constant uploads. FYI, that’s a referral link to Dropbox’s website — if you end up signing up for a Dropbox account, I get 250Mb of free space in my account). You can use 2Gb of storage with Dropbox for free, which is <em>awesome</em>.</p>
+
+<h3 id="github"><a href="http://github.com/">Github</a></h3>
+
+<p>If I’m working on a development project for you, or for myself, I have a private git repository setup for it on Github. This is an absolute no-brainer — the setup is simple, the user interface is simple and the support is great. For ~$7 (less if you’re transacting in AUD) every programmer should have this (or the equivalent for your DVCS of choice — I’ve also heard good things about <a href="https://bitbucket.org/">Atlassian’s BitBucket</a>).</p>
+
+<h3 id="time-machine">Time Machine</h3>
+
+<p>1Tb external hard drives retail for about $90. Buy one, and setup Time Machine. Time Machine is far from perfect, but it’s something you don’t have to think about it — it just sits in the background and copies your changes to an external disk once an hour. It’s also a heck of a lot quicker to restore files to your Mac from a disk that’s directly attached than from any online service.</p>
+
+<h3 id="backblaze"><a href="http://backblaze.com/">Backblaze</a></h3>
+
+<p>AKA “The Best $5 I Spend Each Month”. Backblaze sits in the background just like Time Machine, but it pushes your information up to Backblaze’s data centre for long term storage rather than to local storage. It took a long time to perform the initial backup, but now that first run has finished I don’t notice it at all (and it’s <a href="/mac/work/2011/04/22/thankyou-backblaze.html">saved my bacon</a>) after only a couple of months of use!). The brilliant feature that Backblaze offers is that they will send you a physical hard disk containing your data should you ever need it. They also don’t set limits on the amount of data you can store with them, so you don’t need to cherry-pick what you’ll backup — just let it do everything!</p>
+
+<p>If you want to keep reading about backups, there’s plenty of great info on other approaches at the <a href="http://www.worldbackupday.net/">World Backup Day site</a>.</p>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

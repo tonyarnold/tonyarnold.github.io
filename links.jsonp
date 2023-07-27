@@ -1,0 +1,508 @@
+callback([
+
+  {
+    "text": "Rolling with Ruby on Rails on Mac OS X Tiger",
+    "href": "/2005/08/11/rolling-with-ruby-on-rails-for-tiger.html"
+  } ,
+
+  {
+    "text": "MySQL Bindings for Ruby under Mac OS X Tiger",
+    "href": "/2005/08/12/mysql-bindings-for-ruby-under-tiger.html"
+  } ,
+
+  {
+    "text": "Agile Web Development with Rails is here!",
+    "href": "/2005/08/17/agile-web-development-with-rails-is-here.html"
+  } ,
+
+  {
+    "text": "Google Talk",
+    "href": "/2005/08/24/google-talk.html"
+  } ,
+
+  {
+    "text": "My brother's music",
+    "href": "/2005/09/09/my-brothers-music.html"
+  } ,
+
+  {
+    "text": "Ruby on Rails for PowerPC macs",
+    "href": "/2005/10/09/ruby-on-rails-for-powerpc-macs.html"
+  } ,
+
+  {
+    "text": "Serenity: Hell, yes!",
+    "href": "/2005/10/09/serenity-hell-yes.html"
+  } ,
+
+  {
+    "text": "Virtue virtual desktop manager for Tiger",
+    "href": "/2005/10/23/virtue-for-tiger.html"
+  } ,
+
+  {
+    "text": "Fixing Rails' permissions on the Mac",
+    "href": "/2005/10/25/fixing-rails-permissions-on-the-mac.html"
+  } ,
+
+  {
+    "text": "Chat Server for Mac OS X Client",
+    "href": "/2005/11/09/chat-server-for-mac-os-x-client.html"
+  } ,
+
+  {
+    "text": "Managing software development",
+    "href": "/2005/11/26/managing-software-development.html"
+  } ,
+
+  {
+    "text": "Ruby on Rails 1.0 Installer for Mac OS X ‘Tiger’",
+    "href": "/2005/12/14/ruby-on-rails-1-installer-for-mac-os-x-tiger.html"
+  } ,
+
+  {
+    "text": "Happy holidays, Campers!",
+    "href": "/2005/12/24/happy-holidays.html"
+  } ,
+
+  {
+    "text": "Xgl and the future of Virtue",
+    "href": "/2006/02/08/xgl-and-the-future-of-virtue.html"
+  } ,
+
+  {
+    "text": "ZShell",
+    "href": "/2006/02/25/zsh.html"
+  } ,
+
+  {
+    "text": "Damn windows (NSWindows that is)",
+    "href": "/2006/02/26/damn-nswindows.html"
+  } ,
+
+  {
+    "text": "Virtue’s sourceforge presence",
+    "href": "/2006/03/15/virtues-sourceforge-presence.html"
+  } ,
+
+  {
+    "text": "Taking a small break",
+    "href": "/2006/04/10/taking-a-small-break.html"
+  } ,
+
+  {
+    "text": "Captain’s log, stardate 59866.7",
+    "href": "/2006/05/26/captains-log.html"
+  } ,
+
+  {
+    "text": "Interesting links for June 21st, 2006",
+    "href": "/2006/06/21/interesting-links.html"
+  } ,
+
+  {
+    "text": "Quicksilver’s new Cube UI (hidden preferences ahoy!)",
+    "href": "/2006/07/07/quicksilvers-new-cube-ui.html"
+  } ,
+
+  {
+    "text": "Flights of “oh my poor, poor legs”",
+    "href": "/2006/08/07/flights-of-oh-my-poor-poor-legs.html"
+  } ,
+
+  {
+    "text": "VirtueDesktops and Apple Spaces",
+    "href": "/2006/08/08/virtuedesktops-and-apple-spaces.html"
+  } ,
+
+  {
+    "text": "That sinking feeling...",
+    "href": "/2006/09/03/that-sinking-feeling.html"
+  } ,
+
+  {
+    "text": "Color Label Button Interface Builder Palette",
+    "href": "/2006/10/06/color-label-button-interface-builder-palette.html"
+  } ,
+
+  {
+    "text": "About the “new” digs",
+    "href": "/2006/10/24/about-the-new-digs.html"
+  } ,
+
+  {
+    "text": "Documentation for those of us that love code",
+    "href": "/2006/10/26/documentation-for-those-of-us-that-love-code.html"
+  } ,
+
+  {
+    "text": "CSSEdit 2 Released!",
+    "href": "/2006/11/06/cssedit-2-released.html"
+  } ,
+
+  {
+    "text": "Remember, remember the 23rd of Mo’vember…",
+    "href": "/2006/11/24/movember.html"
+  } ,
+
+  {
+    "text": "Zen Logging for Cocoa",
+    "href": "/2007/01/24/zen-logging-for-cocoa.html"
+  } ,
+
+  {
+    "text": "Logging to your own file using NSLog",
+    "href": "/2007/02/17/logging-to-your-own-file-using-nslog.html"
+  } ,
+
+  {
+    "text": "Moving on to other things",
+    "href": "/2007/03/11/moving-on-to-other-things.html"
+  } ,
+
+  {
+    "text": "Interview’d and digg'd",
+    "href": "/2007/03/18/interviewd-and-diggd.html"
+  } ,
+
+  {
+    "text": "Coding nude to save the world (via neilang.com)",
+    "href": "/2007/03/18/coding-nude-to-save-the-world.html"
+  } ,
+
+  {
+    "text": "Tips for mac-hosted virtual machines",
+    "href": "/2007/05/06/tips-for-mac-hosted-virtual-machines.html"
+  } ,
+
+  {
+    "text": "I’ve changed blog software again",
+    "href": "/2007/07/25/ive-changed-blog-software-again.html"
+  } ,
+
+  {
+    "text": "Of holidays and adventure!",
+    "href": "/2007/09/25/of-holidays-and-adventure.html"
+  } ,
+
+  {
+    "text": "Detecting when the active Space changes",
+    "href": "/2007/11/11/detecting-when-the-active-space-changes.html"
+  } ,
+
+  {
+    "text": "Growling Panic Style",
+    "href": "/2007/12/09/growling-panic-style.html"
+  } ,
+
+  {
+    "text": "How to create a grid of CALayers",
+    "href": "/2007/12/14/how-to-create-a-grid-of-calayers.html"
+  } ,
+
+  {
+    "text": "Hyperspaces: Don’t tell anyone I’ve shown you this…",
+    "href": "/2008/01/03/dont-tell-anyone-ive-shown-you-this.html"
+  } ,
+
+  {
+    "text": "Another Gentle Nudge in a Spacey Direction",
+    "href": "/2008/02/07/another-gentle-nudge-in-a-spacey-direction.html"
+  } ,
+
+  {
+    "text": "Releasing a public beta of your application",
+    "href": "/2008/03/02/releasing-a-public-beta-of-your-application.html"
+  } ,
+
+  {
+    "text": "Microsoft finally gets it: web standards for all",
+    "href": "/2008/03/04/microsoft-finally-gets-it-web-standards-for-all.html"
+  } ,
+
+  {
+    "text": "Aluminium MacBooks can’t jump",
+    "href": "/2008/03/08/aluminium-macbooks-cant-jump.html"
+  } ,
+
+  {
+    "text": "Integrated documentation for Xcode projects",
+    "href": "/2008/03/28/integrated-documentation-for-xcode-projects.html"
+  } ,
+
+  {
+    "text": "These are the voyages of the USS Hyperspaces…",
+    "href": "/2008/05/10/these-are-the-voyages-of-the-uss-hyperspaces.html"
+  } ,
+
+  {
+    "text": "How late I am…",
+    "href": "/2008/05/11/how-late-i-am.html"
+  } ,
+
+  {
+    "text": "Issue tracking for free",
+    "href": "/2008/06/01/issue-tracking-for-free.html"
+  } ,
+
+  {
+    "text": "On how primary function becomes secondary",
+    "href": "/2008/06/05/on-how-primary-function-becomes-secondary.html"
+  } ,
+
+  {
+    "text": "Introducing the face of Hyperspaces",
+    "href": "/2008/06/06/introducing-the-face-of-hyperspaces.html"
+  } ,
+
+  {
+    "text": "Convenience #DEFINEs",
+    "href": "/2008/07/05/convenience-defines.html"
+  } ,
+
+  {
+    "text": "MSIE7 does not support modern web standards",
+    "href": "/2008/07/14/ie-does-not-support-modern-web-standards.html"
+  } ,
+
+  {
+    "text": "Fixing an annoying Exposé bug in NSWindow",
+    "href": "/2008/08/10/fix-an-annoying-expose-bug-with-nswindow.html"
+  } ,
+
+  {
+    "text": "Hyperspaces 1.0 Public Preview",
+    "href": "/2008/10/16/hyperspaces-1-public-preview.html"
+  } ,
+
+  {
+    "text": "Move your application windows between spaces",
+    "href": "/2008/12/05/move-your-application-windows-between-spaces.html"
+  } ,
+
+  {
+    "text": "Me too, me too!",
+    "href": "/2009/03/15/me-too-me-too.html"
+  } ,
+
+  {
+    "text": "CATiledLayers are fun",
+    "href": "/2009/04/04/catiledlayers-are-fun.html"
+  } ,
+
+  {
+    "text": "Testing testers",
+    "href": "/2009/07/02/testing-testers.html"
+  } ,
+
+  {
+    "text": "Get Satisfaction for user support - does it work?",
+    "href": "/2009/07/16/get-satisfaction-for-user-support.html"
+  } ,
+
+  {
+    "text": "Core Animation uses a lot of memory",
+    "href": "/2009/08/23/core-animation-uses-a-lot-of-memory.html"
+  } ,
+
+  {
+    "text": "Hyperspaces 1.0 and The CocoaBots",
+    "href": "/2009/12/15/hyperspaces-1-and-thecocoabots.html"
+  } ,
+
+  {
+    "text": "Campaign Monitor from within your Cocoa app",
+    "href": "/2010/01/13/campaign-monitor-from-within-your-cocoa-app.html"
+  } ,
+
+  {
+    "text": "Making your iPhone app's maps work like Apple's",
+    "href": "/2010/04/21/making-your-iphone-apps-maps-work-like-apples.html"
+  } ,
+
+  {
+    "text": "WWDC 2010: the death of the Mac (or not)",
+    "href": "/2010/05/03/wwdc-2010-the-death-of-the-mac-or-not.html"
+  } ,
+
+  {
+    "text": "Private methods in Objective-C using categories",
+    "href": "/2010/05/04/private-methods-in-objective-c-using-categories.html"
+  } ,
+
+  {
+    "text": "Life and the art of relaxating",
+    "href": "/2010/10/06/life-and-the-art-of-relaxating.html"
+  } ,
+
+  {
+    "text": "\"Redefinition\" with waffles",
+    "href": "/2010/11/19/redefinition-with-waffles.html"
+  } ,
+
+  {
+    "text": "Sane permissions for Symphony CMS",
+    "href": "/2011/01/26/sane-permissions-for-symphony-cms.html"
+  } ,
+
+  {
+    "text": "Thankyou, Backblaze",
+    "href": "/2011/04/22/thankyou-backblaze.html"
+  } ,
+
+  {
+    "text": "My Backup Setup",
+    "href": "/2011/04/22/my-backup-setup.html"
+  } ,
+
+  {
+    "text": "What to do when all you have is symbLOLication",
+    "href": "/2011/05/16/symblolication.html"
+  } ,
+
+  {
+    "text": "App Store Reviews as 'Political' Stands",
+    "href": "/2011/05/30/app-store-reviews-as-political-stands.html"
+  } ,
+
+  {
+    "text": "Mission Control Tips",
+    "href": "/2011/07/22/mission-control-tips.html"
+  } ,
+
+  {
+    "text": "Xcode syntax highlighting fix",
+    "href": "/2011/10/10/xcode-syntax-highlighting-fix.html"
+  } ,
+
+  {
+    "text": "Monty Python's Life of Tony",
+    "href": "/2012/03/04/monty-pythons-life-of-tony.html"
+  } ,
+
+  {
+    "text": "Dinobots!",
+    "href": "/2012/03/05/dinobots.html"
+  } ,
+
+  {
+    "text": "Humankind… ROLL OUT!",
+    "href": "/2012/03/05/humankind-roll-out.html"
+  } ,
+
+  {
+    "text": "YapDatabase",
+    "href": "/2013/05/13/yapdatabase.html"
+  } ,
+
+  {
+    "text": "ReactiveLessons",
+    "href": "/2013/05/13/reactivelessons.html"
+  } ,
+
+  {
+    "text": "Simplify delivering RACSignals on the main thread",
+    "href": "/2013/05/23/simplify-delivering-racsignals-on-the-main-thread.html"
+  } ,
+
+  {
+    "text": "Getting Started With ReactiveCocoa",
+    "href": "/2013/05/23/getting-started-with-reactivecocoa.html"
+  } ,
+
+  {
+    "text": "Half Arsed Class: NSRulerView",
+    "href": "/2013/05/24/half-arsed-class-nsrulerview.html"
+  } ,
+
+  {
+    "text": "Minimising Platform-specific code with MVVM",
+    "href": "/2013/05/24/minimising-platform-specific-code-with-mvvm-video.html"
+  } ,
+
+  {
+    "text": "WWDC 2013 Tips",
+    "href": "/2013/05/29/wwdc-2013-tips.html"
+  } ,
+
+  {
+    "text": "Commas, parentheses and exclamations — Oh my!",
+    "href": "/2013/08/24/commas-parentheses-and-exclamations-oh-my.html"
+  } ,
+
+  {
+    "text": "CoreData.next",
+    "href": "/2013/10/13/coredata_dot_next.html"
+  } ,
+
+  {
+    "text": "50ft Radio",
+    "href": "/2013/12/12/50ft-radio.html"
+  } ,
+
+  {
+    "text": "I was on NSBrief!",
+    "href": "/2013/12/13/i-was-on-nsbrief.html"
+  } ,
+
+  {
+    "text": "Refresh, read, refresh, read",
+    "href": "/2013/12/13/refresh-read-refresh-read.html"
+  } ,
+
+  {
+    "text": "Speeding up Jekyll's Latent Semantic Mapping on OS X",
+    "href": "/2014/03/27/speeding-up-jekylls-latent-semantic-mapping.html"
+  } ,
+
+  {
+    "text": "Microsoft: Redux (Build 2014)",
+    "href": "/2014/04/08/microsoft-redux.html"
+  } ,
+
+  {
+    "text": "Clean up your projects with Xcode 5",
+    "href": "/2014/04/10/clean-up-your-projects-with-xcode-5.html"
+  } ,
+
+  {
+    "text": "Fast NSString Comparisons",
+    "href": "/2014/04/27/fast-nsstring-comparison.html"
+  } ,
+
+  {
+    "text": "Automatically Formatting Your Objective-C",
+    "href": "/2014/05/31/autoformatting-your-code.html"
+  } ,
+
+  {
+    "text": "#663399Becca",
+    "href": "/2014/06/12/663399.html"
+  } ,
+
+  {
+    "text": "Working with NSNotFound in Swift",
+    "href": "/2014/07/21/nsnotfound-in-swift.html"
+  } ,
+
+  {
+    "text": "Swift: Death to Telescoping Constructors",
+    "href": "/2014/12/13/death-to-telescoping-constructors.html"
+  } ,
+
+  {
+    "text": "Reveal 1.5",
+    "href": "/2015/02/04/revealution.html"
+  } ,
+
+  {
+    "text": "How to show the duration of builds in Xcode",
+    "href": "/2016/04/20/xcode-build-duration.html"
+  } ,
+
+  {
+    "text": "Integrating GYB with Xcode",
+    "href": "/2018/07/11/gyb-xcode-integration.html"
+  } 
+
+])

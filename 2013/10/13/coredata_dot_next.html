@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoreData.next - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2013/10/13/coredata_dot_next.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  October 13, 2013
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  CoreData.next
+
+</h1>
+
+<div id="post">
+  <p>I’ve been using Core Data since it was introduced in Mac OS X 10.4 “Tiger”, and it’s my first choice anytime I need to save structured data in my apps.</p>
+
+<p>The problem is, <strong>everyone uses Core Data because there’s nothing better</strong>. It’s the best way to persist structured data on iOS and OS X, but it’s not actually much fun to implement and has many warts. <strong>To be utilised properly, Core Data requires a level of experience and knowledge that’s simply not reasonable to expect from people starting out with Cocoa development</strong> — although it does it’s best to convince you otherwise with the visual Core Data Modeller in Xcode.</p>
+
+<p>Something as base as saving data should be much, much easier.</p>
+
+<p>Before I really get stuck in, let me be clear: there are probably legitimate reasons why Core Data does all of the things I highlight. I’m not insinuating for a minute that any of my suggestions are even technically possible — this is what I would investigate for a major revision to Core Data (were it my call, which it is not).</p>
+
+<h2 id="setting-up-is-too-much-work">Setting up is too much work</h2>
+
+<p>Creating a usable Core Data stack for your application by hand requires far too much boilerplate. Apple should be providing a very basic <code class="language-plaintext highlighter-rouge">[NSCoreDataStack newStackWithOptions:…]</code> or something similar that gets your app up and running with the best possible set of defaults.</p>
+
+<p>Libraries like MagicalRecord provide this now, but it seems odd that the Core Data framework does little to aid setting up the stack in a recommended manner.</p>
+
+<h2 id="its-workarounds-all-the-way-down-and-then-you-hit-nsmangedobject">It’s workarounds all the way down and then you hit NSMangedObject</h2>
+
+<p>Yes, I meant to spell it that way.</p>
+
+<p>In the last couple of years, Apple have made attempts to simplify and extend some parts of Core Data, including the addition of parent contexts, and methods to help run your code on the correct thread for a specific <code class="language-plaintext highlighter-rouge">NSManagedObjectContext</code> (i.e. <code class="language-plaintext highlighter-rouge">-(void)performBlock:</code> and <code class="language-plaintext highlighter-rouge">-(void)performBlockAndWait:</code>).</p>
+
+<p>The problem is, <strong>these additions are essentially workarounds for problems that shouldn’t really be the concern of the developer</strong> using the API.</p>
+
+<p>The additions I cited above all stem from <code class="language-plaintext highlighter-rouge">NSManagedObjectContext</code> and <code class="language-plaintext highlighter-rouge">NSManagedObject</code> instances not being thread safe. I’d rather see Apple create new, non-backwards compatible API to solve this than continue to patch underlying design issues with new API. I get this one is not trivial. Threading never is.</p>
+
+<h2 id="except-the-exceptions">Except the exceptions</h2>
+
+<p>If you’ve used Core Data, chances are you’ve seen it do it’s best impression of a monkey in a cage. It flings internal NSExceptions around like a monkey with poop. Debugging a Core Data app with lldb intercepting all exceptions is an exercise in frustration and sifting through “what’s yours” and “what’s mine”.</p>
+
+<p>I’d like to see all exceptions thrown by the framework properly caught and dealt with before the developer ever sees them in Xcode.</p>
+
+<h2 id="easier-handling-of-binary-data">Easier handling of binary data</h2>
+
+<p>One of the common things new users of Core Data try to do is store images and other data in their SQLite persistent store. It’s entirely possible to do so, and the addition of external binary representations for Binary attributes helps improve performance when doing so.</p>
+
+<p>The issue is, accessing that data can have significant memory implications as you can’t really take advantage of any of the great optimisations Apple has made to image/file loading without first dumping the data of the attribute into a temporary file outside of your store.</p>
+
+<p>Want to use any of the audio visual frameworks to access media that you’ve stored in your persistent store? Forget it. They all need a URL or file path.</p>
+
+<p>Allowing direct access to binary data attributes external file URLs (and allowing access to read that file via the URL) would greatly simplify this scenario, and I’d imagine it would reduce disk I/O.</p>
+
+<h2 id="nsfetchedresultscontroller-on-both-platforms">NSFetchedResultsController on both platforms</h2>
+
+<p>I use <code class="language-plaintext highlighter-rouge">NSFetchedResultsController</code> in almost all of my iOS apps. I set it up and forget about it, and it takes care of marshalling any changes to my datasources. <code class="language-plaintext highlighter-rouge">NSArrayController</code> is the prototype that we have on OS X, and it’s just not setup to handle things like animating UI changes in table views and the like.</p>
+
+<p>A simple, fast way to automatically query and update a datasource and handle discrete changes on both platforms would be a huge time saver. Making it capable of doing it’s work nicely on a background thread would be a big win, too.</p>
+
+<h2 id="performance-and-simplicity">Performance and simplicity</h2>
+
+<p>Any improvements to performance in any API are always a good thing, but Core Data has some specific areas that could use attention. Anything involving batch operations could use a bit of love (as outlined by Brent in his <a href="http://inessential.com/2013/10/05/vesper_sync_diary_2_core_data">series of posts on Core Data in Vesper</a>).</p>
+
+<p>Honestly though, I think Core Data.next needs to be simpler to implement and interact with:</p>
+
+<ul>
+  <li>There’s a lot in Core Data right now that just seems to be there for the sake of working around the lack of thread safety</li>
+  <li>I know it’s not everyone’s cup of tea, but simpler queries and searches would be ace</li>
+  <li>Roll the work Wolf has done on <a href="http://rentzsch.github.io/mogenerator/">mogenerator</a> into Xcode — the attribute structs and entityName methods should be there for all <code class="language-plaintext highlighter-rouge">NSManagedObject</code> subclasses</li>
+</ul>
+
+<p>This is all pie in the sky, but it’s nice to dream right?</p>
+
+<p>And maybe to implement. Maybe.</p>
+
+<p>Hit me up on <a href="http://twitter.com/tonyarnold/">Twitter</a> or <a href="http://alpha.app.net/tonyarnold/">App.net</a> with your thoughts, or even better — write a post in response.</p>
+
+<h2 id="responses">Responses</h2>
+
+<ul>
+  <li>
+<a href="http://deusty.blogspot.com.au/2014/01/response-coredatanext.html">Robbie Hanson has answered my post</a> putting forward <a href="https://github.com/yaptv/YapDatabase">YapDatabase</a> as a viable replacement (and improvement) for Core Data. I’m keen to have a look at it for my next project.</li>
+</ul>
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>

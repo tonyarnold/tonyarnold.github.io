@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sane permissions for Symphony CMS - Tony Arnold</title>
+    <meta name="author" content="Tony Arnold" />
+    <meta name="description" content="The blog of Tony Arnold" />
+    <link rel="canonical" href="https://tonyarnold.com/2011/01/26/sane-permissions-for-symphony-cms.html" />
+    <link rel="shortcut icon" href="/favicon.gif">
+    <link rel="alternate" type="application/rss+xml" title="Tony Arnold" href="https://tonyarnold.com/atom.xml" />
+    <link rel="stylesheet" href="/assets/fonts/fira/fira.css">
+    <link rel="stylesheet" href="/assets/css/all.css">
+    <link rel="stylesheet" href="/assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="four columns sidebar">
+<nav>
+  <h1><a href="/">Hi.</a></h1>
+  <h2>I'm <a href="/about/">Tony Arnold</a>.</h2>
+  <hr>
+  <ul>
+  <p>Spreading code and joy.</p>
+  <hr>
+  <div>
+    <div id="social">
+      <div id="stalker">
+  
+  <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+    <i class="fa-brands fa-github-square"></i>
+  </a>
+  
+  
+  <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+    <i class="fa-brands fa-mastodon"></i>
+  </a>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a title="RSS feed" id="rss" href="/atom.xml">
+    <i class="fa fa-rss-square"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+  </ul>
+</nav>
+</div>
+        <div class="eleven columns content">
+<p class="meta">
+  January 26, 2011
+  <a href="/">
+    <i class="home fa fa-home"></i>
+  </a>
+</p>
+
+<h1 class="title">
+
+  Sane permissions for Symphony CMS
+
+</h1>
+
+<div id="post">
+  <p>I use <a href="http://symphony-cms.com/">Symphony CMS</a> for almost all of my sites, and for my client sites as well. Here are a few tips I’ve found help to make your sites more secure, and ease development.</p>
+
+<p>There are a few simple things I change on my sites that you should probably think about:</p>
+
+<h2 id="set-sane-permissions">Set sane permissions</h2>
+
+<p>If you’re unfamiliar with how permissions work on UNIX, here’s an oversimplified breakdown:</p>
+
+<ul>
+  <li>
+<strong>Read</strong> — means that the file or directory (and it’s attributes) can be read. On a directory, this does not grant permission to read the contents of the directory (ie. the list of files inside the directory);</li>
+  <li>
+<strong>Write</strong> — means that you can make changes to the file or directory;</li>
+  <li>
+<strong>Execute</strong> — for directories, the execute permission allows the contents of the directory to be read (ie. list the files inside the directory). For files, this means that the file can be run as a executable process on your computer/server — this is almost <strong>never</strong> what you want.</li>
+</ul>
+
+<p>The default <a href="http://symphony-cms.com/">Symphony</a> install uses a permission mask of <code class="language-plaintext highlighter-rouge">775</code> for both directories and files created within the <code class="language-plaintext highlighter-rouge">workspace</code> directory. A permissions mask is composed of three discrete parts:</p>
+
+<ol>
+  <li>The first number represents the <strong>owner of the file</strong>;</li>
+  <li>The second number represents the <strong>group of the file</strong>;</li>
+  <li>The third number represents <strong>everyone else</strong> (‘other’).</li>
+</ol>
+
+<p>So <a href="http://symphony-cms.com/">Symphony’s</a> default permissions of <code class="language-plaintext highlighter-rouge">775</code> for both directories and files means:</p>
+
+<ul>
+  <li>
+<strong>Owner</strong> — can read, write and execute both directories and files created by Symphony;</li>
+  <li>
+<strong>Group</strong> — can read, write and execute both directories and files created by Symphony;</li>
+  <li>
+<strong>Everyone</strong> — can read and execute both directories and files created by Symphony;</li>
+</ul>
+
+<p>Depending on your web host, this default might actually stop your site from working entirely — at the least it’s a pretty insecure mask to use out of the box. The absolute bottom line is that <strong>on a public web site, you should never grant any permissions unless they are absolutely necessary</strong>.</p>
+
+<p>The directory permissions are (in most cases) completely OK. But the file permissions are not OK at all — you do not under nearly any circumstances want files within your <code class="language-plaintext highlighter-rouge">workspace</code> to be executable — not even by you. Leaving files executable within this directory leaves you open to somebody gaining access to your install and uploading a script or binary executable - if you remove the executable bit from all uploaded files, there’s little chance someone can use uploaded files to do anything malicious to your site.</p>
+
+<h3 id="bottom-line">Bottom line</h3>
+
+<p>I always set my file permissions to be <code class="language-plaintext highlighter-rouge">664</code>, and my <code class="language-plaintext highlighter-rouge">775</code> for directories when setting up a new <a href="http://symphony-cms.com/">Symphony</a> install.</p>
+
+<p>If you know that your site will be run as a discrete user on your server, you could even consider removing write privileges for group as well - this is as simple as <code class="language-plaintext highlighter-rouge">755</code> for groups, and <code class="language-plaintext highlighter-rouge">644</code> for users. This might interfere with local development (depending on how your local install is setup), so I generally don’t change this.</p>
+
+
+  
+</div>
+
+<div id="related">
+  <h3>Related Posts</h3>
+  <ul class="posts">
+    
+    <li>
+      <span>11 Jul 2018 »</span> <a href="/2018/07/11/gyb-xcode-integration.html">Integrating GYB with Xcode</a>
+    </li>
+    
+    <li>
+      <span>20 Apr 2016 »</span> <a href="/2016/04/20/xcode-build-duration.html">How to show the duration of builds in Xcode</a>
+    </li>
+    
+    <li>
+      <span>04 Feb 2015 »</span> <a href="/2015/02/04/revealution.html">Reveal 1.5</a>
+    </li>
+    
+  </ul>
+</div>
+
+            <div class="footer">
+<div class="disclaimer">
+  
+
+  <p>© Tony Arnold, 2023 — built with <a href="http://jekyllrb.com" rel="external">Jekyll</a> using the <a href="https://github.com/swanson/lagom" rel="external">Lagom theme</a>. Last updated on 27 Jul 2023.</p>
+</div>
+</div>
+        </div>
+    </div>
+    
+
+</body>
+
+</html>
