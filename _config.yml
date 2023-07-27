@@ -31,7 +31,6 @@ theme_settings:
   social:
     github: tonyarnold
     mastodon: tonyarnold
-    twitter: tonyarnold
   name: Tony Arnold
   email: tony@tonyarnold.com
   tagline: 'readwrite, nonnull, nonatomic, strong'
