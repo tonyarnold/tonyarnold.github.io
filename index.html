@@ -1,13 +1,57 @@
----
-layout: default
-title: Blog Posts
----
-
-<div id="home">
-  <h2><i class="fa-solid fa-bookmark"></i> Blog Posts</h2>
-  <ul id="blog-posts" class="posts">
-    {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }} &raquo;</span><a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
-</div>
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Tony Arnold</title>
+    <meta name="author" content="Tony Arnold">
+    <meta name="description" content="The man, the beard, the mystery">
+    <link rel="canonical" href="https://tonyarnold.com/about/">
+    <link rel="shortcut icon" href="https://tonyarnold.com/favicon.gif">
+    <link rel="stylesheet" href="assets/fonts/fira.css">
+    <link rel="stylesheet" href="assets/css/all.css">
+    <link rel="stylesheet" href="assets/css/screen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="four columns sidebar">
+      <nav>
+        <h1><a href="https://tonyarnold.com/">Hi.</a></h1>
+        <h2>I'm Tony Arnold.</h2>
+        <hr>
+        <ul>
+          <p>Spreading code and joy.</p>
+          <hr>
+          <div>
+            <div id="social">
+              <div id="stalker">
+                <a rel="me" title="tonyarnold on Github" href="https://github.com/tonyarnold">
+                  <i class="fa-brands fa-github-square"></i>
+                </a>
+                <a rel="me" title="Tony Arnold on Mastodon" href="https://mastodon.social/@tonyarnold">
+                  <i class="fa-brands fa-mastodon"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </ul>
+      </nav>
+    </div>
+    <div class="eleven columns content">
+      <p><img src="assets/my-family-2018.jpg" alt="Leah, Ted, Beth, Ev and Tony" class="widescreen"></p>
+      <h1 id="tony-who">Tony <em>who?</em></h1>
+      <p>Hi! I’m Tony Arnold, a 43 year old chap from <a href="https://maps.apple.com/?address=Newcastle%20NSW%202300,%20Australia&auid=17333662148849383594&ll=-32.927068,151.784669&lsp=6489&q=Newcastle">Newcastle, Australia</a>. Professionally, I’m a developer at <a href="http://ittybittyapps.com/">Itty Bitty Apps</a> where I work on the amazing visual debugging tool, <a href="http://revealapp.com/">Reveal</a>. I also <del>mess with</del> contribute to as many open source projects as my time allows.</p>
+      <p>I also have my own (<em>very</em>) small business — <a href="http://thecocoabots.com/">The CocoaBots</a> — building apps for Apple devices.</p>
+      <p>If you’d like to get in contact with me, please feel free to <a href="mailto:Tony%20Arnold%20%3Ctony@tonyarnold.com%3E">send me an e-mail</a>.</p>
+      <h2 id="disclaimer">Disclaimer</h2>
+      <p>All opinions I express on this site are my own, and do not reflect or represent the opinions of Itty Bitty Apps or any of the projects I’m involved in. <em>If you have a beef about something I’ve said here, <a href="mailto:Tony%20Arnold%20%3Ctony@tonyarnold.com%3E">your beef is with me</a></em>.</p>
+      <div class="footer">
+        <div class="disclaimer">
+          <p>© Tony Arnold, 2024. Last updated on 8th January, 2024.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
